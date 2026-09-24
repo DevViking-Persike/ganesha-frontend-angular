@@ -1,0 +1,40 @@
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: ganesha-https
+spec:
+  redirectScheme:
+    scheme: https
+    permanent: true
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: ganesha-http
+spec:
+  entryPoints: [web]
+  routes:
+    - match: Host(`ganesha.victorpersike.dev.br`)
+      kind: Rule
+      middlewares:
+        - name: ganesha-https
+      services:
+        - name: ganesha
+          port: 80
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: ganesha-https
+spec:
+  entryPoints: [websecure]
+  routes:
+    - match: Host(`ganesha.victorpersike.dev.br`)
+      kind: Rule
+      services:
+        - name: ganesha
+          port: 80
+  tls:
+    certResolver: cloudflare
+    domains:
+      - main: ganesha.victorpersike.dev.br

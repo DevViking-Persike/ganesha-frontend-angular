@@ -1,0 +1,101 @@
+/* =============================================================================
+   GnsSearchFilter — Scoped Styles
+   ============================================================================= */
+
+/* ----------------------------------------------------------------------------
+   BASE ROW
+---------------------------------------------------------------------------- */
+.gns-search-filter {
+    display: flex;
+    align-items: center;
+    gap: var(--gns-space-3);
+    flex-wrap: wrap;
+    padding: var(--gns-space-3) 0;
+}
+
+/* ----------------------------------------------------------------------------
+   SEARCH BLOCK
+   We use a position:relative wrapper to place the magnifier icon inside
+   the input-text control. GnsInputText already supports IconLeft via a
+   css class name, but since we can't pass SVG as a class string, we
+   overlay the icon manually with absolute positioning.
+---------------------------------------------------------------------------- */
+.gns-search-filter__search {
+    position: relative;
+    flex: 1;
+    min-width: 220px;
+    max-width: 420px;
+}
+
+/* The inner GnsInputText stretches to fill */
+.gns-search-filter__search .gns-input-text {
+    width: 100%;
+}
+
+/* Icon overlay — sits in the left padding of the input field */
+.gns-search-filter__search-icon {
+    position: absolute;
+    left: var(--gns-space-3);
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    color: var(--gns-color-text-tertiary, var(--gns-color-text-secondary));
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Push the input text to make room for the icon.
+   We target the inner field element produced by GnsInputText. */
+.gns-search-filter__search .gns-input-text__field {
+    padding-left: calc(var(--gns-space-3) + 16px + var(--gns-space-2));
+}
+
+/* ----------------------------------------------------------------------------
+   FILTERS
+---------------------------------------------------------------------------- */
+.gns-search-filter__filters {
+    display: flex;
+    align-items: center;
+    gap: var(--gns-space-2);
+    flex-wrap: wrap;
+    flex: 1;
+    min-width: 0;
+}
+
+/* ----------------------------------------------------------------------------
+   ACTIONS
+---------------------------------------------------------------------------- */
+.gns-search-filter__actions {
+    display: flex;
+    align-items: center;
+    gap: var(--gns-space-2);
+    flex-shrink: 0;
+    margin-left: auto;
+}
+
+/* ----------------------------------------------------------------------------
+   RESPONSIVE — MOBILE (< 640px)
+---------------------------------------------------------------------------- */
+@media (max-width: 639px) {
+    .gns-search-filter {
+        flex-direction: column;
+        align-items: stretch;
+        gap: var(--gns-space-2);
+    }
+
+    .gns-search-filter__search {
+        max-width: 100%;
+        width: 100%;
+    }
+
+    .gns-search-filter__filters {
+        width: 100%;
+    }
+
+    .gns-search-filter__actions {
+        width: 100%;
+        margin-left: 0;
+        justify-content: flex-end;
+    }
+}

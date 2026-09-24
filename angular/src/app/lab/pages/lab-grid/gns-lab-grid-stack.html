@@ -1,0 +1,81 @@
+<gns-section title="Stack (Flex)" subtitle="GnsStack for flex-based horizontal and vertical arrangements.">
+    <div style="display: flex; flex-direction: column; gap: var(--gns-space-8);">
+
+        <!-- Horizontal -->
+        <div>
+            <p style="font-size: var(--gns-text-xs); font-family: var(--gns-font-mono); color: var(--gns-color-text-tertiary); margin-bottom: var(--gns-space-2);">Direction=Horizontal Gap="4"</p>
+            <gns-stack direction="horizontal" gap="4">
+                <div [style]="boxStyle('var(--gns-primary-500)', '4rem', 'flex: 1;')">Item 1</div>
+                <div [style]="boxStyle('var(--gns-primary-400)', '4rem', 'flex: 1;')">Item 2</div>
+                <div [style]="boxStyle('var(--gns-primary-300)', '4rem', 'flex: 1;')">Item 3</div>
+                <div [style]="boxStyle('var(--gns-info-500)', '4rem', 'flex: 1;')">Item 4</div>
+                <div [style]="boxStyle('var(--gns-success-500)', '4rem', 'flex: 1;')">Item 5</div>
+            </gns-stack>
+        </div>
+
+        <!-- Vertical -->
+        <div>
+            <p style="font-size: var(--gns-text-xs); font-family: var(--gns-font-mono); color: var(--gns-color-text-tertiary); margin-bottom: var(--gns-space-2);">Direction=Vertical Gap="3"</p>
+            <gns-stack direction="vertical" gap="3">
+                <div [style]="boxStyle('var(--gns-primary-500)')">Item 1</div>
+                <div [style]="boxStyle('var(--gns-primary-400)')">Item 2</div>
+                <div [style]="boxStyle('var(--gns-primary-300)')">Item 3</div>
+                <div [style]="boxStyle('var(--gns-info-500)')">Item 4</div>
+                <div [style]="boxStyle('var(--gns-success-500)')">Item 5</div>
+            </gns-stack>
+        </div>
+
+        <!-- Alignment variants -->
+        <div>
+            <p style="font-size: var(--gns-text-sm); font-weight: var(--gns-font-weight-semibold); margin-bottom: var(--gns-space-4);">Alignment Variants (Horizontal)</p>
+            <div style="display: flex; flex-direction: column; gap: var(--gns-space-4);">
+                @for (demo of alignDemos; track demo.label) {
+                    <div>
+                        <p style="font-size: var(--gns-text-xs); font-family: var(--gns-font-mono); color: var(--gns-color-text-tertiary); margin-bottom: var(--gns-space-2);">{{ demo.label }}</p>
+                        <div style="border: 1px dashed var(--gns-color-border-default); border-radius: var(--gns-radius-md); padding: var(--gns-space-3);">
+                            <gns-stack direction="horizontal" gap="3" [align]="demo.align">
+                                <div [style]="boxStyle(demo.color, '3rem', 'width: 5rem;')">A</div>
+                                <div [style]="boxStyle(demo.color, '3rem', 'width: 5rem;')">B</div>
+                                <div [style]="boxStyle(demo.color, '3rem', 'width: 5rem;')">C</div>
+                            </gns-stack>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+
+        <!-- Wrapping -->
+        <div>
+            <p style="font-size: var(--gns-text-xs); font-family: var(--gns-font-mono); color: var(--gns-color-text-tertiary); margin-bottom: var(--gns-space-2);">Direction=Horizontal Wrap="true" — items wrap onto new lines</p>
+            <gns-stack direction="horizontal" gap="3" [wrap]="true">
+                @for (label of wrapLabels; track label) {
+                    <div [style]="boxStyle('var(--gns-primary-400)', '3rem', 'width: 6rem;')">{{ label }}</div>
+                }
+            </gns-stack>
+        </div>
+
+        <!-- Nested stacks -->
+        <div>
+            <p style="font-size: var(--gns-text-xs); font-family: var(--gns-font-mono); color: var(--gns-color-text-tertiary); margin-bottom: var(--gns-space-2);">Nested — horizontal stack containing two vertical stacks</p>
+            <gns-stack direction="horizontal" gap="6">
+                <div style="flex: 1;">
+                    <p style="font-size: var(--gns-text-xs); color: var(--gns-color-text-tertiary); margin-bottom: var(--gns-space-2);">Left column</p>
+                    <gns-stack direction="vertical" gap="2">
+                        <div [style]="boxStyle('var(--gns-primary-500)')">L1</div>
+                        <div [style]="boxStyle('var(--gns-primary-400)')">L2</div>
+                        <div [style]="boxStyle('var(--gns-primary-300)')">L3</div>
+                    </gns-stack>
+                </div>
+                <div style="flex: 1;">
+                    <p style="font-size: var(--gns-text-xs); color: var(--gns-color-text-tertiary); margin-bottom: var(--gns-space-2);">Right column</p>
+                    <gns-stack direction="vertical" gap="2">
+                        <div [style]="boxStyle('var(--gns-success-500)')">R1</div>
+                        <div [style]="boxStyle('var(--gns-success-500)', '3rem')">R2 (taller)</div>
+                        <div [style]="boxStyle('var(--gns-success-500)')">R3</div>
+                    </gns-stack>
+                </div>
+            </gns-stack>
+        </div>
+
+    </div>
+</gns-section>

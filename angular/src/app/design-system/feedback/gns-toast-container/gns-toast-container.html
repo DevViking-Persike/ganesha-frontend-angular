@@ -1,0 +1,5 @@
+<div class="{{ containerClass() }}" aria-label="Notifications" aria-live="polite">
+  @for (toast of toastService.toasts(); track toast.id) {
+    <gns-toast-item [toast]="toast" (onDismiss)="handleDismiss($event)" />
+  }
+</div>

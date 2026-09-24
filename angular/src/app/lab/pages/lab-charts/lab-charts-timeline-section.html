@@ -1,0 +1,18 @@
+<gns-section title="Planning Timeline" subtitle="Project delivery timeline with grouped workstreams, progress bars, sticky calendar headers, and day-by-day planning.">
+
+    <gns-card>
+        <div header style="padding: var(--gns-space-4) var(--gns-space-5); border-bottom: 1px solid var(--gns-color-border-subtle);">
+            <div style="font-size: var(--gns-text-sm); font-weight: var(--gns-font-weight-semibold); color: var(--gns-color-text-primary);">Project Delivery Timeline</div>
+            <div style="font-size: var(--gns-text-xs); color: var(--gns-color-text-secondary); margin-top: var(--gns-space-1);">Reusable planning composite for roadmaps, implementations, and staged deliveries.</div>
+        </div>
+        <div style="padding: var(--gns-space-5);">
+            <gns-project-timeline title="Detailed project schedule"
+                                  subtitle="Monthly view with workstreams, tasks, progress, and a current-day marker."
+                                  [tasks]="timelineTasks"
+                                  [categories]="timelineCategories"
+                                  [today]="today"
+                                  cultureName="en-US" />
+        </div>
+    </gns-card>
+
+</gns-section>

@@ -1,0 +1,8 @@
+<fieldset [class]="cssClass()" [attr.aria-disabled]="groupDisabled()">
+  @if (label()?.trim()) {
+    <legend class="gns-radio-group__legend">{{ label() }}</legend>
+  }
+  <div class="gns-radio-group__options">
+    <ng-content></ng-content>
+  </div>
+</fieldset>

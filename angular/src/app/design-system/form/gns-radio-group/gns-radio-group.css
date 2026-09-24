@@ -1,0 +1,54 @@
+/* =============================================================================
+   GnsRadioGroup — Scoped Styles
+   ============================================================================= */
+
+/* ----------------------------------------------------------------------------
+   FIELDSET (group container)
+---------------------------------------------------------------------------- */
+.gns-radio-group {
+    border: none;
+    padding: 0;
+    margin: 0;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--gns-space-3);
+}
+
+.gns-radio-group--disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* ----------------------------------------------------------------------------
+   LEGEND (group label)
+---------------------------------------------------------------------------- */
+.gns-radio-group__legend {
+    font-family: var(--gns-font-sans);
+    font-size: var(--gns-text-sm);
+    font-weight: var(--gns-font-weight-medium);
+    color: var(--gns-color-text-primary);
+    line-height: var(--gns-leading-tight);
+    margin-bottom: var(--gns-space-2);
+    padding: 0;
+    float: left;
+    width: 100%;
+}
+
+.gns-radio-group--disabled .gns-radio-group__legend {
+    color: var(--gns-color-text-disabled);
+}
+
+/* Clear the float so options stack below */
+.gns-radio-group__legend + .gns-radio-group__options {
+    clear: both;
+}
+
+/* ----------------------------------------------------------------------------
+   OPTIONS CONTAINER
+---------------------------------------------------------------------------- */
+.gns-radio-group__options {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gns-space-2-5);
+}

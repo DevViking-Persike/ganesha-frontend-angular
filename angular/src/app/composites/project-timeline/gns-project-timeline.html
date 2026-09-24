@@ -1,0 +1,150 @@
+@if (groups().length === 0) {
+  <gns-empty-state
+    title="No timeline items"
+    description="Add tasks with dates and categories to visualize the roadmap." />
+} @else {
+  <div [class]="cssClass()">
+    <header class="gns-project-timeline__header">
+      <div>
+        <h3
+          class="gns-project-timeline__title"
+          style="color: var(--gns-color-text-primary) !important;">{{ title() }}</h3>
+        @if (subtitle() && subtitle()!.trim() !== '') {
+          <p class="gns-project-timeline__subtitle">{{ subtitle() }}</p>
+        }
+      </div>
+
+      <div class="gns-project-timeline__summary-pills" aria-label="Timeline summary">
+        <span class="gns-project-timeline__pill">
+          <strong class="gns-project-timeline__pill-value">{{ tasks().length }}</strong>
+          <span class="gns-project-timeline__pill-label">tasks</span>
+        </span>
+        <span class="gns-project-timeline__pill">
+          <strong class="gns-project-timeline__pill-value">{{ completedTasks() }}</strong>
+          <span class="gns-project-timeline__pill-label">completed</span>
+        </span>
+        <span class="gns-project-timeline__pill">
+          <strong class="gns-project-timeline__pill-value">{{ groups().length }}</strong>
+          <span class="gns-project-timeline__pill-label">workstreams</span>
+        </span>
+      </div>
+    </header>
+
+    <div class="gns-project-timeline__shell">
+      <aside class="gns-project-timeline__sidebar">
+        <div class="gns-project-timeline__sidebar-header">{{ sidebarTitle() }}</div>
+        <div class="gns-project-timeline__sidebar-body">
+          @for (group of groups(); track group.name) {
+            <div class="gns-project-timeline__sidebar-group">
+              <button
+                type="button"
+                class="gns-project-timeline__category-button"
+                [attr.aria-expanded]="isExpanded(group.name)"
+                (click)="toggleCategory(group.name)">
+                <span class="gns-project-timeline__toggle" aria-hidden="true">{{ isExpanded(group.name) ? "-" : "+" }}</span>
+                <span
+                  class="gns-project-timeline__category-dot"
+                  [style.background]="group.accentColor"></span>
+                <span class="gns-project-timeline__category-name">{{ group.name }}</span>
+                <span class="gns-project-timeline__category-count">{{ group.tasks.length }} items</span>
+              </button>
+
+              @if (isExpanded(group.name)) {
+                @for (task of group.tasks; track task.id) {
+                  <div class="gns-project-timeline__task-label-row">
+                    <span class="gns-project-timeline__task-label">{{ task.name }}</span>
+                    <span class="gns-project-timeline__task-progress">{{ clampProgress(task.progress) }}%</span>
+                  </div>
+                }
+              }
+            </div>
+          }
+        </div>
+      </aside>
+
+      <div class="gns-project-timeline__board">
+        <div class="gns-project-timeline__timeline-header" [style.width.px]="timelineWidth()">
+          <div class="gns-project-timeline__months">
+            @for (month of months(); track month.label) {
+              <div
+                class="gns-project-timeline__month"
+                [style.width.px]="month.dayCount * dayWidth()">
+                {{ month.label }}
+              </div>
+            }
+          </div>
+
+          <div class="gns-project-timeline__days">
+            @for (day of days(); track day.iso) {
+              <div [class]="day.cssClass" [style.width.px]="dayWidth()">
+                <span class="gns-project-timeline__day-week">{{ day.weekdayLabel }}</span>
+                <span class="gns-project-timeline__day-number">{{ day.dayOfMonth }}</span>
+              </div>
+            }
+          </div>
+        </div>
+
+        <div class="gns-project-timeline__canvas" [style.width.px]="timelineWidth()">
+          <div class="gns-project-timeline__grid" aria-hidden="true">
+            @for (day of days(); track day.iso) {
+              <div class="gns-project-timeline__grid-line" [style.width.px]="dayWidth()"></div>
+            }
+          </div>
+
+          @for (group of groups(); track group.name) {
+            <div class="gns-project-timeline__scope-row"></div>
+
+            @if (isExpanded(group.name)) {
+              @for (task of group.tasks; track task.id) {
+                <div class="gns-project-timeline__bar-row">
+                  <div
+                    class="gns-project-timeline__bar"
+                    [title]="buildTaskTitle(task)"
+                    [style]="buildBarStyle(task, group.accentColor)">
+                    <div
+                      class="gns-project-timeline__bar-progress"
+                      [style.width.%]="clampProgress(task.progress)"></div>
+                    <span class="gns-project-timeline__bar-label">{{ task.name }}</span>
+                  </div>
+                </div>
+              }
+            }
+          }
+
+          @if (showTodayLine()) {
+            <div
+              class="gns-project-timeline__today-marker"
+              [style.left.px]="getPosition(effectiveToday())"
+              aria-label="Today marker">
+              <div class="gns-project-timeline__today-dot"></div>
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+
+    <footer class="gns-project-timeline__footer">
+      <div class="gns-project-timeline__footer-metrics">
+        <span class="gns-project-timeline__footer-pill">
+          <strong class="gns-project-timeline__pill-value">{{ tasks().length }}</strong>
+          <span class="gns-project-timeline__pill-label">Total tasks</span>
+        </span>
+        <span class="gns-project-timeline__footer-pill">
+          <strong class="gns-project-timeline__pill-value">{{ completedTasks() }}</strong>
+          <span class="gns-project-timeline__pill-label">Completed</span>
+        </span>
+      </div>
+
+      <div class="gns-project-timeline__legend">
+        @for (group of groups(); track group.name) {
+          <span class="gns-project-timeline__legend-item">
+            <span
+              class="gns-project-timeline__legend-dot"
+              [style.background]="group.accentColor"></span>
+            <span>{{ group.name }}</span>
+          </span>
+        }
+      </div>
+    </footer>
+  </div>
+}

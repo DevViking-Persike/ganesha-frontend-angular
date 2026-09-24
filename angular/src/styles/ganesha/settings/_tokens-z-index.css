@@ -1,0 +1,53 @@
+/* =============================================================================
+   GANESHA DESIGN SYSTEM — Z-INDEX TOKENS
+   settings/_tokens-z-index.css
+
+   Layering system for stacking context management.
+   Layers are grouped in 100-unit bands so components within a layer
+   can use intermediate values without colliding with other layers.
+
+   Architecture:
+     0       — document flow (base)
+     1–99    — intra-component stacking (e.g. icon over background)
+     100     — raised elements (e.g. sticky table headers)
+     1000+   — out-of-flow UI layers (menus, overlays, etc.)
+   ============================================================================= */
+
+:root {
+
+  /* ---------------------------------------------------------------------------
+     DOCUMENT FLOW
+  --------------------------------------------------------------------------- */
+
+  --gns-z-base:             0;
+  --gns-z-raised:           1;     /* slightly above normal flow */
+  --gns-z-above:            10;    /* intra-component top layer */
+
+  /* ---------------------------------------------------------------------------
+     STICKY / FIXED CHROME
+  --------------------------------------------------------------------------- */
+
+  --gns-z-sticky:           100;   /* sticky table headers, scroll sentinels */
+  --gns-z-topbar:           200;   /* top navigation bar */
+  --gns-z-sidebar:          300;   /* collapsible sidebar */
+  --gns-z-fab:              400;   /* floating action button */
+
+  /* ---------------------------------------------------------------------------
+     OVERLAY STACK
+     Each layer in the overlay stack is separated by 100 to allow for
+     sub-stacking within a layer (e.g. multiple nested modals).
+  --------------------------------------------------------------------------- */
+
+  --gns-z-dropdown:         1000;  /* menus, selects, autocomplete */
+  --gns-z-sticky-overlay:   1100;  /* sticky elements that must clear dropdowns */
+  --gns-z-fixed:            1200;  /* position:fixed content (banners, etc.) */
+  --gns-z-modal-backdrop:   1300;  /* backdrop/scrim behind dialogs */
+  --gns-z-modal:            1400;  /* dialog / modal window */
+  --gns-z-drawer:           1450;  /* side drawers (same band as modal) */
+  --gns-z-popover:          1500;  /* popovers, floating panels */
+  --gns-z-tooltip:          1600;  /* always on top of popovers */
+  --gns-z-toast:            1700;  /* toast/notification stack */
+  --gns-z-command:          1800;  /* command palette (above toasts) */
+  --gns-z-max:              9999;  /* escape hatch — avoid if possible */
+
+}

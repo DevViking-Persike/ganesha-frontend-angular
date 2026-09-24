@@ -1,0 +1,54 @@
+/* =============================================================================
+   GnsSectionHeader — Scoped Styles
+   ============================================================================= */
+
+.gns-section-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--gns-space-4);
+    padding-bottom: var(--gns-space-4);
+    border-bottom: 1px solid var(--gns-color-border-default);
+    width: 100%;
+}
+
+/* ----------------------------------------------------------------------------
+   TEXT BLOCK
+---------------------------------------------------------------------------- */
+.gns-section-header__text {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gns-space-1);
+    min-width: 0;
+}
+
+.gns-section-header__title {
+    margin: 0;
+    font-family: var(--gns-font-display);
+    font-size: var(--gns-text-lg);
+    font-weight: var(--gns-font-weight-semibold);
+    color: var(--gns-color-text-primary);
+    line-height: var(--gns-leading-heading);
+    letter-spacing: var(--gns-tracking-tight);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.gns-section-header__subtitle {
+    margin: 0;
+    font-family: var(--gns-font-sans);
+    font-size: var(--gns-text-sm);
+    color: var(--gns-color-text-secondary);
+    line-height: var(--gns-leading-normal);
+}
+
+/* ----------------------------------------------------------------------------
+   ACTIONS
+---------------------------------------------------------------------------- */
+.gns-section-header__actions {
+    display: flex;
+    align-items: center;
+    gap: var(--gns-space-2);
+    flex-shrink: 0;
+}

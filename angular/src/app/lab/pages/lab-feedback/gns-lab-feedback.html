@@ -1,0 +1,102 @@
+<div class="gns-lab-page">
+
+    <gns-page-header title="Feedback" eyebrow="Components"
+        description="Components that provide feedback to users: alerts, toasts, loaders, and empty states." />
+
+    <gns-section title="Alerts" subtitle="Contextual feedback messages with four severity levels.">
+        <div style="display: flex; flex-direction: column; gap: var(--gns-space-4);">
+            <gns-alert severity="info" title="Information">
+                This is an informational alert with supporting details.
+            </gns-alert>
+            <gns-alert severity="success" title="Success">
+                Your changes have been saved successfully.
+            </gns-alert>
+            <gns-alert severity="warning" title="Warning">
+                Your trial will expire in 3 days. Please upgrade your plan.
+            </gns-alert>
+            <gns-alert severity="danger" title="Error">
+                Failed to process payment. Please check your billing details.
+            </gns-alert>
+        </div>
+    </gns-section>
+
+    <gns-section title="Dismissible Alerts" subtitle="Alerts that users can dismiss.">
+        <div style="display: flex; flex-direction: column; gap: var(--gns-space-4);">
+            <gns-alert severity="info" [isDismissible]="true">
+                This alert can be dismissed by clicking the close button.
+            </gns-alert>
+            <gns-alert severity="success" [isDismissible]="true" title="Upload Complete">
+                Your file has been uploaded and is ready for review.
+            </gns-alert>
+        </div>
+    </gns-section>
+
+    <gns-section title="Toasts" subtitle="Temporary notifications triggered by user actions.">
+        <div class="gns-preview">
+            <div class="gns-preview__canvas gns-preview__canvas--row">
+                <gns-button label="Success Toast" variant="primary" (onClick)="showSuccessToast()" />
+                <gns-button label="Error Toast" variant="danger" (onClick)="showErrorToast()" />
+                <gns-button label="Warning Toast" variant="outline" (onClick)="showWarningToast()" />
+                <gns-button label="Info Toast" variant="secondary" (onClick)="showInfoToast()" />
+            </div>
+        </div>
+    </gns-section>
+
+    <gns-section title="Loader" subtitle="Loading spinners in three sizes.">
+        <div class="gns-preview">
+            <div class="gns-preview__canvas gns-preview__canvas--row" style="align-items: center;">
+                <gns-loader size="small" label="Loading..." />
+                <gns-loader size="medium" label="Loading..." />
+                <gns-loader size="large" label="Loading..." />
+            </div>
+        </div>
+        <div class="gns-preview" style="margin-top: var(--gns-space-4);">
+            <div class="gns-preview__toolbar"><span class="gns-preview__toolbar-title">Without Label</span></div>
+            <div class="gns-preview__canvas gns-preview__canvas--row" style="align-items: center;">
+                <gns-loader size="small" />
+                <gns-loader size="medium" />
+                <gns-loader size="large" />
+            </div>
+        </div>
+    </gns-section>
+
+    <gns-section title="SVG Loaders"
+        subtitle="Animated brand loaders that fill the silhouette with color using the same size scale as the default loader.">
+        <div class="gns-preview">
+            <div class="gns-preview__toolbar"><span class="gns-preview__toolbar-title">Mark A</span></div>
+            <div class="gns-preview__canvas gns-preview__canvas--row" style="align-items: end; gap: var(--gns-space-8);">
+                <gns-svg-loader size="small" label="Small" [assetPath]="loaderA" [aspectRatio]="ratioA" />
+                <gns-svg-loader size="medium" label="Medium" [assetPath]="loaderA" [aspectRatio]="ratioA" />
+                <gns-svg-loader size="large" label="Large" [assetPath]="loaderA" [aspectRatio]="ratioA" />
+            </div>
+        </div>
+        <div class="gns-preview" style="margin-top: var(--gns-space-4);">
+            <div class="gns-preview__toolbar"><span class="gns-preview__toolbar-title">Mark B</span></div>
+            <div class="gns-preview__canvas gns-preview__canvas--row" style="align-items: end; gap: var(--gns-space-8);">
+                <gns-svg-loader size="small" label="Small" [assetPath]="loaderB" [aspectRatio]="ratioB" />
+                <gns-svg-loader size="medium" label="Medium" [assetPath]="loaderB" [aspectRatio]="ratioB" />
+                <gns-svg-loader size="large" label="Large" [assetPath]="loaderB" [aspectRatio]="ratioB" />
+            </div>
+        </div>
+        <div class="gns-preview" style="margin-top: var(--gns-space-4);">
+            <div class="gns-preview__toolbar"><span class="gns-preview__toolbar-title">Mark C</span></div>
+            <div class="gns-preview__canvas gns-preview__canvas--row" style="align-items: end; gap: var(--gns-space-8);">
+                <gns-svg-loader size="small" label="Small" [assetPath]="loaderC" [aspectRatio]="ratioA" />
+                <gns-svg-loader size="medium" label="Medium" [assetPath]="loaderC" [aspectRatio]="ratioA" />
+                <gns-svg-loader size="large" label="Large" [assetPath]="loaderC" [aspectRatio]="ratioA" />
+            </div>
+        </div>
+    </gns-section>
+
+    <gns-section title="Empty State" subtitle="Placeholder for when no data is available.">
+        <gns-card>
+            <gns-empty-state title="No projects yet"
+                description="Get started by creating your first project. It only takes a minute.">
+                <div actions>
+                    <gns-button label="Create Project" variant="primary" />
+                </div>
+            </gns-empty-state>
+        </gns-card>
+    </gns-section>
+
+</div>

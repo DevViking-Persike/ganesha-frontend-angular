@@ -1,0 +1,27 @@
+<gns-section title="Bar Charts" subtitle="Vertical and horizontal bar charts for categorical comparisons.">
+
+    <gns-grid [columns]="2" gap="6">
+
+        <gns-card>
+            <div header style="padding: var(--gns-space-4) var(--gns-space-5); border-bottom: 1px solid var(--gns-color-border-subtle);">
+                <div style="font-size: var(--gns-text-sm); font-weight: var(--gns-font-weight-semibold); color: var(--gns-color-text-primary);">Monthly Revenue</div>
+                <div style="font-size: var(--gns-text-xs); color: var(--gns-color-text-secondary); margin-top: var(--gns-space-1);">Jan – Jun 2026</div>
+            </div>
+            <div style="padding: var(--gns-space-5);">
+                <gns-bar-chart [data]="monthlyRevenue" [height]="300" [showLabels]="true" [showValues]="true" />
+            </div>
+        </gns-card>
+
+        <gns-card>
+            <div header style="padding: var(--gns-space-4) var(--gns-space-5); border-bottom: 1px solid var(--gns-color-border-subtle);">
+                <div style="font-size: var(--gns-text-sm); font-weight: var(--gns-font-weight-semibold); color: var(--gns-color-text-primary);">Top 5 Products by Sales</div>
+                <div style="font-size: var(--gns-text-xs); color: var(--gns-color-text-secondary); margin-top: var(--gns-space-1);">Units sold, current quarter</div>
+            </div>
+            <div style="padding: var(--gns-space-5);">
+                <gns-horizontal-bar-chart [data]="topProducts" [barHeight]="32" [showValues]="true" />
+            </div>
+        </gns-card>
+
+    </gns-grid>
+
+</gns-section>

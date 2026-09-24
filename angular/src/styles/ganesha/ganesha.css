@@ -1,0 +1,120 @@
+/* =============================================================================
+   GANESHA DESIGN SYSTEM
+   ganesha.css — Master Entry Point
+
+   Version:   1.0.0
+   Built for: Ganesha.DesignLab (.NET Blazor)
+   Prefix:    --gns- (custom properties), .gns- (utility classes)
+
+   Import order:
+     1. Settings (design tokens — no CSS output, only custom properties)
+     2. Base     (reset, typography — element-level defaults)
+     3. Theme    (light/dark semantic overrides via [data-theme] selector)
+     4. Utilities (atomic helpers)
+     5. Pages    (page-specific styles — last to allow overrides)
+
+   Usage:
+     <link rel="stylesheet" href="_content/Ganesha.DesignLab.Shared/css/ganesha.css" />
+     or, from a Blazor App:
+     @import url('_content/Ganesha.DesignLab.Shared/css/ganesha.css');
+   ============================================================================= */
+
+
+/* ===== 1. SETTINGS — Design Tokens ========================================= */
+
+/* Color system: primitives (gray, primary, status) + semantic aliases */
+@import 'settings/_tokens-color.css';
+
+/* Typography: font families, sizes, weights, line-heights, tracking */
+@import 'settings/_tokens-typography.css';
+
+/* Spacing scale: 0–96 in rem + semantic inset/stack/inline tokens */
+@import 'settings/_tokens-spacing.css';
+
+/* Border widths, styles, and shorthands */
+@import 'settings/_tokens-borders.css';
+
+/* Box shadow scale: xs through 2xl + semantic component shadows */
+@import 'settings/_tokens-shadows.css';
+
+/* Border radius scale: none through full + component-level tokens */
+@import 'settings/_tokens-radius.css';
+
+/* Z-index layers: base through toast */
+@import 'settings/_tokens-z-index.css';
+
+/* Breakpoints: sm–2xl + container max-widths + .gns-container */
+@import 'settings/_tokens-breakpoints.css';
+
+/* Component sizes: icons, inputs, buttons, avatars, sidebar, topbar */
+@import 'settings/_tokens-sizes.css';
+
+
+/* ===== 2. BASE — Element Defaults =========================================== */
+
+/* Modern CSS reset: box-model, margins, form normalization, focus */
+@import 'base/_reset.css';
+
+/* Base typography: body, headings, links, code, blockquote, lists */
+@import 'base/_typography.css';
+
+
+/* ===== 3. THEME — Color Scheme Overrides ==================================== */
+
+/* [data-theme="light"] — explicit light mode (mirrors :root defaults) */
+@import 'theme/_theme-light.css';
+
+/* [data-theme="dark"]  — professional dark mode overrides */
+@import 'theme/_theme-dark.css';
+
+
+/* ===== 4. LAYOUT ============================================================ */
+
+/* Layout primitives (stack, cluster, sidebar, grid) will be added here:
+   @import 'layout/_stack.css';
+   @import 'layout/_cluster.css';
+   @import 'layout/_sidebar.css';
+   @import 'layout/_grid.css';
+   @import 'layout/_app-shell.css';
+*/
+
+
+/* ===== 5. COMPONENTS ======================================================== */
+
+/* Component styles will be added here as the library grows:
+   @import 'components/_button.css';
+   @import 'components/_badge.css';
+   @import 'components/_input.css';
+   @import 'components/_select.css';
+   @import 'components/_checkbox.css';
+   @import 'components/_radio.css';
+   @import 'components/_toggle.css';
+   @import 'components/_card.css';
+   @import 'components/_avatar.css';
+   @import 'components/_alert.css';
+   @import 'components/_toast.css';
+   @import 'components/_modal.css';
+   @import 'components/_dropdown.css';
+   @import 'components/_tooltip.css';
+   @import 'components/_table.css';
+   @import 'components/_tabs.css';
+   @import 'components/_nav.css';
+   @import 'components/_breadcrumb.css';
+   @import 'components/_pagination.css';
+   @import 'components/_progress.css';
+   @import 'components/_skeleton.css';
+   @import 'components/_spinner.css';
+   @import 'components/_divider.css';
+*/
+
+
+/* ===== 6. UTILITIES ========================================================= */
+
+/* Atomic utilities: display, flex, spacing, typography, color, a11y, etc. */
+@import 'utilities/_utilities.css';
+
+
+/* ===== 7. PAGES ============================================================= */
+
+/* Design Lab catalog page styles */
+@import 'pages/_lab.css';

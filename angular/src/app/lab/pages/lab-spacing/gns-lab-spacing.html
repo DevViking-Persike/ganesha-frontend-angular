@@ -1,0 +1,30 @@
+<div class="gns-lab-page">
+
+    <gns-page-header title="Spacing"
+                     eyebrow="Foundations"
+                     description="A consistent spacing scale based on a 4px (0.25rem) base unit. Used for margins, paddings, and gaps." />
+
+    <gns-section title="Spacing Scale" subtitle="Core spacing tokens from 0 to 96.">
+        <div class="gns-spacing-scale">
+            @for (item of spacingTokens; track item.name) {
+                <div class="gns-spacing-scale__row">
+                    <span class="gns-spacing-scale__label">--gns-space-{{ item.name }}</span>
+                    <div class="gns-spacing-scale__bar" [style.width.px]="item.px" [style.min-width.px]="2"></div>
+                    <span class="gns-spacing-scale__value">{{ item.rem }} &middot; {{ item.px }}px</span>
+                </div>
+            }
+        </div>
+    </gns-section>
+
+    <gns-section title="Visual Reference" subtitle="Boxes demonstrating spacing token sizes.">
+        <div style="display: flex; flex-wrap: wrap; gap: var(--gns-space-4); align-items: flex-end;">
+            @for (item of visualTokens; track item.name) {
+                <div style="display: flex; flex-direction: column; align-items: center; gap: var(--gns-space-2);">
+                    <div style="width: var(--gns-space-{{ item.name }}); height: var(--gns-space-{{ item.name }}); min-width: 2px; min-height: 2px; background-color: var(--gns-primary-500); border-radius: var(--gns-radius-sm); opacity: 0.8;"></div>
+                    <span style="font-size: var(--gns-text-xs); font-family: var(--gns-font-mono); color: var(--gns-color-text-tertiary);">{{ item.name }}</span>
+                </div>
+            }
+        </div>
+    </gns-section>
+
+</div>

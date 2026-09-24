@@ -1,0 +1,23 @@
+# Envsubst do entrypoint do nginx resolve ${APP_REVISION} no start do container.
+server {
+    listen 8080;
+    server_name _;
+    root /usr/share/nginx/html;
+    index index.html;
+
+    location = /healthz {
+        default_type application/json;
+        return 200 '{"status":"ok","revision":"${APP_REVISION}"}';
+    }
+
+    # SPA: rotas do Angular Router caem no index.html.
+    location / {
+        try_files $uri $uri/ /index.html;
+    }
+
+    location ~* \.(js|css|svg|png|jpg|jpeg|webp|ico|woff2?)$ {
+        expires 30d;
+        add_header Cache-Control "public, immutable";
+        try_files $uri =404;
+    }
+}

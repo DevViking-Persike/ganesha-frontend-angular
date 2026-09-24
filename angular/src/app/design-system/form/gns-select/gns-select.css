@@ -1,0 +1,156 @@
+/* =============================================================================
+   GnsSelect — Scoped Styles
+   Native <select> with custom appearance overlaying the chevron.
+   ============================================================================= */
+
+/* ----------------------------------------------------------------------------
+   WRAPPER
+---------------------------------------------------------------------------- */
+.gns-select {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gns-size-label-gap);
+    width: 100%;
+}
+
+/* ----------------------------------------------------------------------------
+   LABEL
+---------------------------------------------------------------------------- */
+.gns-select__label {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--gns-space-1);
+    font-family: var(--gns-font-sans);
+    font-size: var(--gns-text-sm);
+    font-weight: var(--gns-font-weight-medium);
+    color: var(--gns-color-text-primary);
+    line-height: var(--gns-leading-tight);
+    cursor: default;
+}
+
+.gns-select--disabled .gns-select__label {
+    color: var(--gns-color-text-disabled);
+}
+
+.gns-select__required {
+    color: var(--gns-color-text-danger);
+    font-size: 0.875em;
+    line-height: 1;
+}
+
+/* ----------------------------------------------------------------------------
+   CONTROL WRAPPER (positions select + chevron overlay)
+---------------------------------------------------------------------------- */
+.gns-select__control {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+/* ----------------------------------------------------------------------------
+   CHEVRON OVERLAY
+---------------------------------------------------------------------------- */
+.gns-select__chevron {
+    position: absolute;
+    right: var(--gns-space-3);
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--gns-color-text-tertiary);
+}
+
+.gns-select__chevron-icon {
+    display: inline-block;
+    width: var(--gns-size-icon-sm);
+    height: var(--gns-size-icon-sm);
+    background-color: currentColor;
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-size: contain;
+    mask-size: contain;
+}
+
+/* ----------------------------------------------------------------------------
+   SELECT FIELD
+---------------------------------------------------------------------------- */
+.gns-select__field {
+    width: 100%;
+    height: var(--gns-size-input-height-md);
+    padding: 0 2.5rem 0 var(--gns-space-inset-md);
+    font-family: var(--gns-font-sans);
+    font-size: var(--gns-text-sm);
+    color: var(--gns-color-text-primary);
+    background-color: var(--gns-color-surface-default);
+    border: var(--gns-border-width-input) solid var(--gns-color-border-default);
+    border-radius: var(--gns-radius-input);
+    outline: none;
+    cursor: pointer;
+    /* Remove native appearance */
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    transition:
+        border-color 150ms ease,
+        box-shadow   150ms ease,
+        background-color 150ms ease;
+}
+
+.gns-select__field:focus {
+    border-color: var(--gns-color-border-focus);
+    box-shadow: 0 0 0 var(--gns-outline-width-focus) color-mix(in srgb, var(--gns-color-interactive-focus-ring) 25%, transparent);
+}
+
+/* Placeholder option styling */
+.gns-select__field option[value=""] {
+    color: var(--gns-color-text-placeholder);
+}
+
+/* Error */
+.gns-select--error .gns-select__field,
+.gns-select__field--error {
+    border-color: var(--gns-color-border-danger);
+}
+
+.gns-select--error .gns-select__field:focus,
+.gns-select__field--error:focus {
+    border-color: var(--gns-color-border-danger);
+    box-shadow: 0 0 0 var(--gns-outline-width-focus) color-mix(in srgb, var(--gns-danger-500) 25%, transparent);
+}
+
+/* Disabled */
+.gns-select__field:disabled {
+    background-color: var(--gns-color-bg-subtle);
+    color: var(--gns-color-text-disabled);
+    cursor: not-allowed;
+    border-color: var(--gns-color-border-default);
+}
+
+.gns-select--disabled .gns-select__chevron {
+    opacity: 0.4;
+}
+
+/* ----------------------------------------------------------------------------
+   HELPER / ERROR TEXT
+---------------------------------------------------------------------------- */
+.gns-select__helper,
+.gns-select__error {
+    font-family: var(--gns-font-sans);
+    font-size: var(--gns-text-xs);
+    line-height: var(--gns-leading-normal);
+}
+
+.gns-select__helper {
+    color: var(--gns-color-text-secondary);
+}
+
+.gns-select__error {
+    color: var(--gns-color-text-danger);
+    display: flex;
+    align-items: center;
+    gap: var(--gns-space-1);
+}

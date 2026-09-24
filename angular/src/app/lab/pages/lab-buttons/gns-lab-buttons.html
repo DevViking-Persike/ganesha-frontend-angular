@@ -1,0 +1,133 @@
+<div class="gns-lab-page">
+
+    <gns-page-header title="Buttons" eyebrow="Components"
+        description="Interactive elements for triggering actions. Available in multiple variants, sizes, and states." />
+
+    <gns-section title="Variants" subtitle="Five visual variants for different emphasis levels.">
+        <div class="gns-preview">
+            <div class="gns-preview__canvas gns-preview__canvas--row">
+                <gns-button label="Primary" variant="primary" />
+                <gns-button label="Secondary" variant="secondary" />
+                <gns-button label="Outline" variant="outline" />
+                <gns-button label="Ghost" variant="ghost" />
+                <gns-button label="Danger" variant="danger" />
+            </div>
+        </div>
+    </gns-section>
+
+    <gns-section title="Sizes" subtitle="Small, medium (default), and large.">
+        <div class="gns-preview">
+            <div class="gns-preview__canvas gns-preview__canvas--row" style="align-items: center;">
+                <gns-button label="Small" size="small" />
+                <gns-button label="Medium" size="medium" />
+                <gns-button label="Large" size="large" />
+            </div>
+        </div>
+    </gns-section>
+
+    <gns-section title="With Icons" subtitle="Buttons can include icons on the left or right.">
+        <div class="gns-preview">
+            <div class="gns-preview__canvas gns-preview__canvas--row">
+                <gns-button label="Save" iconLeft="gns-icon-check" />
+                <gns-button label="Next" iconRight="gns-icon-arrow-right" variant="secondary" />
+                <gns-button iconLeft="gns-icon-plus" variant="outline" />
+            </div>
+        </div>
+    </gns-section>
+
+    <gns-section title="Loading States" subtitle="Indicates an ongoing action. Disables interaction.">
+        <div class="gns-preview">
+            <div class="gns-preview__canvas gns-preview__canvas--row">
+                <gns-button label="Saving..." [isLoading]="true" variant="primary" />
+                <gns-button label="Processing..." [isLoading]="true" variant="secondary" />
+                <gns-button label="Deleting..." [isLoading]="true" variant="danger" />
+            </div>
+        </div>
+    </gns-section>
+
+    <gns-section title="SVG Loading Buttons"
+        subtitle="Buttons with animated SVG fill loaders instead of the default spinner.">
+        <div class="gns-preview">
+            <div class="gns-preview__toolbar"><span class="gns-preview__toolbar-title">Mark A</span></div>
+            <div class="gns-preview__canvas gns-preview__canvas--row">
+                <gns-button label="Saving..." [isLoading]="true" variant="primary"
+                    [loadingAssetPath]="loaderA" [loadingAspectRatio]="ratioA" />
+                <gns-button label="Processing..." [isLoading]="true" variant="secondary"
+                    [loadingAssetPath]="loaderA" [loadingAspectRatio]="ratioA" />
+                <gns-button label="Deleting..." [isLoading]="true" variant="danger"
+                    [loadingAssetPath]="loaderA" [loadingAspectRatio]="ratioA" />
+            </div>
+        </div>
+        <div class="gns-preview" style="margin-top: var(--gns-space-4);">
+            <div class="gns-preview__toolbar"><span class="gns-preview__toolbar-title">Mark B</span></div>
+            <div class="gns-preview__canvas gns-preview__canvas--row">
+                <gns-button label="Saving..." [isLoading]="true" variant="primary"
+                    [loadingAssetPath]="loaderB" [loadingAspectRatio]="ratioB" />
+                <gns-button label="Processing..." [isLoading]="true" variant="secondary"
+                    [loadingAssetPath]="loaderB" [loadingAspectRatio]="ratioB" />
+                <gns-button label="Deleting..." [isLoading]="true" variant="danger"
+                    [loadingAssetPath]="loaderB" [loadingAspectRatio]="ratioB" />
+            </div>
+        </div>
+        <div class="gns-preview" style="margin-top: var(--gns-space-4);">
+            <div class="gns-preview__toolbar"><span class="gns-preview__toolbar-title">Mark C</span></div>
+            <div class="gns-preview__canvas gns-preview__canvas--row">
+                <gns-button label="Saving..." [isLoading]="true" variant="primary"
+                    [loadingAssetPath]="loaderC" [loadingAspectRatio]="ratioA" />
+                <gns-button label="Processing..." [isLoading]="true" variant="secondary"
+                    [loadingAssetPath]="loaderC" [loadingAspectRatio]="ratioA" />
+                <gns-button label="Deleting..." [isLoading]="true" variant="danger"
+                    [loadingAssetPath]="loaderC" [loadingAspectRatio]="ratioA" />
+            </div>
+        </div>
+    </gns-section>
+
+    <gns-section title="Disabled States" subtitle="Non-interactive state for unavailable actions.">
+        <div class="gns-preview">
+            <div class="gns-preview__canvas gns-preview__canvas--row">
+                <gns-button label="Primary" variant="primary" [isDisabled]="true" />
+                <gns-button label="Secondary" variant="secondary" [isDisabled]="true" />
+                <gns-button label="Outline" variant="outline" [isDisabled]="true" />
+                <gns-button label="Ghost" variant="ghost" [isDisabled]="true" />
+                <gns-button label="Danger" variant="danger" [isDisabled]="true" />
+            </div>
+        </div>
+    </gns-section>
+
+    <gns-section title="Button Group" subtitle="Common button grouping patterns.">
+        <div class="gns-preview">
+            <div class="gns-preview__canvas"
+                style="flex-direction: column; align-items: flex-start; gap: var(--gns-space-6);">
+                <div style="display: flex; gap: var(--gns-space-3);">
+                    <gns-button label="Cancel" variant="ghost" />
+                    <gns-button label="Save Draft" variant="outline" />
+                    <gns-button label="Publish" variant="primary" />
+                </div>
+                <div style="display: flex; gap: var(--gns-space-3);">
+                    <gns-button label="Delete" variant="danger" />
+                    <gns-button label="Cancel" variant="ghost" />
+                </div>
+            </div>
+        </div>
+    </gns-section>
+
+    <gns-section title="Size Matrix" subtitle="Every variant at every size.">
+        <div class="gns-preview">
+            <div class="gns-preview__canvas"
+                style="flex-direction: column; gap: var(--gns-space-4); align-items: flex-start;">
+                @for (variant of variants; track variant) {
+                    <div style="display: flex; gap: var(--gns-space-3); align-items: center;">
+                        <span
+                            style="width: 5rem; font-size: var(--gns-text-xs); font-weight: var(--gns-font-weight-semibold); color: var(--gns-color-text-tertiary); text-transform: uppercase;">
+                            {{ variant }}
+                        </span>
+                        <gns-button label="Small" [variant]="variant" size="small" />
+                        <gns-button label="Medium" [variant]="variant" size="medium" />
+                        <gns-button label="Large" [variant]="variant" size="large" />
+                    </div>
+                }
+            </div>
+        </div>
+    </gns-section>
+
+</div>

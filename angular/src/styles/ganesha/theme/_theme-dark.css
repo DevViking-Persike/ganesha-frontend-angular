@@ -1,0 +1,206 @@
+/* =============================================================================
+   GANESHA DESIGN SYSTEM — DARK THEME
+   theme/_theme-dark.css
+
+   Paleta: GANESHA SUPREMO — Modo Escuro
+   Filosofia:
+   - Fundos profundos com subtom índigo/violeta (não preto puro)
+   - Superfícies elevam-se em direção ao violeta
+   - Acentos metálicos (Ouro Real, Âmbar) brilham contra o escuro
+   - Ciano Etéreo e Rosa Lótus como acentos de luz espiritual
+   - Contraste reduzido em repouso, total em foco/ativo
+   ============================================================================= */
+
+[data-theme="dark"] {
+
+  /* ---------------------------------------------------------------------------
+     BACKGROUND
+     Página é o mais profundo; sobreposições progressivamente mais claras.
+     Subtom índigo profundo (#1A237E) no escuro.
+  --------------------------------------------------------------------------- */
+
+  --gns-color-bg-page:          #0E0D16;   /* quase-preto com subtom violeta */
+  --gns-color-bg-subtle:        #13121D;   /* elevação sutil */
+  --gns-color-bg-muted:         #1B1928;   /* fundo de estado ativo */
+  --gns-color-bg-overlay:       rgba(0, 0, 0, 0.72);
+
+  /* ---------------------------------------------------------------------------
+     SURFACE
+     Cards e componentes sobem acima da página com contraste mínimo.
+     Layers migram do índigo profundo para o violeta místico.
+  --------------------------------------------------------------------------- */
+
+  --gns-color-surface-default:  #1B1928;   /* card/panel base */
+  --gns-color-surface-raised:   #242136;   /* cards sobre surface */
+  --gns-color-surface-overlay:  #2E2A44;   /* modal, popover */
+  --gns-color-surface-sunken:   #0E0D16;   /* inset / input background */
+  --gns-color-surface-inverse:  #F8F6FB;   /* elementos claros no escuro */
+
+  /* ---------------------------------------------------------------------------
+     TEXT
+  --------------------------------------------------------------------------- */
+
+  --gns-color-text-primary:      #EFECF5;   /* branco pérola — títulos, conteúdo */
+  --gns-color-text-secondary:    #A79EB5;   /* corpo, descrições */
+  --gns-color-text-tertiary:     #857B94;   /* legendas, metadata */
+  --gns-color-text-disabled:     #4D445B;
+  --gns-color-text-placeholder:  #665C76;
+  --gns-color-text-inverse:      #0E0D16;   /* texto escuro sobre surface clara */
+  --gns-color-text-on-accent:    #FFFFFF;
+  --gns-color-text-link:         #7986CB;   /* primary-300 — legível no escuro */
+  --gns-color-text-link-hover:   #9FA8DA;   /* primary-200 */
+  --gns-color-text-danger:       #EF5350;   /* danger-400 */
+  --gns-color-text-success:      #66BB6A;   /* success-400 */
+  --gns-color-text-warning:      #FFCA28;   /* warning-400 — Âmbar */
+  --gns-color-text-info:         #4DD0E1;   /* info-300 — Ciano Etéreo */
+
+  /* ---------------------------------------------------------------------------
+     BORDER
+     Bordas sutis contra surfaces escuras; sem branco puro.
+  --------------------------------------------------------------------------- */
+
+  --gns-color-border-default:    #2E2A44;   /* violeta profundo */
+  --gns-color-border-subtle:     #242136;
+  --gns-color-border-strong:     #3D3758;
+  --gns-color-border-focus:      #7986CB;   /* bright enough to be visible */
+  --gns-color-border-danger:     #F44336;
+  --gns-color-border-success:    #4CAF50;
+  --gns-color-border-warning:    #FFC107;   /* Âmbar Brilhante */
+  --gns-color-border-info:       #00BCD4;
+  --gns-color-border-inverse:    #C8C0D4;
+
+  /* ---------------------------------------------------------------------------
+     INTERACTIVE — PRIMARY (Índigo iluminado no escuro)
+  --------------------------------------------------------------------------- */
+
+  --gns-color-interactive-primary-bg:           #3F51B5;   /* primary-500 */
+  --gns-color-interactive-primary-bg-hover:     #3949AB;   /* primary-600 */
+  --gns-color-interactive-primary-bg-active:    #303F9F;   /* primary-700 */
+  --gns-color-interactive-primary-bg-disabled:  #2E2A44;
+  --gns-color-interactive-primary-text:         #FFFFFF;
+  --gns-color-interactive-primary-text-disabled: #665C76;
+  --gns-color-interactive-primary-border:       #3F51B5;
+
+  /* ---------------------------------------------------------------------------
+     INTERACTIVE — SECONDARY
+  --------------------------------------------------------------------------- */
+
+  --gns-color-interactive-secondary-bg:         transparent;
+  --gns-color-interactive-secondary-bg-hover:   rgba(63, 81, 181, 0.12);
+  --gns-color-interactive-secondary-bg-active:  rgba(63, 81, 181, 0.20);
+  --gns-color-interactive-secondary-text:       #7986CB;
+  --gns-color-interactive-secondary-border:     #303F9F;
+
+  /* ---------------------------------------------------------------------------
+     INTERACTIVE — NEUTRAL
+  --------------------------------------------------------------------------- */
+
+  --gns-color-interactive-neutral-bg:           #242136;
+  --gns-color-interactive-neutral-bg-hover:     #2E2A44;
+  --gns-color-interactive-neutral-bg-active:    #3D3758;
+  --gns-color-interactive-neutral-text:         #C8C0D4;
+  --gns-color-interactive-neutral-border:       #2E2A44;
+
+  /* ---------------------------------------------------------------------------
+     INTERACTIVE — DANGER (Vermelho Carmesim)
+  --------------------------------------------------------------------------- */
+
+  --gns-color-interactive-danger-bg:            #E53935;
+  --gns-color-interactive-danger-bg-hover:      #F44336;
+  --gns-color-interactive-danger-bg-active:     #D32F2F;
+  --gns-color-interactive-danger-text:          #FFFFFF;
+  --gns-color-interactive-danger-border:        #E53935;
+
+  --gns-color-interactive-danger-subtle-bg:        rgba(229, 57, 53, 0.12);
+  --gns-color-interactive-danger-subtle-bg-hover:  rgba(229, 57, 53, 0.20);
+  --gns-color-interactive-danger-subtle-text:      #EF5350;
+  --gns-color-interactive-danger-subtle-border:    rgba(229, 57, 53, 0.30);
+
+  /* ---------------------------------------------------------------------------
+     FOCUS RING
+  --------------------------------------------------------------------------- */
+
+  --gns-color-interactive-focus-ring:           #7986CB;
+  --gns-color-interactive-focus-ring-offset:    #0E0D16;
+
+  /* ---------------------------------------------------------------------------
+     STATUS — SUCCESS (Verde Esmeralda)
+  --------------------------------------------------------------------------- */
+
+  --gns-color-status-success-bg:     rgba(76, 175, 80, 0.10);
+  --gns-color-status-success-text:   #A5D6A7;
+  --gns-color-status-success-border: rgba(76, 175, 80, 0.25);
+  --gns-color-status-success-icon:   #66BB6A;
+
+  /* ---------------------------------------------------------------------------
+     STATUS — WARNING (Açafrão / Âmbar)
+  --------------------------------------------------------------------------- */
+
+  --gns-color-status-warning-bg:     rgba(255, 193, 7, 0.10);
+  --gns-color-status-warning-text:   #FFD54F;
+  --gns-color-status-warning-border: rgba(255, 193, 7, 0.25);
+  --gns-color-status-warning-icon:   #FFCA28;
+
+  /* ---------------------------------------------------------------------------
+     STATUS — DANGER (Vermelho Carmesim)
+  --------------------------------------------------------------------------- */
+
+  --gns-color-status-danger-bg:      rgba(244, 67, 54, 0.10);
+  --gns-color-status-danger-text:    #EF9A9A;
+  --gns-color-status-danger-border:  rgba(244, 67, 54, 0.25);
+  --gns-color-status-danger-icon:    #EF5350;
+
+  /* ---------------------------------------------------------------------------
+     STATUS — INFO (Ciano Etéreo)
+  --------------------------------------------------------------------------- */
+
+  --gns-color-status-info-bg:        rgba(0, 188, 212, 0.10);
+  --gns-color-status-info-text:      #80DEEA;
+  --gns-color-status-info-border:    rgba(0, 188, 212, 0.25);
+  --gns-color-status-info-icon:      #4DD0E1;   /* Ciano Etéreo */
+
+  /* ---------------------------------------------------------------------------
+     STATUS — NEUTRAL
+  --------------------------------------------------------------------------- */
+
+  --gns-color-status-neutral-bg:     rgba(255, 255, 255, 0.05);
+  --gns-color-status-neutral-text:   #A79EB5;
+  --gns-color-status-neutral-border: rgba(255, 255, 255, 0.10);
+  --gns-color-status-neutral-icon:   #857B94;
+
+  /* ---------------------------------------------------------------------------
+     SHADOW (dark mode — sombras profundas com tom violeta)
+  --------------------------------------------------------------------------- */
+
+  --gns-shadow-color: 270 40% 4%;
+
+  --gns-shadow-xs:
+    0 1px 2px 0 hsl(var(--gns-shadow-color) / 0.30);
+
+  --gns-shadow-sm:
+    0 1px 3px 0   hsl(var(--gns-shadow-color) / 0.40),
+    0 1px 2px -1px hsl(var(--gns-shadow-color) / 0.40);
+
+  --gns-shadow-md:
+    0 4px 6px  -1px hsl(var(--gns-shadow-color) / 0.40),
+    0 2px 4px  -2px hsl(var(--gns-shadow-color) / 0.40);
+
+  --gns-shadow-lg:
+    0 10px 15px -3px hsl(var(--gns-shadow-color) / 0.45),
+    0  4px  6px -4px hsl(var(--gns-shadow-color) / 0.45);
+
+  --gns-shadow-xl:
+    0 20px 25px -5px  hsl(var(--gns-shadow-color) / 0.50),
+    0  8px 10px -6px  hsl(var(--gns-shadow-color) / 0.45);
+
+  --gns-shadow-2xl:
+    0 25px 50px -12px hsl(var(--gns-shadow-color) / 0.60);
+
+  --gns-shadow-inner:
+    inset 0 2px 4px 0 hsl(var(--gns-shadow-color) / 0.40);
+
+  --gns-shadow-focus-ring:
+    0 0 0 3px rgba(0, 0, 0, 0.30),
+    0 0 0 3px var(--gns-color-interactive-focus-ring);
+
+}

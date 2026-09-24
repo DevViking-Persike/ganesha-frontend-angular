@@ -1,0 +1,102 @@
+<div class="gns-lab-page">
+
+    <gns-page-header title="Data Display" eyebrow="Components"
+                     description="Components for presenting data: badges, tags, avatars, stat cards, section headers, and tables." />
+
+    <gns-section title="Badges" subtitle="Small status indicators with severity variants.">
+        <div class="gns-preview">
+            <div class="gns-preview__canvas gns-preview__canvas--row">
+                <gns-badge severity="default">Default</gns-badge>
+                <gns-badge severity="primary">Primary</gns-badge>
+                <gns-badge severity="success">Success</gns-badge>
+                <gns-badge severity="warning">Warning</gns-badge>
+                <gns-badge severity="danger">Danger</gns-badge>
+                <gns-badge severity="info">Info</gns-badge>
+            </div>
+        </div>
+        <div class="gns-preview" style="margin-top: var(--gns-space-4);">
+            <div class="gns-preview__toolbar"><span class="gns-preview__toolbar-title">Sizes</span></div>
+            <div class="gns-preview__canvas gns-preview__canvas--row" style="align-items: center;">
+                <gns-badge severity="primary" size="sm">Small</gns-badge>
+                <gns-badge severity="primary" size="md">Medium</gns-badge>
+            </div>
+        </div>
+    </gns-section>
+
+    <gns-section title="Tags" subtitle="Labeled tokens with optional remove action.">
+        <div class="gns-preview">
+            <div class="gns-preview__canvas gns-preview__canvas--row">
+                <gns-tag label="Default" variant="default" />
+                <gns-tag label="Primary" variant="primary" />
+                <gns-tag label="Success" variant="success" />
+                <gns-tag label="Warning" variant="warning" />
+                <gns-tag label="Danger" variant="danger" />
+                <gns-tag label="Info" variant="info" />
+                <gns-tag label="Outline" variant="outline" />
+            </div>
+        </div>
+        <div class="gns-preview" style="margin-top: var(--gns-space-4);">
+            <div class="gns-preview__toolbar"><span class="gns-preview__toolbar-title">Removable</span></div>
+            <div class="gns-preview__canvas gns-preview__canvas--row">
+                <gns-tag label="React" variant="primary" [isRemovable]="true" />
+                <gns-tag label="Blazor" variant="info" [isRemovable]="true" />
+                <gns-tag label="TypeScript" variant="success" [isRemovable]="true" />
+            </div>
+        </div>
+    </gns-section>
+
+    <gns-section title="Avatar" subtitle="User representation with image, initials, or fallback icon.">
+        <div class="gns-preview">
+            <div class="gns-preview__canvas gns-preview__canvas--row" style="align-items: center;">
+                <gns-avatar initials="JS" size="sm" />
+                <gns-avatar initials="AB" size="md" />
+                <gns-avatar initials="CD" size="lg" />
+                <gns-avatar initials="EF" size="xl" />
+                <gns-avatar size="lg" />
+            </div>
+        </div>
+    </gns-section>
+
+    <gns-section title="Stat Cards" subtitle="Key metric display with trend indicators.">
+        <gns-grid [columns]="4" gap="4">
+            <gns-stat-card title="Revenue" value="$48,352" trend="+12.5%" trendDirection="up" description="vs last month" />
+            <gns-stat-card title="Users" value="2,847" trend="+8.2%" trendDirection="up" description="active users" />
+            <gns-stat-card title="Orders" value="1,234" trend="-3.1%" trendDirection="down" description="vs last month" />
+            <gns-stat-card title="Conversion" value="3.24%" trend="0.0%" trendDirection="neutral" description="no change" />
+        </gns-grid>
+    </gns-section>
+
+    <gns-section title="Section Header" subtitle="Header for content sections with optional actions.">
+        <gns-section-header title="Recent Activity" subtitle="A summary of the latest actions in your workspace.">
+            <ng-container gnsSectionHeaderActions>
+                <gns-button label="View All" variant="ghost" size="small" />
+            </ng-container>
+        </gns-section-header>
+    </gns-section>
+
+    <gns-section title="Table" subtitle="Data table with striped, hoverable, and compact options.">
+        <gns-table [items]="products" [isStriped]="true">
+            <ng-template gnsTableHeader>
+                <th class="gns-table__head-cell">Product</th>
+                <th class="gns-table__head-cell">Category</th>
+                <th class="gns-table__head-cell">Price</th>
+                <th class="gns-table__head-cell">Stock</th>
+                <th class="gns-table__head-cell">Status</th>
+            </ng-template>
+            <ng-template gnsTableRow let-product>
+                <tr class="gns-table__body-row">
+                    <td class="gns-table__body-cell">{{ product.name }}</td>
+                    <td class="gns-table__body-cell">{{ product.category }}</td>
+                    <td class="gns-table__body-cell">{{ product.price | currency }}</td>
+                    <td class="gns-table__body-cell">{{ product.stock }}</td>
+                    <td class="gns-table__body-cell">
+                        <gns-badge [severity]="product.stock > 0 ? 'success' : 'danger'" size="sm">
+                            {{ product.stock > 0 ? 'In Stock' : 'Out of Stock' }}
+                        </gns-badge>
+                    </td>
+                </tr>
+            </ng-template>
+        </gns-table>
+    </gns-section>
+
+</div>

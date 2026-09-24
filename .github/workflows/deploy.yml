@@ -1,0 +1,123 @@
+name: deploy
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'angular/**'
+      - 'Dockerfile'
+      - '.dockerignore'
+      - 'docker-compose.yml'
+      - 'deploy/kubernetes/**'
+      - 'scripts/ci/**'
+      - 'scripts/smoke.sh'
+      - '.github/workflows/deploy.yml'
+  pull_request:
+  workflow_dispatch:
+  schedule:
+    - cron: '37 */6 * * *'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ganesha-${{ github.ref }}
+  cancel-in-progress: false
+
+env:
+  REGISTRY: zot.victorpersike.dev.br
+
+jobs:
+  ci:
+    if: github.event_name != 'schedule'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: corepack enable
+      - run: pnpm --dir angular install --frozen-lockfile
+      - run: pnpm --dir angular build
+      - name: Validar manifests e scripts
+        run: |
+          kubectl kustomize deploy/kubernetes > /dev/null
+          for script in scripts/ci/*.sh scripts/smoke.sh scripts/with-cluster.sh; do bash -n "$script"; done
+
+  publicar:
+    needs: ci
+    if: >-
+      (github.event_name == 'push' || github.event_name == 'workflow_dispatch') &&
+      github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    environment: production
+    permissions:
+      contents: write
+    outputs:
+      revision: ${{ steps.release.outputs.revision }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Identificar release imutável
+        id: release
+        run: |
+          revision="prod-${GITHUB_SHA}-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}"
+          echo "revision=$revision" >> "$GITHUB_OUTPUT"
+      - uses: docker/setup-buildx-action@v3
+      - name: Build amd64 para o h6
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          platforms: linux/amd64
+          provenance: false
+          tags: ${{ env.REGISTRY }}/ganesha:${{ steps.release.outputs.revision }}
+          build-args: APP_REVISION=${{ steps.release.outputs.revision }}
+          outputs: type=oci,dest=${{ runner.temp }}/ganesha-oci,tar=false
+          cache-from: type=gha,scope=ganesha-amd64
+          cache-to: type=gha,mode=max,scope=ganesha-amd64
+      - name: Instalar regctl
+        uses: regclient/actions/regctl-installer@bb562fac724b7b37c17f19671df07fe34fabc376
+        with:
+          release: v0.11.6
+      - name: Publicar no Zot e verificar digest
+        id: zot
+        env:
+          ZOT_USER: ${{ secrets.ZOT_USER }}
+          ZOT_PASSWORD: ${{ secrets.ZOT_PASSWORD }}
+          RELEASE: ${{ steps.release.outputs.revision }}
+          LAYOUT: ${{ runner.temp }}/ganesha-oci
+        run: ./scripts/ci/publish-zot.sh
+      - name: Atualizar branch gitops (Argo CD aplica no cluster)
+        env:
+          RELEASE: ${{ steps.release.outputs.revision }}
+          IMAGE_DIGEST: ${{ steps.zot.outputs.digest }}
+        run: ./scripts/ci/publish-manifests.sh
+      - name: Encerrar login do registry
+        if: always()
+        run: |
+          if command -v regctl >/dev/null; then
+            regctl registry logout "$REGISTRY"
+          fi
+
+  verificar-deploy:
+    needs: publicar
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Aguardar a release aplicada pelo Argo CD
+        env:
+          EXPECTED_REVISION: ${{ needs.publicar.outputs.revision }}
+        run: ./scripts/ci/wait-release.sh
+      - run: ./scripts/smoke.sh
+
+  smoke:
+    if: github.event_name == 'schedule'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - run: ./scripts/smoke.sh

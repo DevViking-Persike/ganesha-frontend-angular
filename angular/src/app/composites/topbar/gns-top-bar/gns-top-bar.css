@@ -1,0 +1,112 @@
+/* =============================================================================
+   GnsTopBar — Scoped Styles
+   ============================================================================= */
+
+/* ----------------------------------------------------------------------------
+   BASE
+---------------------------------------------------------------------------- */
+.gns-top-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: var(--gns-size-topbar-height, 64px);
+    padding: 0 var(--gns-space-5);
+    background-color: var(--gns-color-surface-default);
+    border-bottom: 1px solid var(--gns-color-border-default);
+    gap: var(--gns-space-4);
+    box-shadow: var(--gns-shadow-xs, 0 1px 2px rgba(0,0,0,.06));
+    position: relative;
+    z-index: 1;
+}
+
+/* ----------------------------------------------------------------------------
+   LEFT SECTION
+---------------------------------------------------------------------------- */
+.gns-top-bar__left {
+    display: flex;
+    align-items: center;
+    gap: var(--gns-space-3);
+    min-width: 0;
+    flex: 1;
+}
+
+.gns-top-bar__left-content {
+    display: flex;
+    align-items: center;
+    min-width: 0;
+    flex: 1;
+}
+
+.gns-top-bar__title {
+    font-size: var(--gns-text-base);
+    font-weight: var(--gns-font-weight-semibold);
+    color: var(--gns-color-text-primary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* ----------------------------------------------------------------------------
+   HAMBURGER BUTTON
+---------------------------------------------------------------------------- */
+.gns-top-bar__menu-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: var(--gns-radius-md);
+    color: var(--gns-color-text-secondary);
+    cursor: pointer;
+    flex-shrink: 0;
+    transition:
+        background-color 150ms ease,
+        color 150ms ease,
+        border-color 150ms ease;
+    outline: none;
+}
+
+.gns-top-bar__menu-btn:hover {
+    background-color: var(--gns-color-bg-subtle);
+    color: var(--gns-color-text-primary);
+    border-color: var(--gns-color-border-default);
+}
+
+.gns-top-bar__menu-btn:active {
+    background-color: var(--gns-color-bg-muted);
+}
+
+.gns-top-bar__menu-btn:focus-visible {
+    outline: var(--gns-outline-width-focus) var(--gns-outline-style-focus) var(--gns-color-interactive-focus-ring);
+    outline-offset: var(--gns-outline-offset-focus);
+}
+
+.gns-top-bar__menu-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+}
+
+/* ----------------------------------------------------------------------------
+   RIGHT SECTION
+---------------------------------------------------------------------------- */
+.gns-top-bar__right {
+    display: flex;
+    align-items: center;
+    gap: var(--gns-space-2);
+    flex-shrink: 0;
+}
+
+/* ----------------------------------------------------------------------------
+   RESPONSIVE — MOBILE
+---------------------------------------------------------------------------- */
+@media (max-width: 767px) {
+    .gns-top-bar {
+        padding: 0 var(--gns-space-4);
+        gap: var(--gns-space-3);
+    }
+}

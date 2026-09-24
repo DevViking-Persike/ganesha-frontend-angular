@@ -1,0 +1,29 @@
+<div [class]="cssClass()" role="img" aria-label="Horizontal bar chart">
+    @if (rows(); as list) {
+        <div class="gns-hbar-chart__list">
+            @for (row of list; track $index) {
+                <div class="gns-hbar-chart__row">
+                    <span class="gns-hbar-chart__label" [title]="row.fullLabel">{{ row.labelText }}</span>
+
+                    <div class="gns-hbar-chart__track" [style.height.px]="barHeight()">
+                        <div class="gns-hbar-chart__fill"
+                             [class.gns-hbar-chart__fill--animated]="isAnimated()"
+                             [style]="row.barStyle"
+                             role="progressbar"
+                             [attr.aria-valuenow]="row.ariaValueNow"
+                             aria-valuemin="0"
+                             [attr.aria-valuemax]="row.ariaValueMax"
+                             [attr.aria-label]="row.ariaLabel">
+                        </div>
+                    </div>
+
+                    @if (showValues()) {
+                        <span class="gns-hbar-chart__value">{{ row.valueText }}</span>
+                    }
+                </div>
+            }
+        </div>
+    } @else {
+        <p class="gns-hbar-chart__empty">No data</p>
+    }
+</div>

@@ -1,0 +1,25 @@
+<div [class]="wrapperClass()">
+    @if (label() || showValue()) {
+        <div class="gns-progress-bar__header">
+            @if (label()) {
+                <span class="gns-progress-bar__label">{{ label() }}</span>
+            }
+            @if (showValue()) {
+                <span class="gns-progress-bar__value">{{ pctRounded() }}%</span>
+            }
+        </div>
+    }
+
+    <div class="gns-progress-bar__track"
+         role="progressbar"
+         [attr.aria-valuenow]="value()"
+         aria-valuemin="0"
+         [attr.aria-valuemax]="max() ?? 100"
+         [attr.aria-label]="label() ?? 'Progress'">
+
+        <div [class]="fillClass()"
+             [style.width]="pctText() + '%'"
+             [style.--gns-pbar-target-width]="pctText() + '%'">
+        </div>
+    </div>
+</div>

@@ -1,0 +1,168 @@
+/* =============================================================================
+   GANESHA DESIGN SYSTEM — LIGHT THEME
+   theme/_theme-light.css
+
+   Paleta: GANESHA SUPREMO — Modo Claro
+   Fundos com subtom pérola-violeta, acentos índigo profundo.
+   Tons celestiais e metálicos iluminam a interface.
+   ============================================================================= */
+
+[data-theme="light"] {
+
+  /* ---------------------------------------------------------------------------
+     BACKGROUND
+  --------------------------------------------------------------------------- */
+
+  --gns-color-bg-page:          #F8F6FB;   /* Branco Pérola com subtom violeta */
+  --gns-color-bg-subtle:        #EFECF5;
+  --gns-color-bg-muted:         #E0DBE8;
+  --gns-color-bg-overlay:       rgba(20, 16, 29, 0.48);
+
+  /* ---------------------------------------------------------------------------
+     SURFACE
+  --------------------------------------------------------------------------- */
+
+  --gns-color-surface-default:  #FFFFFF;
+  --gns-color-surface-raised:   #FFFFFF;
+  --gns-color-surface-overlay:  #FFFFFF;
+  --gns-color-surface-sunken:   #EFECF5;
+  --gns-color-surface-inverse:  #221C2E;
+
+  /* ---------------------------------------------------------------------------
+     TEXT
+  --------------------------------------------------------------------------- */
+
+  --gns-color-text-primary:      #221C2E;   /* Preto Carvão com subtom violeta */
+  --gns-color-text-secondary:    #665C76;
+  --gns-color-text-tertiary:     #857B94;
+  --gns-color-text-disabled:     #A79EB5;
+  --gns-color-text-placeholder:  #A79EB5;
+  --gns-color-text-inverse:      #FFFFFF;
+  --gns-color-text-on-accent:    #FFFFFF;
+  --gns-color-text-link:         #3949AB;   /* Índigo Profundo 600 */
+  --gns-color-text-link-hover:   #303F9F;   /* Índigo Profundo 700 */
+  --gns-color-text-danger:       #E53935;   /* Carmesim 600 */
+  --gns-color-text-success:      #388E3C;   /* Esmeralda 700 */
+  --gns-color-text-warning:      #FF9933;   /* Açafrão Vibrante */
+  --gns-color-text-info:         #0097A7;   /* Ciano 700 */
+
+  /* ---------------------------------------------------------------------------
+     BORDER
+  --------------------------------------------------------------------------- */
+
+  --gns-color-border-default:    #E0DBE8;
+  --gns-color-border-subtle:     #EFECF5;
+  --gns-color-border-strong:     #C8C0D4;
+  --gns-color-border-focus:      #3F51B5;   /* Primary 500 */
+  --gns-color-border-danger:     #F44336;
+  --gns-color-border-success:    #4CAF50;
+  --gns-color-border-warning:    #FFC107;   /* Âmbar Brilhante */
+  --gns-color-border-info:       #00BCD4;
+  --gns-color-border-inverse:    #4D445B;
+
+  /* ---------------------------------------------------------------------------
+     INTERACTIVE — PRIMARY (Índigo Profundo)
+  --------------------------------------------------------------------------- */
+
+  --gns-color-interactive-primary-bg:           #3949AB;
+  --gns-color-interactive-primary-bg-hover:     #303F9F;
+  --gns-color-interactive-primary-bg-active:    #283593;
+  --gns-color-interactive-primary-bg-disabled:  #E0DBE8;
+  --gns-color-interactive-primary-text:         #FFFFFF;
+  --gns-color-interactive-primary-text-disabled: #A79EB5;
+  --gns-color-interactive-primary-border:       #3949AB;
+
+  /* ---------------------------------------------------------------------------
+     INTERACTIVE — SECONDARY
+  --------------------------------------------------------------------------- */
+
+  --gns-color-interactive-secondary-bg:         transparent;
+  --gns-color-interactive-secondary-bg-hover:   #E8EAF6;   /* Primary 50 */
+  --gns-color-interactive-secondary-bg-active:  #C5CAE9;   /* Primary 100 */
+  --gns-color-interactive-secondary-text:       #3949AB;
+  --gns-color-interactive-secondary-border:     #7986CB;   /* Primary 300 */
+
+  /* ---------------------------------------------------------------------------
+     INTERACTIVE — NEUTRAL
+  --------------------------------------------------------------------------- */
+
+  --gns-color-interactive-neutral-bg:           #EFECF5;
+  --gns-color-interactive-neutral-bg-hover:     #E0DBE8;
+  --gns-color-interactive-neutral-bg-active:    #C8C0D4;
+  --gns-color-interactive-neutral-text:         #4D445B;
+  --gns-color-interactive-neutral-border:       #E0DBE8;
+
+  /* ---------------------------------------------------------------------------
+     INTERACTIVE — DANGER (Vermelho Carmesim)
+  --------------------------------------------------------------------------- */
+
+  --gns-color-interactive-danger-bg:            #E53935;
+  --gns-color-interactive-danger-bg-hover:      #D32F2F;
+  --gns-color-interactive-danger-bg-active:     #C62828;
+  --gns-color-interactive-danger-text:          #FFFFFF;
+  --gns-color-interactive-danger-border:        #E53935;
+
+  --gns-color-interactive-danger-subtle-bg:        #FFEBEE;
+  --gns-color-interactive-danger-subtle-bg-hover:  #FFCDD2;
+  --gns-color-interactive-danger-subtle-text:      #D32F2F;
+  --gns-color-interactive-danger-subtle-border:    #EF9A9A;
+
+  /* ---------------------------------------------------------------------------
+     FOCUS RING
+  --------------------------------------------------------------------------- */
+
+  --gns-color-interactive-focus-ring:           #3F51B5;
+  --gns-color-interactive-focus-ring-offset:    #FFFFFF;
+
+  /* ---------------------------------------------------------------------------
+     STATUS — SUCCESS (Verde Esmeralda)
+  --------------------------------------------------------------------------- */
+
+  --gns-color-status-success-bg:     #E8F5E9;
+  --gns-color-status-success-text:   #2E7D32;
+  --gns-color-status-success-border: #A5D6A7;
+  --gns-color-status-success-icon:   #43A047;
+
+  /* ---------------------------------------------------------------------------
+     STATUS — WARNING (Açafrão / Âmbar)
+  --------------------------------------------------------------------------- */
+
+  --gns-color-status-warning-bg:     #FFF8E1;
+  --gns-color-status-warning-text:   #BF6F00;
+  --gns-color-status-warning-border: #FFE082;
+  --gns-color-status-warning-icon:   #FFB300;
+
+  /* ---------------------------------------------------------------------------
+     STATUS — DANGER (Vermelho Carmesim)
+  --------------------------------------------------------------------------- */
+
+  --gns-color-status-danger-bg:      #FFEBEE;
+  --gns-color-status-danger-text:    #C62828;
+  --gns-color-status-danger-border:  #EF9A9A;
+  --gns-color-status-danger-icon:    #E53935;
+
+  /* ---------------------------------------------------------------------------
+     STATUS — INFO (Ciano Etéreo)
+  --------------------------------------------------------------------------- */
+
+  --gns-color-status-info-bg:        #E0F7FA;
+  --gns-color-status-info-text:      #00838F;
+  --gns-color-status-info-border:    #80DEEA;
+  --gns-color-status-info-icon:      #00ACC1;
+
+  /* ---------------------------------------------------------------------------
+     STATUS — NEUTRAL
+  --------------------------------------------------------------------------- */
+
+  --gns-color-status-neutral-bg:     #EFECF5;
+  --gns-color-status-neutral-text:   #4D445B;
+  --gns-color-status-neutral-border: #E0DBE8;
+  --gns-color-status-neutral-icon:   #857B94;
+
+  /* ---------------------------------------------------------------------------
+     SHADOW COLOR (light mode — sombra mística com subtom violeta)
+  --------------------------------------------------------------------------- */
+
+  --gns-shadow-color: 270 20% 12%;
+
+}

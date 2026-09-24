@@ -1,0 +1,60 @@
+/* =============================================================================
+   GANESHA DESIGN SYSTEM — BORDER RADIUS TOKENS
+   settings/_tokens-radius.css
+   ============================================================================= */
+
+:root {
+
+  /* ---------------------------------------------------------------------------
+     RADIUS SCALE — primitives
+  --------------------------------------------------------------------------- */
+
+  --gns-radius-none:  0px;
+  --gns-radius-xs:    0.125rem;   /*  2px */
+  --gns-radius-sm:    0.25rem;    /*  4px */
+  --gns-radius-md:    0.375rem;   /*  6px */
+  --gns-radius-lg:    0.5rem;     /*  8px */
+  --gns-radius-xl:    0.75rem;    /* 12px */
+  --gns-radius-2xl:   1rem;       /* 16px */
+  --gns-radius-3xl:   1.5rem;     /* 24px */
+  --gns-radius-full:  9999px;     /* pill / circular */
+
+  /* ---------------------------------------------------------------------------
+     SEMANTIC RADIUS — component-level defaults
+     Adjust these to restyle the entire component set at once.
+  --------------------------------------------------------------------------- */
+
+  /* Interactive elements */
+  --gns-radius-button:    var(--gns-radius-md);
+  --gns-radius-input:     var(--gns-radius-md);
+  --gns-radius-badge:     var(--gns-radius-full);
+  --gns-radius-tag:       var(--gns-radius-sm);
+  --gns-radius-chip:      var(--gns-radius-full);
+  --gns-radius-toggle:    var(--gns-radius-full);
+  --gns-radius-checkbox:  var(--gns-radius-sm);
+  --gns-radius-radio:     var(--gns-radius-full);
+
+  /* Container elements */
+  --gns-radius-card:      var(--gns-radius-lg);
+  --gns-radius-panel:     var(--gns-radius-xl);
+  --gns-radius-modal:     var(--gns-radius-xl);
+  --gns-radius-drawer:    var(--gns-radius-2xl);
+  --gns-radius-popover:   var(--gns-radius-lg);
+  --gns-radius-dropdown:  var(--gns-radius-lg);
+  --gns-radius-tooltip:   var(--gns-radius-md);
+  --gns-radius-toast:     var(--gns-radius-lg);
+
+  /* Media & avatars */
+  --gns-radius-avatar:    var(--gns-radius-full);
+  --gns-radius-avatar-sq: var(--gns-radius-md);    /* square avatars */
+  --gns-radius-image:     var(--gns-radius-lg);
+  --gns-radius-thumbnail: var(--gns-radius-md);
+
+  /* Navigation */
+  --gns-radius-nav-item:  var(--gns-radius-md);
+  --gns-radius-tab:       var(--gns-radius-md);
+
+  /* Data viz */
+  --gns-radius-chart-bar: var(--gns-radius-sm);
+
+}

@@ -1,0 +1,125 @@
+/* =============================================================================
+   GnsAlert — Scoped Styles
+   ============================================================================= */
+
+.gns-alert {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--gns-space-3);
+    padding: var(--gns-space-4);
+    border-radius: var(--gns-radius-lg);
+    border: 1px solid transparent;
+    border-left-width: 4px;
+    width: 100%;
+    font-family: var(--gns-font-sans);
+    position: relative;
+}
+
+/* ----------------------------------------------------------------------------
+   ICON
+---------------------------------------------------------------------------- */
+.gns-alert__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: var(--gns-size-icon-md);
+    height: var(--gns-size-icon-md);
+    margin-top: 1px;
+}
+
+.gns-alert__icon svg {
+    width: 100%;
+    height: 100%;
+}
+
+/* ----------------------------------------------------------------------------
+   CONTENT
+---------------------------------------------------------------------------- */
+.gns-alert__content {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--gns-space-1);
+}
+
+.gns-alert__title {
+    margin: 0;
+    font-size: var(--gns-text-sm);
+    font-weight: var(--gns-font-weight-semibold);
+    line-height: var(--gns-leading-snug);
+}
+
+.gns-alert__body {
+    font-size: var(--gns-text-sm);
+    line-height: var(--gns-leading-normal);
+}
+
+/* ----------------------------------------------------------------------------
+   DISMISS BUTTON
+---------------------------------------------------------------------------- */
+.gns-alert__dismiss {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 1.25rem;
+    height: 1.25rem;
+    padding: 0;
+    border: none;
+    background: transparent;
+    border-radius: var(--gns-radius-sm);
+    cursor: pointer;
+    color: inherit;
+    opacity: 0.6;
+    transition: opacity 150ms ease, background-color 150ms ease;
+    margin-top: 1px;
+}
+
+.gns-alert__dismiss:hover {
+    opacity: 1;
+    background-color: rgba(0, 0, 0, 0.08);
+}
+
+.gns-alert__dismiss:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 1px;
+    opacity: 1;
+}
+
+.gns-alert__dismiss svg {
+    width: 0.75rem;
+    height: 0.75rem;
+}
+
+/* ----------------------------------------------------------------------------
+   SEVERITY VARIANTS
+---------------------------------------------------------------------------- */
+.gns-alert--info {
+    background-color: var(--gns-color-status-info-bg);
+    color: var(--gns-color-status-info-text);
+    border-color: var(--gns-color-status-info-border);
+    border-left-color: var(--gns-color-status-info-icon);
+}
+
+.gns-alert--success {
+    background-color: var(--gns-color-status-success-bg);
+    color: var(--gns-color-status-success-text);
+    border-color: var(--gns-color-status-success-border);
+    border-left-color: var(--gns-color-status-success-icon);
+}
+
+.gns-alert--warning {
+    background-color: var(--gns-color-status-warning-bg);
+    color: var(--gns-color-status-warning-text);
+    border-color: var(--gns-color-status-warning-border);
+    border-left-color: var(--gns-color-status-warning-icon);
+}
+
+.gns-alert--danger {
+    background-color: var(--gns-color-status-danger-bg);
+    color: var(--gns-color-status-danger-text);
+    border-color: var(--gns-color-status-danger-border);
+    border-left-color: var(--gns-color-status-danger-icon);
+}

@@ -1,0 +1,20 @@
+<label [class]="cssClass()">
+  <span class="gns-checkbox__control">
+    <input
+      type="checkbox"
+      class="gns-checkbox__input"
+      [checked]="checked()"
+      [disabled]="disabled()"
+      [attr.aria-checked]="checked()"
+      [attr.aria-disabled]="disabled()"
+      (change)="handleChange($event)"
+    />
+    <span class="gns-checkbox__box" aria-hidden="true">
+      <span class="gns-checkbox__check"></span>
+    </span>
+  </span>
+
+  @if (label()) {
+    <span class="gns-checkbox__label">{{ label() }}</span>
+  }
+</label>

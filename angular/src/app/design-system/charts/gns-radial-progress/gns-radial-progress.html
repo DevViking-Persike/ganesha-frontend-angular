@@ -1,0 +1,51 @@
+<div [class]="cssClass()"
+     role="progressbar"
+     [attr.aria-valuenow]="vm().pct"
+     aria-valuemin="0"
+     aria-valuemax="100"
+     [attr.aria-label]="vm().ariaLabel">
+
+    <svg class="gns-radial-progress__svg"
+         [attr.width]="size()"
+         [attr.height]="size()"
+         [attr.viewBox]="'0 0 ' + size() + ' ' + size()"
+         xmlns="http://www.w3.org/2000/svg">
+
+        <circle class="gns-radial-progress__track"
+                [attr.cx]="vm().cx"
+                [attr.cy]="vm().cy"
+                [attr.r]="vm().radius"
+                [attr.stroke-width]="strokeWidth()"
+                fill="none"
+                stroke-linecap="round" />
+
+        <circle class="gns-radial-progress__arc"
+                [class.gns-radial-progress__arc--animated]="isAnimated()"
+                [attr.cx]="vm().cx"
+                [attr.cy]="vm().cy"
+                [attr.r]="vm().radius"
+                [attr.stroke-width]="strokeWidth()"
+                fill="none"
+                stroke-linecap="round"
+                [attr.stroke-dasharray]="vm().circumference"
+                [attr.stroke-dashoffset]="vm().dashOffset"
+                [attr.transform]="vm().rotate"
+                [style.--gns-radial-circumference]="vm().circumference"
+                [style.--gns-radial-final-offset]="vm().dashOffset"
+                [style.--gns-radial-stroke-color]="arcColor()" />
+
+        <text class="gns-radial-progress__label"
+              [attr.x]="vm().cx"
+              [attr.y]="vm().labelY"
+              text-anchor="middle"
+              dominant-baseline="central">{{ vm().pctRounded }}%</text>
+        @if (label()) {
+            <text class="gns-radial-progress__sublabel"
+                  [attr.x]="vm().cx"
+                  [attr.y]="vm().subLabelY"
+                  text-anchor="middle"
+                  dominant-baseline="central"
+                  style="font-size: 0.6em; font-weight: 600; fill: var(--gns-color-text-secondary, #6B5D7B);">{{ label() }}</text>
+        }
+    </svg>
+</div>

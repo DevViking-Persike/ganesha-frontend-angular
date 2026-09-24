@@ -1,0 +1,259 @@
+/* =============================================================================
+   GnsButton — Scoped Styles
+   ============================================================================= */
+
+/* ----------------------------------------------------------------------------
+   BASE
+---------------------------------------------------------------------------- */
+.gns-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--gns-space-2);
+    border: var(--gns-border-width-default) solid transparent;
+    border-radius: var(--gns-radius-button);
+    font-family: var(--gns-font-sans);
+    font-weight: var(--gns-font-weight-medium);
+    line-height: var(--gns-leading-none);
+    letter-spacing: var(--gns-tracking-wide);
+    white-space: nowrap;
+    cursor: pointer;
+    text-decoration: none;
+    outline: none;
+    position: relative;
+    transition:
+        background-color 150ms ease,
+        border-color     150ms ease,
+        color            150ms ease,
+        box-shadow       150ms ease,
+        opacity          150ms ease;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.gns-button:focus-visible {
+    outline: var(--gns-outline-width-focus) var(--gns-outline-style-focus) var(--gns-color-interactive-focus-ring);
+    outline-offset: var(--gns-outline-offset-focus);
+}
+
+/* ----------------------------------------------------------------------------
+   SIZES
+---------------------------------------------------------------------------- */
+.gns-button--sm {
+    height: var(--gns-size-button-height-sm);
+    padding: 0 var(--gns-space-inset-sm);
+    font-size: var(--gns-text-xs);
+    gap: var(--gns-space-1-5);
+}
+
+.gns-button--md {
+    height: var(--gns-size-button-height-md);
+    padding: 0 var(--gns-space-inset-md);
+    font-size: var(--gns-text-sm);
+}
+
+.gns-button--lg {
+    height: var(--gns-size-button-height-lg);
+    padding: 0 var(--gns-space-inset-lg);
+    font-size: var(--gns-text-base);
+    gap: var(--gns-space-2-5);
+}
+
+/* Icon-only square layout */
+.gns-button--icon-only.gns-button--sm  { width: var(--gns-size-button-height-sm);  padding: 0; }
+.gns-button--icon-only.gns-button--md  { width: var(--gns-size-button-height-md);  padding: 0; }
+.gns-button--icon-only.gns-button--lg  { width: var(--gns-size-button-height-lg);  padding: 0; }
+
+/* ----------------------------------------------------------------------------
+   VARIANT — PRIMARY
+---------------------------------------------------------------------------- */
+.gns-button--primary {
+    background-color: var(--gns-color-interactive-primary-bg);
+    border-color:     var(--gns-color-interactive-primary-border);
+    color:            var(--gns-color-interactive-primary-text);
+}
+
+.gns-button--primary:hover:not(:disabled) {
+    background-color: var(--gns-color-interactive-primary-bg-hover);
+    border-color:     var(--gns-color-interactive-primary-bg-hover);
+}
+
+.gns-button--primary:active:not(:disabled) {
+    background-color: var(--gns-color-interactive-primary-bg-active);
+    border-color:     var(--gns-color-interactive-primary-bg-active);
+}
+
+/* ----------------------------------------------------------------------------
+   VARIANT — SECONDARY
+---------------------------------------------------------------------------- */
+.gns-button--secondary {
+    background-color: var(--gns-color-interactive-secondary-bg);
+    border-color:     var(--gns-color-interactive-secondary-border);
+    color:            var(--gns-color-interactive-secondary-text);
+}
+
+.gns-button--secondary:hover:not(:disabled) {
+    background-color: var(--gns-color-interactive-secondary-bg-hover);
+}
+
+.gns-button--secondary:active:not(:disabled) {
+    background-color: var(--gns-color-interactive-secondary-bg-active);
+}
+
+/* ----------------------------------------------------------------------------
+   VARIANT — GHOST
+---------------------------------------------------------------------------- */
+.gns-button--ghost {
+    background-color: transparent;
+    border-color:     transparent;
+    color:            var(--gns-color-interactive-secondary-text);
+}
+
+.gns-button--ghost:hover:not(:disabled) {
+    background-color: var(--gns-color-interactive-secondary-bg-hover);
+    border-color:     transparent;
+}
+
+.gns-button--ghost:active:not(:disabled) {
+    background-color: var(--gns-color-interactive-secondary-bg-active);
+}
+
+/* ----------------------------------------------------------------------------
+   VARIANT — DANGER
+---------------------------------------------------------------------------- */
+.gns-button--danger {
+    background-color: var(--gns-color-interactive-danger-bg);
+    border-color:     var(--gns-color-interactive-danger-border);
+    color:            var(--gns-color-interactive-danger-text);
+}
+
+.gns-button--danger:hover:not(:disabled) {
+    background-color: var(--gns-color-interactive-danger-bg-hover);
+    border-color:     var(--gns-color-interactive-danger-bg-hover);
+}
+
+.gns-button--danger:active:not(:disabled) {
+    background-color: var(--gns-color-interactive-danger-bg-active);
+    border-color:     var(--gns-color-interactive-danger-bg-active);
+}
+
+/* ----------------------------------------------------------------------------
+   VARIANT — OUTLINE
+---------------------------------------------------------------------------- */
+.gns-button--outline {
+    background-color: transparent;
+    border-color:     var(--gns-color-border-strong);
+    color:            var(--gns-color-text-primary);
+}
+
+.gns-button--outline:hover:not(:disabled) {
+    background-color: var(--gns-color-bg-subtle);
+    border-color:     var(--gns-color-border-focus);
+    color:            var(--gns-color-text-link);
+}
+
+.gns-button--outline:active:not(:disabled) {
+    background-color: var(--gns-color-bg-muted);
+}
+
+/* ----------------------------------------------------------------------------
+   DISABLED STATE
+---------------------------------------------------------------------------- */
+.gns-button:disabled,
+.gns-button--disabled {
+    background-color: var(--gns-color-interactive-primary-bg-disabled);
+    border-color:     var(--gns-color-interactive-primary-bg-disabled);
+    color:            var(--gns-color-interactive-primary-text-disabled);
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+/* Ghost/Outline disabled look less filled */
+.gns-button--ghost:disabled,
+.gns-button--ghost.gns-button--disabled,
+.gns-button--outline:disabled,
+.gns-button--outline.gns-button--disabled,
+.gns-button--secondary:disabled,
+.gns-button--secondary.gns-button--disabled {
+    background-color: transparent;
+    border-color:     var(--gns-color-border-default);
+    color:            var(--gns-color-text-disabled);
+}
+
+/* ----------------------------------------------------------------------------
+   LOADING STATE
+---------------------------------------------------------------------------- */
+.gns-button--loading {
+    cursor: wait;
+    pointer-events: none;
+}
+
+.gns-button__loading-label {
+    opacity: 0.6;
+}
+
+/* Spinner */
+.gns-button__spinner {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    flex-shrink: 0;
+    border: 2px solid currentColor;
+    border-top-color: transparent;
+    border-radius: var(--gns-radius-full);
+    animation: gns-button-spin 0.65s linear infinite;
+}
+
+@keyframes gns-button-spin {
+    to { transform: rotate(360deg); }
+}
+
+/* SVG fill loader inside button */
+.gns-button__svg-loader {
+    position: relative;
+    display: inline-block;
+    height: 1.25em;
+    flex-shrink: 0;
+}
+
+.gns-button__svg-loader-bg,
+.gns-button__svg-loader-fill {
+    position: absolute;
+    inset: 0;
+    display: block;
+}
+
+.gns-button__svg-loader-bg {
+    background: currentColor;
+    opacity: 0.25;
+}
+
+.gns-button__svg-loader-fill {
+    background: currentColor;
+    clip-path: inset(82% 0 0 0);
+    animation: gns-button-svg-fill 2.2s ease-in-out infinite;
+}
+
+@keyframes gns-button-svg-fill {
+    0%  { clip-path: inset(82% 0 0 0); opacity: 0.5; }
+    45% { clip-path: inset(0 0 0 0);   opacity: 1; }
+    70% { clip-path: inset(5% 0 0 0);  opacity: 0.92; }
+    100%{ clip-path: inset(82% 0 0 0); opacity: 0.5; }
+}
+
+/* ----------------------------------------------------------------------------
+   ICONS
+---------------------------------------------------------------------------- */
+.gns-button__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 1em;
+    width: 1.125em;
+    height: 1.125em;
+}
+
+.gns-button__label {
+    display: inline-block;
+}

@@ -1,27 +1,29 @@
-FROM mcr.microsoft.com/dotnet/sdk:10.0 AS build
-WORKDIR /src
+# syntax=docker/dockerfile:1.7
+# Ganesha DesignLab — Angular SPA, multi-stage: build pnpm + runtime nginx unprivileged.
 
-COPY Ganesha.DesignLab.slnx ./
-COPY src/Ganesha.DesignLab.Shared/Ganesha.DesignLab.Shared.csproj src/Ganesha.DesignLab.Shared/
-COPY src/Ganesha.DesignLab.Web/Ganesha.DesignLab.Web.csproj src/Ganesha.DesignLab.Web/
-
-RUN dotnet restore src/Ganesha.DesignLab.Web/Ganesha.DesignLab.Web.csproj
-
-COPY src/Ganesha.DesignLab.Shared/ src/Ganesha.DesignLab.Shared/
-COPY src/Ganesha.DesignLab.Web/ src/Ganesha.DesignLab.Web/
-
-RUN dotnet publish src/Ganesha.DesignLab.Web/Ganesha.DesignLab.Web.csproj \
-    -c Release \
-    -r linux-arm64 \
-    --self-contained false \
-    -o /app/publish
-
-FROM mcr.microsoft.com/dotnet/aspnet:10.0 AS final
+FROM node:22-alpine AS builder
+RUN apk add --no-cache curl && corepack enable
 WORKDIR /app
+RUN chown -R node:node /app
+USER node
 
-COPY --from=build /app/publish ./
+COPY --chown=node:node angular/package.json angular/pnpm-lock.yaml ./
+RUN pnpm install --frozen-lockfile --ignore-scripts
 
-ENV ASPNETCORE_URLS=http://0.0.0.0:5050
-EXPOSE 5050
+COPY --chown=node:node angular/ ./
+ARG APP_REVISION=local
+ENV APP_REVISION=${APP_REVISION}
+RUN node -e "const f='src/index.html',fs=require('fs');fs.writeFileSync(f,fs.readFileSync(f,'utf8').replace('</title>','</title>\n  <meta name=\"app-revision\" content=\"'+process.env.APP_REVISION+'\">'))"
+RUN pnpm build
 
-ENTRYPOINT ["dotnet", "Ganesha.DesignLab.Web.dll"]
+FROM nginxinc/nginx-unprivileged:1.27-alpine AS runner
+
+COPY --from=builder --chown=101:0 /app/dist/ganesha-designlab/browser ./usr/share/nginx/html
+COPY angular/docker/default.conf.template /etc/nginx/templates/default.conf.template
+
+ARG APP_REVISION=local
+ENV APP_REVISION=${APP_REVISION}
+ENV NGINX_ENTRYPOINT_QUIET_LOGS=1
+EXPOSE 8080
+HEALTHCHECK --interval=10s --timeout=3s --start-period=15s --retries=10 \
+  CMD curl -fsS http://localhost:8080/healthz >/dev/null 2>&1 || exit 1

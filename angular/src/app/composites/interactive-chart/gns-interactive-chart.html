@@ -1,0 +1,42 @@
+<div [class]="cssClass()">
+    <div class="gns-interactive-chart__header">
+        <h3 class="gns-interactive-chart__title">{{ title() }}</h3>
+        @if (options().length > 0) {
+            <div class="gns-interactive-chart__options">
+                @for (opt of options(); track opt.id) {
+                    <button
+                        type="button"
+                        class="gns-interactive-chart__option"
+                        [class.gns-interactive-chart__option--selected]="
+                            opt.id === selectedOptionId()"
+                        (click)="selectOption(opt.id)">
+                        {{ opt.label }}
+                    </button>
+                }
+            </div>
+        }
+    </div>
+
+    <div class="gns-interactive-chart__body">
+        @if (selectedData(); as data) {
+            @if (isBar()) {
+                <gns-bar-chart
+                    [data]="data"
+                    [height]="height()"
+                    [showLabels]="true"
+                    [showValues]="true" />
+            } @else if (isLine()) {
+                <gns-line-chart
+                    [series]="lineSeries()"
+                    [labels]="lineLabels()"
+                    [height]="height()"
+                    [showArea]="true"
+                    [showAreaGradient]="true" />
+            } @else if (isBubble()) {
+                <div class="gns-interactive-chart__bubble-placeholder">
+                    <span>(Bubble chart is best visualized directly via GnsBubbleChart)</span>
+                </div>
+            }
+        }
+    </div>
+</div>

@@ -1,0 +1,38 @@
+<button
+    [type]="type()"
+    [class]="cssClass()"
+    [disabled]="isDisabled() || isLoading()"
+    [attr.aria-disabled]="isDisabled() || isLoading()"
+    [attr.aria-busy]="isLoading()"
+    (click)="handleClick()">
+
+    @if (isLoading()) {
+        @if (loadingAssetPath()) {
+            <span class="gns-button__svg-loader" aria-hidden="true" [style.aspect-ratio]="loadingAspectRatio()">
+                <span class="gns-button__svg-loader-bg" [attr.style]="svgMaskStyle()"></span>
+                <span class="gns-button__svg-loader-fill" [attr.style]="svgMaskStyle()"></span>
+            </span>
+        } @else {
+            <span class="gns-button__spinner" aria-hidden="true"></span>
+        }
+        <span class="gns-button__loading-label">
+            <span #projected style="display: contents"><ng-content /></span>
+            @if (!hasContent() && label()) {
+                {{ label() }}
+            }
+        </span>
+    } @else {
+        @if (iconLeft()) {
+            <span class="gns-button__icon gns-button__icon--left {{ iconLeft() }}" aria-hidden="true"></span>
+        }
+
+        <span #projected style="display: contents"><ng-content /></span>
+        @if (!hasContent() && label()) {
+            <span class="gns-button__label">{{ label() }}</span>
+        }
+
+        @if (iconRight()) {
+            <span class="gns-button__icon gns-button__icon--right {{ iconRight() }}" aria-hidden="true"></span>
+        }
+    }
+</button>

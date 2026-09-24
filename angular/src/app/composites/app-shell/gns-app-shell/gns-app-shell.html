@@ -1,0 +1,30 @@
+<div class="{{ cssClass() }}">
+
+  <!-- ── Sidebar ────────────────────────────────────────────────────── -->
+  <aside class="gns-app-shell__sidebar" aria-label="Application sidebar">
+    <ng-content select="[sidebar]"></ng-content>
+  </aside>
+
+  <!-- ── Mobile overlay backdrop ─────────────────────────────────────── -->
+  @if (!isSidebarCollapsed()) {
+    <div
+      class="gns-app-shell__overlay"
+      aria-hidden="true"
+      (click)="handleOverlayClick()">
+    </div>
+  }
+
+  <!-- ── Right column: TopBar + Main ─────────────────────────────────── -->
+  <div class="gns-app-shell__body">
+
+    <header class="gns-app-shell__topbar">
+      <ng-content select="[topbar]"></ng-content>
+    </header>
+
+    <main class="gns-app-shell__main" id="gns-main-content" tabindex="-1">
+      <ng-content></ng-content>
+    </main>
+
+  </div>
+
+</div>

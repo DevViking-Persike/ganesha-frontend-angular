@@ -1,0 +1,78 @@
+<nav [class]="cssClass()" aria-label="Pagination">
+  <ul class="gns-pagination__list">
+    @if (showFirstLast()) {
+      <li class="gns-pagination__item">
+        <button
+          type="button"
+          [class]="pageButtonClass('first')"
+          [disabled]="currentPage() <= 1"
+          aria-label="First page"
+          (click)="goToPage(1)"
+        >
+          <span aria-hidden="true">&laquo;</span>
+        </button>
+      </li>
+    }
+
+    <li class="gns-pagination__item">
+      <button
+        type="button"
+        [class]="pageButtonClass('prev')"
+        [disabled]="currentPage() <= 1"
+        aria-label="Previous page"
+        (click)="goToPage(currentPage() - 1)"
+      >
+        <span aria-hidden="true">&lsaquo;</span>
+      </button>
+    </li>
+
+    @for (page of visiblePages(); track $index) {
+      @if (page === -1) {
+        <li
+          class="gns-pagination__item gns-pagination__item--ellipsis"
+          aria-hidden="true"
+        >
+          <span class="gns-pagination__ellipsis">&hellip;</span>
+        </li>
+      } @else {
+        <li class="gns-pagination__item">
+          <button
+            type="button"
+            [class]="numberButtonClass(page)"
+            [attr.aria-label]="'Page ' + page"
+            [attr.aria-current]="isCurrentPage(page) ? 'page' : null"
+            (click)="goToPage(page)"
+          >
+            {{ page }}
+          </button>
+        </li>
+      }
+    }
+
+    <li class="gns-pagination__item">
+      <button
+        type="button"
+        [class]="pageButtonClass('next')"
+        [disabled]="currentPage() >= totalPages()"
+        aria-label="Next page"
+        (click)="goToPage(currentPage() + 1)"
+      >
+        <span aria-hidden="true">&rsaquo;</span>
+      </button>
+    </li>
+
+    @if (showFirstLast()) {
+      <li class="gns-pagination__item">
+        <button
+          type="button"
+          [class]="pageButtonClass('last')"
+          [disabled]="currentPage() >= totalPages()"
+          aria-label="Last page"
+          (click)="goToPage(totalPages())"
+        >
+          <span aria-hidden="true">&raquo;</span>
+        </button>
+      </li>
+    }
+  </ul>
+</nav>

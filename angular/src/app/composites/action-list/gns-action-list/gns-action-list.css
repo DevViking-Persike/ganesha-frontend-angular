@@ -1,0 +1,15 @@
+/* =============================================================================
+   GnsActionList — Scoped Styles
+   ============================================================================= */
+
+.gns-action-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--gns-color-surface-default);
+    border: 1px solid var(--gns-color-border-default);
+    border-radius: var(--gns-radius-lg);
+    overflow: hidden;
+}

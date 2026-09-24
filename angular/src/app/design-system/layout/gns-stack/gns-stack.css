@@ -1,0 +1,33 @@
+.gns-stack {
+    display: flex;
+}
+
+/* Direction */
+.gns-stack--vertical {
+    flex-direction: column;
+}
+
+.gns-stack--horizontal {
+    flex-direction: row;
+}
+
+/* Wrap */
+.gns-stack--wrap {
+    flex-wrap: wrap;
+}
+
+/* Alignment — applied to both axes depending on direction */
+
+/* Vertical stack: align-items controls cross-axis (horizontal) */
+.gns-stack--vertical.gns-stack--align-start   { align-items: flex-start; }
+.gns-stack--vertical.gns-stack--align-center  { align-items: center; }
+.gns-stack--vertical.gns-stack--align-end     { align-items: flex-end; }
+.gns-stack--vertical.gns-stack--align-stretch { align-items: stretch; }
+.gns-stack--vertical.gns-stack--align-between { justify-content: space-between; }
+
+/* Horizontal stack: align-items controls cross-axis (vertical) */
+.gns-stack--horizontal.gns-stack--align-start   { align-items: flex-start; }
+.gns-stack--horizontal.gns-stack--align-center  { align-items: center; }
+.gns-stack--horizontal.gns-stack--align-end     { align-items: flex-end; }
+.gns-stack--horizontal.gns-stack--align-stretch { align-items: stretch; }
+.gns-stack--horizontal.gns-stack--align-between { justify-content: space-between; align-items: center; }

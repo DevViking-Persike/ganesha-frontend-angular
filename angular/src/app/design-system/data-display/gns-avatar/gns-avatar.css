@@ -1,0 +1,81 @@
+/* =============================================================================
+   GnsAvatar — Scoped Styles
+   ============================================================================= */
+
+.gns-avatar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--gns-radius-full);
+    overflow: hidden;
+    flex-shrink: 0;
+    background-color: var(--gns-primary-100);
+    color: var(--gns-primary-700);
+    font-family: var(--gns-font-sans);
+    font-weight: var(--gns-font-weight-semibold);
+    letter-spacing: var(--gns-tracking-wide);
+    user-select: none;
+    position: relative;
+}
+
+/* ----------------------------------------------------------------------------
+   SIZES
+---------------------------------------------------------------------------- */
+.gns-avatar--sm {
+    width: var(--gns-size-avatar-sm);
+    height: var(--gns-size-avatar-sm);
+    font-size: 0.625rem;
+}
+
+.gns-avatar--md {
+    width: var(--gns-size-avatar-md);
+    height: var(--gns-size-avatar-md);
+    font-size: var(--gns-text-xs);
+}
+
+.gns-avatar--lg {
+    width: var(--gns-size-avatar-lg);
+    height: var(--gns-size-avatar-lg);
+    font-size: var(--gns-text-sm);
+}
+
+.gns-avatar--xl {
+    width: var(--gns-size-avatar-xl);
+    height: var(--gns-size-avatar-xl);
+    font-size: var(--gns-text-base);
+}
+
+/* ----------------------------------------------------------------------------
+   IMAGE
+---------------------------------------------------------------------------- */
+.gns-avatar__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* ----------------------------------------------------------------------------
+   INITIALS
+---------------------------------------------------------------------------- */
+.gns-avatar__initials {
+    line-height: 1;
+    text-transform: uppercase;
+}
+
+/* ----------------------------------------------------------------------------
+   FALLBACK ICON
+---------------------------------------------------------------------------- */
+.gns-avatar__fallback-icon {
+    width: 60%;
+    height: 60%;
+    color: var(--gns-primary-400);
+}
+
+/* ----------------------------------------------------------------------------
+   FALLBACK BG FOR NON-IMAGE VARIANTS
+---------------------------------------------------------------------------- */
+.gns-avatar:not(.gns-avatar--image) {
+    background-color: var(--gns-primary-100);
+    color: var(--gns-primary-700);
+}

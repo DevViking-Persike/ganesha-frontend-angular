@@ -1,0 +1,22 @@
+<section [class]="cssClass()">
+    @if (hasHeader()) {
+        <div class="gns-section__header">
+            <div class="gns-section__header-text">
+                @if (title()) {
+                    <h2 class="gns-section__title">{{ title() }}</h2>
+                }
+                @if (subtitle()) {
+                    <p class="gns-section__subtitle">{{ subtitle() }}</p>
+                }
+            </div>
+            @if (actionsContent()) {
+                <div class="gns-section__actions">
+                    <ng-content select="[actions]"></ng-content>
+                </div>
+            }
+        </div>
+    }
+    <div class="gns-section__content">
+        <ng-content></ng-content>
+    </div>
+</section>

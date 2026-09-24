@@ -1,0 +1,77 @@
+<div class="gns-lab-page">
+    <gns-page-header title="Create User" eyebrow="Patterns"
+        description="Registration and edit form with multiple field types and validation.">
+        <div breadcrumb>
+            <gns-breadcrumb>
+                <gns-breadcrumb-item label="Dashboard" href="/lab" />
+                <gns-breadcrumb-item label="Users" href="/lab/table-page" />
+                <gns-breadcrumb-item label="Create User" [isActive]="true" />
+            </gns-breadcrumb>
+        </div>
+    </gns-page-header>
+
+    <gns-card>
+        <div style="padding: var(--gns-space-8); max-width: 40rem;">
+            <h3
+                style="font-size: var(--gns-text-lg); font-weight: var(--gns-font-weight-semibold); margin-bottom: var(--gns-space-1);">
+                Personal Information</h3>
+            <p
+                style="font-size: var(--gns-text-sm); color: var(--gns-color-text-secondary); margin-bottom: var(--gns-space-6);">
+                Fill in the user details below. Fields marked with * are required.</p>
+
+            <div style="display: flex; flex-direction: column; gap: var(--gns-space-5);">
+                <gns-grid templateColumns="1fr 1fr" gap="4">
+                    <gns-input-text label="First Name" placeholder="John" [isRequired]="true"
+                        [value]="firstName()" (valueChange)="firstName.set($event)" />
+                    <gns-input-text label="Last Name" placeholder="Doe" [isRequired]="true"
+                        [value]="lastName()" (valueChange)="lastName.set($event)" />
+                </gns-grid>
+
+                <gns-input-text label="Email Address" placeholder="john.doe@example.com"
+                    [isRequired]="true" type="email" [value]="email()" (valueChange)="email.set($event)"
+                    helperText="This will be used for login credentials." />
+
+                <gns-input-password label="Password" placeholder="At least 8 characters"
+                    [isRequired]="true" [value]="password()" (valueChange)="password.set($event)"
+                    helperText="Must include uppercase, lowercase, number, and special character." />
+
+                <gns-select label="Role" placeholder="Select a role" [isRequired]="true"
+                    [value]="role()" (valueChange)="role.set($event)">
+                    <option value="admin">Administrator</option>
+                    <option value="editor">Editor</option>
+                    <option value="viewer">Viewer</option>
+                    <option value="contributor">Contributor</option>
+                </gns-select>
+
+                <gns-textarea label="Bio" placeholder="Tell us about this user..." [rows]="4"
+                    [value]="bio()" (valueChange)="bio.set($event)"
+                    helperText="A short biography visible on the user's profile." />
+
+                <div
+                    style="border-top: 1px solid var(--gns-color-border-default); padding-top: var(--gns-space-5);">
+                    <h4
+                        style="font-size: var(--gns-text-base); font-weight: var(--gns-font-weight-semibold); margin-bottom: var(--gns-space-4);">
+                        Preferences</h4>
+                    <div style="display: flex; flex-direction: column; gap: var(--gns-space-3);">
+                        <gns-checkbox label="Send email notifications for important updates"
+                            [value]="emailNotif()" (valueChange)="emailNotif.set($event)" />
+                        <gns-checkbox label="Include user in weekly digest email" [value]="weeklyDigest()"
+                            (valueChange)="weeklyDigest.set($event)" />
+                    </div>
+                </div>
+
+                <div
+                    style="border-top: 1px solid var(--gns-color-border-default); padding-top: var(--gns-space-5);">
+                    <gns-switch label="I accept the Terms of Service and Privacy Policy"
+                        [value]="termsAccepted()" (valueChange)="termsAccepted.set($event)" />
+                </div>
+
+                <div
+                    style="display: flex; gap: var(--gns-space-3); justify-content: flex-end; border-top: 1px solid var(--gns-color-border-default); padding-top: var(--gns-space-6);">
+                    <gns-button label="Cancel" variant="ghost" />
+                    <gns-button label="Save User" variant="primary" />
+                </div>
+            </div>
+        </div>
+    </gns-card>
+</div>

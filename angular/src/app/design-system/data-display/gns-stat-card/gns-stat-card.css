@@ -1,0 +1,108 @@
+/* =============================================================================
+   GnsStatCard — Scoped Styles
+   ============================================================================= */
+
+.gns-stat-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gns-space-3);
+    padding: var(--gns-space-5) var(--gns-space-6);
+    background-color: var(--gns-color-bg-page);
+    border: 1px solid var(--gns-color-border-default);
+    border-radius: var(--gns-radius-card);
+    box-shadow: var(--gns-shadow-card);
+    transition: box-shadow 200ms ease, border-color 200ms ease;
+}
+
+.gns-stat-card:hover {
+    box-shadow: var(--gns-shadow-card-hover);
+    border-color: var(--gns-color-border-strong);
+}
+
+/* ----------------------------------------------------------------------------
+   HEADER
+---------------------------------------------------------------------------- */
+.gns-stat-card__header {
+    display: flex;
+    align-items: center;
+    gap: var(--gns-space-2);
+}
+
+.gns-stat-card__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--gns-size-icon-lg);
+    height: var(--gns-size-icon-lg);
+    color: var(--gns-primary-500);
+    flex-shrink: 0;
+}
+
+.gns-stat-card__title {
+    font-size: var(--gns-text-sm);
+    font-weight: var(--gns-font-weight-medium);
+    color: var(--gns-color-text-secondary);
+    letter-spacing: var(--gns-tracking-wide);
+    text-transform: uppercase;
+    font-family: var(--gns-font-sans);
+}
+
+/* ----------------------------------------------------------------------------
+   BODY
+---------------------------------------------------------------------------- */
+.gns-stat-card__body {
+    display: flex;
+    align-items: baseline;
+    gap: var(--gns-space-3);
+    flex-wrap: wrap;
+}
+
+.gns-stat-card__value {
+    font-family: var(--gns-font-display);
+    font-size: var(--gns-text-3xl);
+    font-weight: var(--gns-font-weight-bold);
+    color: var(--gns-color-text-primary);
+    line-height: var(--gns-leading-none);
+    letter-spacing: var(--gns-tracking-tight);
+}
+
+/* ----------------------------------------------------------------------------
+   TREND
+---------------------------------------------------------------------------- */
+.gns-stat-card__trend {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--gns-space-0-5);
+    font-size: var(--gns-text-sm);
+    font-weight: var(--gns-font-weight-medium);
+    font-family: var(--gns-font-sans);
+}
+
+.gns-stat-card__trend-icon {
+    width: 1rem;
+    height: 1rem;
+    flex-shrink: 0;
+}
+
+.gns-stat-card__trend--up {
+    color: var(--gns-color-text-success);
+}
+
+.gns-stat-card__trend--down {
+    color: var(--gns-color-text-danger);
+}
+
+.gns-stat-card__trend--neutral {
+    color: var(--gns-color-text-secondary);
+}
+
+/* ----------------------------------------------------------------------------
+   DESCRIPTION
+---------------------------------------------------------------------------- */
+.gns-stat-card__description {
+    font-family: var(--gns-font-sans);
+    font-size: var(--gns-text-sm);
+    color: var(--gns-color-text-tertiary);
+    line-height: var(--gns-leading-normal);
+    margin: 0;
+}

@@ -1,0 +1,177 @@
+/* =============================================================================
+   GnsToastItem — Scoped Styles
+   ============================================================================= */
+
+.gns-toast-item {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--gns-space-3);
+    position: relative;
+    padding: var(--gns-space-3-5) var(--gns-space-4);
+    border-radius: var(--gns-radius-lg);
+    border: 1px solid transparent;
+    border-left-width: 4px;
+    background-color: var(--gns-color-bg-page);
+    box-shadow: var(--gns-shadow-dropdown);
+    min-width: 20rem;
+    max-width: 24rem;
+    overflow: hidden;
+    font-family: var(--gns-font-sans);
+    animation: gns-toast-slide-in 280ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    will-change: transform, opacity;
+}
+
+/* ----------------------------------------------------------------------------
+   ICON
+---------------------------------------------------------------------------- */
+.gns-toast-item__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: var(--gns-size-icon-md);
+    height: var(--gns-size-icon-md);
+    margin-top: 1px;
+}
+
+.gns-toast-item__icon svg {
+    width: 100%;
+    height: 100%;
+}
+
+/* ----------------------------------------------------------------------------
+   CONTENT
+---------------------------------------------------------------------------- */
+.gns-toast-item__content {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--gns-space-0-5);
+}
+
+.gns-toast-item__title {
+    margin: 0;
+    font-size: var(--gns-text-sm);
+    font-weight: var(--gns-font-weight-semibold);
+    color: var(--gns-color-text-primary);
+    line-height: var(--gns-leading-snug);
+}
+
+.gns-toast-item__message {
+    margin: 0;
+    font-size: var(--gns-text-sm);
+    color: var(--gns-color-text-secondary);
+    line-height: var(--gns-leading-normal);
+}
+
+/* ----------------------------------------------------------------------------
+   DISMISS BUTTON
+---------------------------------------------------------------------------- */
+.gns-toast-item__dismiss {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 1.25rem;
+    height: 1.25rem;
+    padding: 0;
+    border: none;
+    background: transparent;
+    border-radius: var(--gns-radius-sm);
+    cursor: pointer;
+    color: var(--gns-color-text-tertiary);
+    opacity: 0.7;
+    transition: opacity 150ms ease, background-color 150ms ease, color 150ms ease;
+    margin-top: 1px;
+}
+
+.gns-toast-item__dismiss:hover {
+    opacity: 1;
+    background-color: var(--gns-color-bg-subtle);
+    color: var(--gns-color-text-primary);
+}
+
+.gns-toast-item__dismiss:focus-visible {
+    outline: 2px solid var(--gns-color-interactive-focus-ring);
+    outline-offset: 1px;
+    opacity: 1;
+}
+
+.gns-toast-item__dismiss svg {
+    width: 0.75rem;
+    height: 0.75rem;
+}
+
+/* ----------------------------------------------------------------------------
+   PROGRESS BAR
+---------------------------------------------------------------------------- */
+.gns-toast-item__progress {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background-color: currentColor;
+    opacity: 0.25;
+    transform-origin: left center;
+    animation: gns-toast-progress linear forwards;
+}
+
+@keyframes gns-toast-progress {
+    from { transform: scaleX(1); }
+    to   { transform: scaleX(0); }
+}
+
+/* ----------------------------------------------------------------------------
+   SEVERITY VARIANTS
+---------------------------------------------------------------------------- */
+.gns-toast-item--success {
+    border-left-color: var(--gns-color-status-success-icon);
+    color: var(--gns-color-status-success-text);
+}
+
+.gns-toast-item--success .gns-toast-item__icon {
+    color: var(--gns-color-status-success-icon);
+}
+
+.gns-toast-item--warning {
+    border-left-color: var(--gns-color-status-warning-icon);
+    color: var(--gns-color-status-warning-text);
+}
+
+.gns-toast-item--warning .gns-toast-item__icon {
+    color: var(--gns-color-status-warning-icon);
+}
+
+.gns-toast-item--error {
+    border-left-color: var(--gns-color-status-danger-icon);
+    color: var(--gns-color-status-danger-text);
+}
+
+.gns-toast-item--error .gns-toast-item__icon {
+    color: var(--gns-color-status-danger-icon);
+}
+
+.gns-toast-item--info {
+    border-left-color: var(--gns-color-status-info-icon);
+    color: var(--gns-color-status-info-text);
+}
+
+.gns-toast-item--info .gns-toast-item__icon {
+    color: var(--gns-color-status-info-icon);
+}
+
+/* ----------------------------------------------------------------------------
+   ANIMATION
+---------------------------------------------------------------------------- */
+@keyframes gns-toast-slide-in {
+    from {
+        opacity: 0;
+        transform: translateX(110%);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}

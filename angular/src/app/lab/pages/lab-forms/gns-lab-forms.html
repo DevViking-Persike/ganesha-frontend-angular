@@ -1,0 +1,154 @@
+<div class="gns-lab-page">
+
+    <gns-page-header title="Forms" eyebrow="Components"
+        description="Form controls including text inputs, selects, checkboxes, radios, textareas, and switches." />
+
+    <gns-section title="Text Input" subtitle="Single-line text input with label, helper, and error states.">
+        <div class="gns-preview">
+            <div class="gns-preview__canvas"
+                style="flex-direction: column; gap: var(--gns-space-6); max-width: 24rem; width: 100%;">
+                <gns-input-text label="Full Name" placeholder="Enter your name"
+                    [value]="name()" (valueChange)="name.set($event)" />
+                <gns-input-text label="Email" placeholder="you@example.com"
+                    helperText="We'll never share your email."
+                    [value]="email()" (valueChange)="email.set($event)" />
+                <gns-input-text label="Username" placeholder="Choose a username"
+                    errorMessage="This username is already taken." value="john_doe" />
+                <gns-input-text label="Read Only" value="This field is read-only" [isReadOnly]="true" />
+                <gns-input-text label="Disabled" placeholder="Can't type here" [isDisabled]="true" />
+            </div>
+        </div>
+    </gns-section>
+
+    <gns-section title="Input Sizes" subtitle="Three size variants for different contexts.">
+        <div class="gns-preview">
+            <div class="gns-preview__canvas"
+                style="flex-direction: column; gap: var(--gns-space-4); max-width: 24rem; width: 100%;">
+                <gns-input-text label="Small" placeholder="Small input" size="small"
+                    [value]="sizeSm()" (valueChange)="sizeSm.set($event)" />
+                <gns-input-text label="Medium" placeholder="Medium input" size="medium"
+                    [value]="sizeMd()" (valueChange)="sizeMd.set($event)" />
+                <gns-input-text label="Large" placeholder="Large input" size="large"
+                    [value]="sizeLg()" (valueChange)="sizeLg.set($event)" />
+            </div>
+        </div>
+    </gns-section>
+
+    <gns-section title="Password Input" subtitle="Password field with visibility toggle.">
+        <div class="gns-preview">
+            <div class="gns-preview__canvas" style="max-width: 24rem; width: 100%;">
+                <gns-input-password label="Password" placeholder="Enter password"
+                    [value]="password()" (valueChange)="password.set($event)" />
+            </div>
+        </div>
+    </gns-section>
+
+    <gns-section title="Select" subtitle="Dropdown select for choosing from predefined options.">
+        <div class="gns-preview">
+            <div class="gns-preview__canvas"
+                style="flex-direction: column; gap: var(--gns-space-4); max-width: 24rem; width: 100%;">
+                <gns-select label="Country" placeholder="Select a country"
+                    [value]="country()" (valueChange)="country.set($event)">
+                    <option value="us">United States</option>
+                    <option value="uk">United Kingdom</option>
+                    <option value="ca">Canada</option>
+                    <option value="au">Australia</option>
+                    <option value="br">Brazil</option>
+                </gns-select>
+                <gns-select label="Status" placeholder="Choose status" errorMessage="Please select a status."
+                    [value]="status()" (valueChange)="status.set($event)">
+                    <option value="active">Active</option>
+                    <option value="inactive">Inactive</option>
+                </gns-select>
+            </div>
+        </div>
+    </gns-section>
+
+    <gns-section title="Checkbox" subtitle="Boolean toggle with optional label.">
+        <div class="gns-preview">
+            <div class="gns-preview__canvas"
+                style="flex-direction: column; gap: var(--gns-space-3); align-items: flex-start;">
+                <gns-checkbox label="Accept terms and conditions"
+                    [value]="terms()" (valueChange)="terms.set($event)" />
+                <gns-checkbox label="Subscribe to newsletter"
+                    [value]="newsletter()" (valueChange)="newsletter.set($event)" />
+                <gns-checkbox label="Disabled option" [isDisabled]="true" [value]="true" />
+            </div>
+        </div>
+    </gns-section>
+
+    <gns-section title="Radio Group" subtitle="Single selection from multiple options.">
+        <div class="gns-preview">
+            <div class="gns-preview__canvas" style="max-width: 24rem; width: 100%;">
+                <gns-radio-group label="Notification Preference"
+                    [value]="radioValue()" (valueChange)="radioValue.set($event)">
+                    <gns-radio-option value="email" label="Email notifications" />
+                    <gns-radio-option value="sms" label="SMS notifications" />
+                    <gns-radio-option value="push" label="Push notifications" />
+                    <gns-radio-option value="none" label="No notifications" [isDisabled]="true" />
+                </gns-radio-group>
+            </div>
+        </div>
+    </gns-section>
+
+    <gns-section title="Textarea" subtitle="Multi-line text input for longer content.">
+        <div class="gns-preview">
+            <div class="gns-preview__canvas"
+                style="flex-direction: column; gap: var(--gns-space-4); max-width: 24rem; width: 100%;">
+                <gns-textarea label="Bio" placeholder="Tell us about yourself..." [rows]="4"
+                    helperText="Max 500 characters."
+                    [value]="bio()" (valueChange)="bio.set($event)" />
+                <gns-textarea label="Notes" placeholder="Add notes..." errorMessage="Notes cannot be empty."
+                    [value]="notes()" (valueChange)="notes.set($event)" />
+            </div>
+        </div>
+    </gns-section>
+
+    <gns-section title="Switch" subtitle="Toggle for binary settings.">
+        <div class="gns-preview">
+            <div class="gns-preview__canvas"
+                style="flex-direction: column; gap: var(--gns-space-3); align-items: flex-start;">
+                <gns-switch label="Enable notifications"
+                    [value]="switchNotif()" (valueChange)="switchNotif.set($event)" />
+                <gns-switch label="Dark mode" [value]="switchDark()" (valueChange)="switchDark.set($event)" />
+                <gns-switch label="Disabled toggle" [isDisabled]="true" [value]="true" />
+            </div>
+        </div>
+    </gns-section>
+
+    <gns-section title="Complete Form Example" subtitle="A realistic form combining multiple input types.">
+        <gns-card>
+            <div
+                style="padding: var(--gns-space-6); display: flex; flex-direction: column; gap: var(--gns-space-5); max-width: 32rem;">
+                <h3 style="font-size: var(--gns-text-lg); font-weight: var(--gns-font-weight-semibold);">
+                    Create Account</h3>
+                <gns-grid templateColumns="1fr 1fr" gap="4">
+                    <gns-input-text label="First Name" placeholder="John" [isRequired]="true"
+                        [value]="firstName()" (valueChange)="firstName.set($event)" />
+                    <gns-input-text label="Last Name" placeholder="Doe" [isRequired]="true"
+                        [value]="lastName()" (valueChange)="lastName.set($event)" />
+                </gns-grid>
+                <gns-input-text label="Email" placeholder="john@example.com" [isRequired]="true" type="email"
+                    [value]="formEmail()" (valueChange)="formEmail.set($event)" />
+                <gns-input-password label="Password" placeholder="At least 8 characters" [isRequired]="true"
+                    [value]="formPassword()" (valueChange)="formPassword.set($event)" />
+                <gns-select label="Role" placeholder="Select a role" [isRequired]="true"
+                    [value]="formRole()" (valueChange)="formRole.set($event)">
+                    <option value="developer">Developer</option>
+                    <option value="designer">Designer</option>
+                    <option value="manager">Manager</option>
+                    <option value="admin">Admin</option>
+                </gns-select>
+                <gns-textarea label="Bio" placeholder="A short bio..." [rows]="3"
+                    [value]="formBio()" (valueChange)="formBio.set($event)" />
+                <gns-checkbox label="I agree to the Terms of Service and Privacy Policy"
+                    [value]="formTerms()" (valueChange)="formTerms.set($event)" />
+                <div style="display: flex; gap: var(--gns-space-3); justify-content: flex-end;">
+                    <gns-button label="Cancel" variant="ghost" />
+                    <gns-button label="Create Account" variant="primary" />
+                </div>
+            </div>
+        </gns-card>
+    </gns-section>
+
+</div>

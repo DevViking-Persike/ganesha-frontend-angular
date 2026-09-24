@@ -1,0 +1,91 @@
+<div class="gns-lab-page">
+
+    <gns-page-header title="Navigation" eyebrow="Components"
+        description="Components for navigating within the application: tabs, breadcrumbs, pagination, and nav items." />
+
+    <gns-section title="Tabs" subtitle="Tabbed interface for organizing content into sections.">
+        <gns-card>
+            <gns-tabs [activeIndex]="tabIndex()" (activeIndexChanged)="tabIndex.set($event)">
+                <gns-tab title="Overview">
+                    <div style="padding: var(--gns-space-6);">
+                        <h3
+                            style="font-size: var(--gns-text-lg); font-weight: var(--gns-font-weight-semibold); margin-bottom: var(--gns-space-2);">
+                            Project Overview</h3>
+                        <p style="color: var(--gns-color-text-secondary);">This is the overview tab content showing
+                            general project information and key metrics.</p>
+                    </div>
+                </gns-tab>
+                <gns-tab title="Activity">
+                    <div style="padding: var(--gns-space-6);">
+                        <h3
+                            style="font-size: var(--gns-text-lg); font-weight: var(--gns-font-weight-semibold); margin-bottom: var(--gns-space-2);">
+                            Recent Activity</h3>
+                        <p style="color: var(--gns-color-text-secondary);">Shows the latest actions and events related
+                            to the project.</p>
+                    </div>
+                </gns-tab>
+                <gns-tab title="Settings">
+                    <div style="padding: var(--gns-space-6);">
+                        <h3
+                            style="font-size: var(--gns-text-lg); font-weight: var(--gns-font-weight-semibold); margin-bottom: var(--gns-space-2);">
+                            Project Settings</h3>
+                        <p style="color: var(--gns-color-text-secondary);">Configure project preferences,
+                            notifications, and access controls.</p>
+                    </div>
+                </gns-tab>
+                <gns-tab title="Disabled" [isDisabled]="true">
+                    <div style="padding: var(--gns-space-6);">Disabled content</div>
+                </gns-tab>
+            </gns-tabs>
+        </gns-card>
+    </gns-section>
+
+    <gns-section title="Breadcrumb" subtitle="Hierarchical navigation trail.">
+        <div class="gns-preview">
+            <div class="gns-preview__canvas"
+                style="flex-direction: column; gap: var(--gns-space-6); align-items: flex-start;">
+                <gns-breadcrumb>
+                    <gns-breadcrumb-item label="Home" href="/lab" />
+                    <gns-breadcrumb-item label="Components" href="/lab/navigation" />
+                    <gns-breadcrumb-item label="Breadcrumb" [isActive]="true" />
+                </gns-breadcrumb>
+
+                <gns-breadcrumb separator="&gt;">
+                    <gns-breadcrumb-item label="Dashboard" href="/lab" />
+                    <gns-breadcrumb-item label="Users" href="/lab" />
+                    <gns-breadcrumb-item label="John Doe" href="/lab" />
+                    <gns-breadcrumb-item label="Edit Profile" [isActive]="true" />
+                </gns-breadcrumb>
+            </div>
+        </div>
+    </gns-section>
+
+    <gns-section title="Pagination" subtitle="Navigate through pages of data.">
+        <div class="gns-preview">
+            <div class="gns-preview__canvas" style="flex-direction: column; gap: var(--gns-space-6);">
+                <gns-pagination [currentPage]="currentPage()" [totalPages]="10"
+                    (currentPageChanged)="currentPage.set($event)" />
+                <div style="font-size: var(--gns-text-sm); color: var(--gns-color-text-secondary);">
+                    Current page: {{ currentPage() }}
+                </div>
+            </div>
+        </div>
+    </gns-section>
+
+    <gns-section title="Nav Items" subtitle="Sidebar navigation items with expandable children.">
+        <div class="gns-preview">
+            <div class="gns-preview__canvas"
+                style="max-width: 16rem; width: 100%; flex-direction: column; align-items: stretch; gap: 0;">
+                <gns-nav-item label="Dashboard" href="/lab" [isActive]="true" />
+                <gns-nav-item label="Analytics" href="/lab" />
+                <gns-nav-item label="Users" [isExpanded]="true">
+                    <gns-nav-item label="All Users" href="/lab" />
+                    <gns-nav-item label="Roles" href="/lab" />
+                    <gns-nav-item label="Permissions" href="/lab" />
+                </gns-nav-item>
+                <gns-nav-item label="Settings" href="/lab" badge="New" />
+            </div>
+        </div>
+    </gns-section>
+
+</div>

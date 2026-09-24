@@ -1,0 +1,154 @@
+/* =============================================================================
+   GnsTable — Scoped Styles
+   ============================================================================= */
+
+/* ----------------------------------------------------------------------------
+   WRAPPER
+---------------------------------------------------------------------------- */
+.gns-table-wrapper {
+    position: relative;
+    width: 100%;
+    border-radius: var(--gns-radius-card);
+    border: 1px solid var(--gns-color-border-default);
+    background-color: var(--gns-color-bg-page);
+    overflow: hidden;
+    box-shadow: var(--gns-shadow-card);
+}
+
+.gns-table__scroll-container {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* ----------------------------------------------------------------------------
+   TABLE BASE
+---------------------------------------------------------------------------- */
+.gns-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: var(--gns-font-sans);
+    font-size: var(--gns-text-sm);
+    color: var(--gns-color-text-primary);
+    table-layout: auto;
+}
+
+/* ----------------------------------------------------------------------------
+   HEADER
+---------------------------------------------------------------------------- */
+.gns-table__head {
+    background-color: var(--gns-color-bg-subtle);
+}
+
+.gns-table__head-row {
+    border-bottom: 1px solid var(--gns-color-border-default);
+}
+
+.gns-table :global(th) {
+    padding: var(--gns-space-3) var(--gns-space-4);
+    text-align: left;
+    font-size: var(--gns-text-xs);
+    font-weight: var(--gns-font-weight-semibold);
+    color: var(--gns-color-text-secondary);
+    letter-spacing: var(--gns-tracking-wide);
+    text-transform: uppercase;
+    white-space: nowrap;
+    border-bottom: 1px solid var(--gns-color-border-default);
+}
+
+/* ----------------------------------------------------------------------------
+   ROWS & CELLS
+---------------------------------------------------------------------------- */
+.gns-table :global(tr) {
+    border-bottom: 1px solid var(--gns-color-border-subtle);
+    transition: background-color 120ms ease;
+}
+
+.gns-table :global(tbody tr:last-child) {
+    border-bottom: none;
+}
+
+.gns-table :global(td) {
+    padding: var(--gns-space-3-5) var(--gns-space-4);
+    color: var(--gns-color-text-primary);
+    vertical-align: middle;
+}
+
+/* ----------------------------------------------------------------------------
+   MODIFIERS
+---------------------------------------------------------------------------- */
+.gns-table--hoverable :global(tbody tr:hover) {
+    background-color: var(--gns-color-bg-subtle);
+}
+
+.gns-table--striped :global(tbody tr:nth-child(even)) {
+    background-color: var(--gns-gray-50);
+}
+
+.gns-table--striped :global(tbody tr:nth-child(even):hover) {
+    background-color: var(--gns-color-bg-subtle);
+}
+
+.gns-table--compact :global(th),
+.gns-table--compact :global(td) {
+    padding: var(--gns-space-2) var(--gns-space-3);
+}
+
+/* ----------------------------------------------------------------------------
+   EMPTY STATE
+---------------------------------------------------------------------------- */
+.gns-table__empty-cell {
+    text-align: center;
+    padding: var(--gns-space-12) var(--gns-space-6) !important;
+}
+
+.gns-table__empty-default {
+    color: var(--gns-color-text-tertiary);
+    font-size: var(--gns-text-sm);
+}
+
+/* ----------------------------------------------------------------------------
+   LOADING OVERLAY
+---------------------------------------------------------------------------- */
+.gns-table-wrapper--loading .gns-table__scroll-container {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+.gns-table__loading-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    background-color: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(2px);
+}
+
+.gns-table__spinner {
+    width: 2rem;
+    height: 2rem;
+    border-radius: var(--gns-radius-full);
+    border: 2px solid var(--gns-color-border-default);
+    border-top-color: var(--gns-color-interactive-primary-bg);
+    animation: gns-table-spin 0.75s linear infinite;
+}
+
+@keyframes gns-table-spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Screenreader only utility */
+.gns-sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}

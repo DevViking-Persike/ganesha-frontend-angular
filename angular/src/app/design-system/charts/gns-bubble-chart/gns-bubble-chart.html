@@ -1,0 +1,110 @@
+<div [class]="cssClass()" role="img" aria-label="Bubble chart" [style]="inlineStyle()">
+    @if (vm(); as chart) {
+        <svg class="gns-bubble-chart__svg"
+             [attr.viewBox]="'0 0 ' + chart.viewW + ' ' + chart.viewH"
+             xmlns="http://www.w3.org/2000/svg"
+             [attr.width]="chart.viewW"
+             [attr.height]="chart.viewH">
+
+            <defs>
+                @for (grad of gradients(); track grad.id) {
+                    <radialGradient [attr.id]="grad.id" cx="35%" cy="35%" r="65%">
+                        <stop offset="0%" stop-color="white" stop-opacity="0.45" />
+                        <stop offset="40%" [attr.stop-color]="grad.baseColor" stop-opacity="0.85" />
+                        <stop offset="100%" [attr.stop-color]="grad.baseColor" stop-opacity="1" />
+                    </radialGradient>
+                }
+
+                <filter [attr.id]="shadowFilter" x="-20%" y="-20%" width="140%" height="140%">
+                    <feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.18" />
+                </filter>
+
+                <filter [attr.id]="glowFilter" x="-40%" y="-40%" width="180%" height="180%">
+                    <feGaussianBlur stdDeviation="4" result="blur" />
+                    <feMerge>
+                        <feMergeNode in="blur" />
+                        <feMergeNode in="SourceGraphic" />
+                    </feMerge>
+                </filter>
+            </defs>
+
+            @for (grid of chart.gridH; track $index) {
+                <line class="gns-bubble-chart__grid-h"
+                      [attr.x1]="chart.paddingLeft"
+                      [attr.y1]="grid.pos.toFixed(1)"
+                      [attr.x2]="chart.paddingLeft + chart.plotW"
+                      [attr.y2]="grid.pos.toFixed(1)" />
+                <text class="gns-bubble-chart__y-label"
+                      [attr.x]="grid.labelPos"
+                      [attr.y]="grid.pos.toFixed(1)"
+                      text-anchor="end"
+                      dominant-baseline="middle">{{ grid.label }}</text>
+            }
+
+            @for (grid of chart.gridV; track $index) {
+                <line class="gns-bubble-chart__grid-v"
+                      [attr.x1]="grid.pos.toFixed(1)"
+                      [attr.y1]="chart.paddingTop"
+                      [attr.x2]="grid.pos.toFixed(1)"
+                      [attr.y2]="grid.edge" />
+                <text class="gns-bubble-chart__x-label"
+                      [attr.x]="grid.pos.toFixed(1)"
+                      [attr.y]="grid.labelPos.toFixed(1)"
+                      text-anchor="middle">{{ grid.label }}</text>
+            }
+
+            @for (conn of chart.connectors; track $index) {
+                <line class="gns-bubble-chart__connector"
+                      [attr.x1]="conn.cx.toFixed(1)"
+                      [attr.y1]="conn.y1.toFixed(1)"
+                      [attr.x2]="conn.cx.toFixed(1)"
+                      [attr.y2]="conn.y2.toFixed(1)"
+                      [attr.stroke]="conn.color" />
+                <circle class="gns-bubble-chart__connector-dot"
+                        [attr.cx]="conn.cx.toFixed(1)"
+                        [attr.cy]="conn.y2.toFixed(1)"
+                        r="2.5"
+                        [attr.fill]="conn.color" />
+                <text class="gns-bubble-chart__label"
+                      [attr.x]="conn.cx.toFixed(1)"
+                      [attr.y]="conn.labelY.toFixed(1)"
+                      text-anchor="middle">{{ conn.labelText }}</text>
+            }
+
+            @for (bubble of chart.bubbles; track $index) {
+                <circle class="gns-bubble-chart__bubble"
+                        [class.gns-bubble-chart__bubble--animated]="isAnimated()"
+                        [attr.cx]="bubble.cx.toFixed(1)"
+                        [attr.cy]="bubble.cy.toFixed(1)"
+                        [attr.r]="bubble.r.toFixed(1)"
+                        [attr.fill]="'url(#' + bubble.gradientId + ')'"
+                        [attr.stroke]="bubble.color"
+                        stroke-width="1.5"
+                        stroke-opacity="0.6"
+                        [attr.filter]="'url(#' + shadowFilter + ')'"
+                        [style.--gns-bubble-delay]="bubble.animDelay">
+                    <title>{{ bubble.title }}</title>
+                </circle>
+
+                <circle class="gns-bubble-chart__highlight"
+                        [class.gns-bubble-chart__bubble--animated]="isAnimated()"
+                        [attr.cx]="(bubble.cx - bubble.r * 0.18).toFixed(1)"
+                        [attr.cy]="(bubble.cy - bubble.r * 0.18).toFixed(1)"
+                        [attr.r]="(bubble.r * 0.35).toFixed(1)"
+                        fill="white"
+                        fill-opacity="0.15"
+                        [style.--gns-bubble-delay]="bubble.animDelay" />
+
+                @if (bubble.showValue) {
+                    <text class="gns-bubble-chart__value"
+                          [attr.x]="bubble.cx.toFixed(1)"
+                          [attr.y]="(bubble.cy + 1).toFixed(1)"
+                          text-anchor="middle"
+                          dominant-baseline="central">{{ bubble.valueText }}</text>
+                }
+            }
+        </svg>
+    } @else {
+        <p class="gns-bubble-chart__empty">No data</p>
+    }
+</div>

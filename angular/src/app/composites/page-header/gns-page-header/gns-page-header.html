@@ -1,0 +1,33 @@
+<div [class]="cssClass()">
+
+    <!-- ── Breadcrumb ──────────────────────────────────────────────────── -->
+    <div class="gns-page-header__breadcrumb" #breadcrumbSlot
+         [style.display]="hasBreadcrumb() ? null : 'none'">
+        <ng-content select="[breadcrumb]"></ng-content>
+    </div>
+
+    <!-- ── Title row ───────────────────────────────────────────────────── -->
+    <div class="gns-page-header__row">
+
+        <div class="gns-page-header__text">
+
+            @if (eyebrow()?.trim()) {
+                <span class="gns-page-header__eyebrow">{{ eyebrow() }}</span>
+            }
+
+            <h1 class="gns-page-header__title">{{ title() }}</h1>
+
+            @if (description()?.trim()) {
+                <p class="gns-page-header__description">{{ description() }}</p>
+            }
+
+        </div>
+
+        <div class="gns-page-header__actions" role="toolbar" aria-label="Page actions"
+             #actionsSlot [style.display]="hasActions() ? null : 'none'">
+            <ng-content select="[actions]"></ng-content>
+        </div>
+
+    </div>
+
+</div>

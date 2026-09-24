@@ -1,0 +1,175 @@
+/* =============================================================================
+   GnsInputText — Scoped Styles
+   ============================================================================= */
+
+/* ----------------------------------------------------------------------------
+   WRAPPER
+---------------------------------------------------------------------------- */
+.gns-input-text {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gns-size-label-gap);
+    width: 100%;
+}
+
+/* ----------------------------------------------------------------------------
+   LABEL
+---------------------------------------------------------------------------- */
+.gns-input-text__label {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--gns-space-1);
+    font-family: var(--gns-font-sans);
+    font-size: var(--gns-text-sm);
+    font-weight: var(--gns-font-weight-medium);
+    color: var(--gns-color-text-primary);
+    line-height: var(--gns-leading-tight);
+    cursor: default;
+}
+
+.gns-input-text--disabled .gns-input-text__label {
+    color: var(--gns-color-text-disabled);
+}
+
+.gns-input-text__required {
+    color: var(--gns-color-text-danger);
+    font-size: 0.875em;
+    line-height: 1;
+}
+
+/* ----------------------------------------------------------------------------
+   CONTROL (wraps icon + input)
+---------------------------------------------------------------------------- */
+.gns-input-text__control {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+/* ----------------------------------------------------------------------------
+   ICONS
+---------------------------------------------------------------------------- */
+.gns-input-text__icon {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--gns-size-icon-sm);
+    color: var(--gns-color-text-tertiary);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.gns-input-text__icon--left {
+    left: var(--gns-space-3);
+}
+
+/* Padding compensation when icon present */
+.gns-input-text--icon-left .gns-input-text__field {
+    padding-left: calc(var(--gns-space-3) + var(--gns-size-icon-sm) + var(--gns-space-2));
+}
+
+/* ----------------------------------------------------------------------------
+   INPUT FIELD
+---------------------------------------------------------------------------- */
+.gns-input-text__field {
+    width: 100%;
+    font-family: var(--gns-font-sans);
+    color: var(--gns-color-text-primary);
+    background-color: var(--gns-color-surface-default);
+    border: var(--gns-border-width-input) solid var(--gns-color-border-default);
+    border-radius: var(--gns-radius-input);
+    outline: none;
+    transition:
+        border-color 150ms ease,
+        box-shadow   150ms ease,
+        background-color 150ms ease;
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+.gns-input-text__field::placeholder {
+    color: var(--gns-color-text-placeholder);
+}
+
+/* Size variants */
+.gns-input-text--sm .gns-input-text__field {
+    height: var(--gns-size-input-height-sm);
+    padding: 0 var(--gns-space-inset-sm);
+    font-size: var(--gns-text-xs);
+}
+
+.gns-input-text--md .gns-input-text__field {
+    height: var(--gns-size-input-height-md);
+    padding: 0 var(--gns-space-inset-md);
+    font-size: var(--gns-text-sm);
+}
+
+.gns-input-text--lg .gns-input-text__field {
+    height: var(--gns-size-input-height-lg);
+    padding: 0 var(--gns-space-inset-lg);
+    font-size: var(--gns-text-base);
+}
+
+/* Focus */
+.gns-input-text__field:focus {
+    border-color: var(--gns-color-border-focus);
+    box-shadow: 0 0 0 var(--gns-outline-width-focus) color-mix(in srgb, var(--gns-color-interactive-focus-ring) 25%, transparent);
+}
+
+/* Error */
+.gns-input-text__field--error,
+.gns-input-text--error .gns-input-text__field {
+    border-color: var(--gns-color-border-danger);
+}
+
+.gns-input-text__field--error:focus,
+.gns-input-text--error .gns-input-text__field:focus {
+    border-color: var(--gns-color-border-danger);
+    box-shadow: 0 0 0 var(--gns-outline-width-focus) color-mix(in srgb, var(--gns-danger-500) 25%, transparent);
+}
+
+/* Disabled */
+.gns-input-text__field:disabled,
+.gns-input-text--disabled .gns-input-text__field {
+    background-color: var(--gns-color-bg-subtle);
+    color: var(--gns-color-text-disabled);
+    cursor: not-allowed;
+    border-color: var(--gns-color-border-default);
+}
+
+/* Readonly */
+.gns-input-text__field:read-only,
+.gns-input-text--readonly .gns-input-text__field {
+    background-color: var(--gns-color-bg-subtle);
+    cursor: default;
+}
+
+.gns-input-text__field:read-only:focus,
+.gns-input-text--readonly .gns-input-text__field:focus {
+    border-color: var(--gns-color-border-default);
+    box-shadow: none;
+}
+
+/* ----------------------------------------------------------------------------
+   HELPER / ERROR TEXT
+---------------------------------------------------------------------------- */
+.gns-input-text__helper,
+.gns-input-text__error {
+    font-family: var(--gns-font-sans);
+    font-size: var(--gns-text-xs);
+    line-height: var(--gns-leading-normal);
+}
+
+.gns-input-text__helper {
+    color: var(--gns-color-text-secondary);
+}
+
+.gns-input-text__error {
+    color: var(--gns-color-text-danger);
+    display: flex;
+    align-items: center;
+    gap: var(--gns-space-1);
+}

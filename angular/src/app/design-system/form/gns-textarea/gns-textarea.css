@@ -1,0 +1,115 @@
+/* =============================================================================
+   GnsTextarea — Scoped Styles
+   Mirrors GnsInputText structure; adapts for multi-line textarea element.
+   ============================================================================= */
+
+/* ----------------------------------------------------------------------------
+   WRAPPER
+---------------------------------------------------------------------------- */
+.gns-textarea {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gns-size-label-gap);
+    width: 100%;
+}
+
+/* ----------------------------------------------------------------------------
+   LABEL
+---------------------------------------------------------------------------- */
+.gns-textarea__label {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--gns-space-1);
+    font-family: var(--gns-font-sans);
+    font-size: var(--gns-text-sm);
+    font-weight: var(--gns-font-weight-medium);
+    color: var(--gns-color-text-primary);
+    line-height: var(--gns-leading-tight);
+    cursor: default;
+}
+
+.gns-textarea--disabled .gns-textarea__label {
+    color: var(--gns-color-text-disabled);
+}
+
+.gns-textarea__required {
+    color: var(--gns-color-text-danger);
+    font-size: 0.875em;
+    line-height: 1;
+}
+
+/* ----------------------------------------------------------------------------
+   TEXTAREA FIELD
+---------------------------------------------------------------------------- */
+.gns-textarea__field {
+    width: 100%;
+    min-height: 5rem;  /* fallback floor */
+    padding: var(--gns-space-squish-md) var(--gns-space-inset-md);
+    font-family: var(--gns-font-sans);
+    font-size: var(--gns-text-sm);
+    color: var(--gns-color-text-primary);
+    background-color: var(--gns-color-surface-default);
+    border: var(--gns-border-width-input) solid var(--gns-color-border-default);
+    border-radius: var(--gns-radius-input);
+    outline: none;
+    resize: vertical;
+    line-height: var(--gns-leading-normal);
+    transition:
+        border-color 150ms ease,
+        box-shadow   150ms ease,
+        background-color 150ms ease;
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+.gns-textarea__field::placeholder {
+    color: var(--gns-color-text-placeholder);
+}
+
+/* Focus */
+.gns-textarea__field:focus {
+    border-color: var(--gns-color-border-focus);
+    box-shadow: 0 0 0 var(--gns-outline-width-focus) color-mix(in srgb, var(--gns-color-interactive-focus-ring) 25%, transparent);
+}
+
+/* Error */
+.gns-textarea--error .gns-textarea__field,
+.gns-textarea__field--error {
+    border-color: var(--gns-color-border-danger);
+}
+
+.gns-textarea--error .gns-textarea__field:focus,
+.gns-textarea__field--error:focus {
+    border-color: var(--gns-color-border-danger);
+    box-shadow: 0 0 0 var(--gns-outline-width-focus) color-mix(in srgb, var(--gns-danger-500) 25%, transparent);
+}
+
+/* Disabled */
+.gns-textarea__field:disabled {
+    background-color: var(--gns-color-bg-subtle);
+    color: var(--gns-color-text-disabled);
+    cursor: not-allowed;
+    resize: none;
+    border-color: var(--gns-color-border-default);
+}
+
+/* ----------------------------------------------------------------------------
+   HELPER / ERROR TEXT
+---------------------------------------------------------------------------- */
+.gns-textarea__helper,
+.gns-textarea__error {
+    font-family: var(--gns-font-sans);
+    font-size: var(--gns-text-xs);
+    line-height: var(--gns-leading-normal);
+}
+
+.gns-textarea__helper {
+    color: var(--gns-color-text-secondary);
+}
+
+.gns-textarea__error {
+    color: var(--gns-color-text-danger);
+    display: flex;
+    align-items: center;
+    gap: var(--gns-space-1);
+}

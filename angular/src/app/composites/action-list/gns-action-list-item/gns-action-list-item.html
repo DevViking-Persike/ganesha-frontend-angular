@@ -1,0 +1,43 @@
+<li [class]="cssClass()">
+
+    <!-- ── Clickable main area ─────────────────────────────────────────── -->
+    <div class="gns-action-list-item__body"
+         [attr.role]="clickable() ? 'button' : null"
+         [attr.tabindex]="clickable() ? 0 : null"
+         [attr.aria-pressed]="isSelected() ? 'true' : 'false'"
+         (click)="handleClick()"
+         (keydown)="handleKeyDown($event)">
+
+        <!-- Icon -->
+        @if (icon()?.trim()) {
+            <span class="gns-action-list-item__icon {{ icon() }}" aria-hidden="true"></span>
+        }
+
+        <!-- Text content -->
+        <div class="gns-action-list-item__text">
+            <span class="gns-action-list-item__title">{{ title() }}</span>
+
+            @if (description()?.trim()) {
+                <span class="gns-action-list-item__description">{{ description() }}</span>
+            }
+        </div>
+
+        <!-- Meta slot -->
+        <div class="gns-action-list-item__meta" #metaSlot
+             [style.display]="hasMeta() ? null : 'none'">
+            <ng-content select="[meta]"></ng-content>
+        </div>
+
+    </div>
+
+    <!-- ── Actions (outside clickable area) ───────────────────────────── -->
+    <div class="gns-action-list-item__actions"
+         role="toolbar"
+         aria-label="Item actions"
+         #actionsSlot
+         [style.display]="hasActions() ? null : 'none'"
+         (click)="$event.stopPropagation()">
+        <ng-content select="[actions]"></ng-content>
+    </div>
+
+</li>

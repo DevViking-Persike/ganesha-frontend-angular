@@ -1,0 +1,106 @@
+/* =============================================================================
+   GnsPageHeader — Scoped Styles
+   ============================================================================= */
+
+/* ----------------------------------------------------------------------------
+   BASE
+---------------------------------------------------------------------------- */
+.gns-page-header {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gns-space-2);
+    margin-bottom: var(--gns-space-6);
+}
+
+.gns-page-header--has-breadcrumb {
+    gap: var(--gns-space-3);
+}
+
+/* ----------------------------------------------------------------------------
+   BREADCRUMB
+---------------------------------------------------------------------------- */
+.gns-page-header__breadcrumb {
+    display: flex;
+    align-items: center;
+}
+
+/* ----------------------------------------------------------------------------
+   TITLE ROW
+---------------------------------------------------------------------------- */
+.gns-page-header__row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--gns-space-4);
+    flex-wrap: wrap;
+}
+
+/* ----------------------------------------------------------------------------
+   TEXT BLOCK (eyebrow + title + description)
+---------------------------------------------------------------------------- */
+.gns-page-header__text {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gns-space-1);
+    flex: 1;
+    min-width: 0;
+}
+
+.gns-page-header__eyebrow {
+    display: block;
+    font-size: var(--gns-text-xs);
+    font-weight: var(--gns-font-weight-semibold);
+    text-transform: uppercase;
+    letter-spacing: var(--gns-tracking-widest);
+    color: var(--gns-color-interactive-primary-bg);
+    line-height: var(--gns-leading-none);
+}
+
+.gns-page-header__title {
+    margin: 0;
+    font-size: var(--gns-text-2xl);
+    font-weight: var(--gns-font-weight-bold);
+    color: var(--gns-color-text-primary);
+    line-height: var(--gns-leading-tight);
+    letter-spacing: var(--gns-tracking-tight);
+}
+
+.gns-page-header__description {
+    margin: 0;
+    font-size: var(--gns-text-sm);
+    color: var(--gns-color-text-secondary);
+    line-height: var(--gns-leading-relaxed);
+    max-width: 64ch;
+}
+
+/* ----------------------------------------------------------------------------
+   ACTIONS
+---------------------------------------------------------------------------- */
+.gns-page-header__actions {
+    display: flex;
+    align-items: center;
+    gap: var(--gns-space-2);
+    flex-shrink: 0;
+    /* Optical alignment: align action buttons with the title baseline */
+    padding-top: var(--gns-space-1);
+}
+
+/* ----------------------------------------------------------------------------
+   RESPONSIVE — MOBILE (< 640px)
+---------------------------------------------------------------------------- */
+@media (max-width: 639px) {
+    .gns-page-header__row {
+        flex-direction: column;
+        gap: var(--gns-space-3);
+    }
+
+    .gns-page-header__actions {
+        width: 100%;
+        padding-top: 0;
+        flex-wrap: wrap;
+    }
+
+    .gns-page-header__title {
+        font-size: var(--gns-text-xl);
+    }
+}

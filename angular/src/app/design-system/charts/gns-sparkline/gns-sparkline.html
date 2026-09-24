@@ -1,0 +1,27 @@
+<div [class]="cssClass()" aria-hidden="true">
+    @if (vm(); as spark) {
+        <svg class="gns-sparkline__svg"
+             [attr.width]="width()"
+             [attr.height]="height()"
+             [attr.viewBox]="'0 0 ' + width() + ' ' + height()"
+             xmlns="http://www.w3.org/2000/svg"
+             preserveAspectRatio="none">
+
+            @if (showArea()) {
+                <path class="gns-sparkline__area"
+                      [attr.d]="spark.areaPath"
+                      [attr.fill]="color()"
+                      fill-opacity="0.15"
+                      stroke="none" />
+            }
+
+            <path class="gns-sparkline__line"
+                  [attr.d]="spark.path"
+                  fill="none"
+                  [attr.stroke]="color()"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round" />
+        </svg>
+    }
+</div>

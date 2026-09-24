@@ -1,0 +1,51 @@
+@if (visible()) {
+  <div
+    class="gns-modal-backdrop"
+    role="presentation"
+    aria-hidden="true"
+    (click)="handleBackdropClick()">
+  </div>
+
+  <div
+    [class]="cssClass()"
+    role="dialog"
+    aria-modal="true"
+    [attr.aria-labelledby]="titleId"
+    tabindex="-1">
+
+    @if (effectiveTitle() || effectiveShowClose()) {
+      <div class="gns-modal__header">
+        @if (effectiveTitle()) {
+          <h2 class="gns-modal__title" [id]="titleId">{{ effectiveTitle() }}</h2>
+        }
+        @if (effectiveShowClose()) {
+          <button
+            type="button"
+            class="gns-modal__close"
+            aria-label="Close dialog"
+            (click)="closeModal()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        }
+      </div>
+    }
+
+    <div class="gns-modal__body">
+      @if (serviceOpen() && serviceContent()) {
+        @if (isTemplate(serviceContent())) {
+          <ng-container [ngTemplateOutlet]="asTemplate(serviceContent())" />
+        } @else {
+          <ng-container [ngComponentOutlet]="asComponent(serviceContent())" />
+        }
+      } @else {
+        <ng-content />
+      }
+    </div>
+
+    @if (footerRef(); as footer) {
+      <div class="gns-modal__footer">
+        <ng-container [ngTemplateOutlet]="footer" />
+      </div>
+    }
+  </div>
+}

@@ -1,0 +1,20 @@
+<label [class]="cssClass()">
+  <span class="gns-radio-option__control">
+    <input
+      type="radio"
+      class="gns-radio-option__input"
+      [attr.name]="groupName()"
+      [attr.value]="value()"
+      [checked]="isChecked()"
+      [disabled]="isDisabledNow()"
+      [attr.aria-checked]="isChecked()"
+      [attr.aria-disabled]="isDisabledNow()"
+      (change)="handleChange()"
+    />
+    <span class="gns-radio-option__circle" aria-hidden="true">
+      <span class="gns-radio-option__dot"></span>
+    </span>
+  </span>
+
+  <span class="gns-radio-option__label">{{ label() }}</span>
+</label>

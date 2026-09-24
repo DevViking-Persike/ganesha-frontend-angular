@@ -1,0 +1,39 @@
+<div class="{{ wrapperClass() }}">
+    @if (isLoading()) {
+        <div class="gns-table__loading-overlay" role="status" aria-label="Loading data">
+            <div class="gns-table__spinner" aria-hidden="true"></div>
+            <span class="gns-sr-only">Loading…</span>
+        </div>
+    }
+
+    <div class="gns-table__scroll-container">
+        <table class="{{ tableClass() }}" [attr.aria-busy]="isLoading()">
+            @if (header(); as header) {
+                <thead class="gns-table__head">
+                    <tr class="gns-table__head-row">
+                        <ng-container [ngTemplateOutlet]="header.template" />
+                    </tr>
+                </thead>
+            }
+
+            <tbody class="gns-table__body">
+                @if (hasRows()) {
+                    @for (item of items(); track item) {
+                        <ng-container
+                            *ngTemplateOutlet="row()?.template; context: { $implicit: item }" />
+                    }
+                } @else if (!isLoading()) {
+                    <tr class="gns-table__empty-row">
+                        <td class="gns-table__empty-cell" colspan="999">
+                            @if (empty(); as empty) {
+                                <ng-container [ngTemplateOutlet]="empty.template" />
+                            } @else {
+                                <span class="gns-table__empty-default">No data available.</span>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

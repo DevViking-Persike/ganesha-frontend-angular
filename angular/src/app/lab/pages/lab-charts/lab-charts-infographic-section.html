@@ -1,0 +1,137 @@
+<gns-section title="Infographic Charts" subtitle="Reusable design-system components for infographic-style data visualization: pie, gauge, funnel, process, stacked bar, and bubble charts.">
+
+    <gns-grid [columns]="2" gap="6">
+
+        <gns-card>
+            <div header style="padding: var(--gns-space-4) var(--gns-space-5); border-bottom: 1px solid var(--gns-color-border-subtle);">
+                <div style="font-size: var(--gns-text-sm); font-weight: var(--gns-font-weight-semibold); color: var(--gns-color-text-primary);">Market Share</div>
+                <div style="font-size: var(--gns-text-xs); color: var(--gns-color-text-secondary); margin-top: var(--gns-space-1);">Gradient pie chart — Q1 2026</div>
+            </div>
+            <div style="padding: var(--gns-space-5); display: flex; justify-content: center;">
+                <gns-pie-chart [data]="pieMarketShare" [size]="240" [showGradient]="true" [showLegend]="true" />
+            </div>
+        </gns-card>
+
+        <gns-card>
+            <div header style="padding: var(--gns-space-4) var(--gns-space-5); border-bottom: 1px solid var(--gns-color-border-subtle);">
+                <div style="font-size: var(--gns-text-sm); font-weight: var(--gns-font-weight-semibold); color: var(--gns-color-text-primary);">Expense Breakdown</div>
+                <div style="font-size: var(--gns-text-xs); color: var(--gns-color-text-secondary); margin-top: var(--gns-space-1);">Flat pie chart — Operating costs</div>
+            </div>
+            <div style="padding: var(--gns-space-5); display: flex; justify-content: center;">
+                <gns-pie-chart [data]="pieExpenses" [size]="240" [showGradient]="false" [showLegend]="true" />
+            </div>
+        </gns-card>
+
+    </gns-grid>
+
+    <!-- Gauge Charts -->
+    <div style="margin-top: var(--gns-space-6);">
+        <gns-card>
+            <div header style="padding: var(--gns-space-4) var(--gns-space-5); border-bottom: 1px solid var(--gns-color-border-subtle);">
+                <div style="font-size: var(--gns-text-sm); font-weight: var(--gns-font-weight-semibold); color: var(--gns-color-text-primary);">Gauge Charts</div>
+                <div style="font-size: var(--gns-text-xs); color: var(--gns-color-text-secondary); margin-top: var(--gns-space-1);">Semi-circle gauges for KPI monitoring</div>
+            </div>
+            <div style="padding: var(--gns-space-6); display: flex; justify-content: space-around; align-items: flex-start; flex-wrap: wrap; gap: var(--gns-space-6);">
+                <gns-gauge-chart [value]="73" [maxValue]="100" [size]="200" [strokeWidth]="18"
+                                 label="Performance" startColor="#3F51B5" endColor="#00BCD4" />
+                <gns-gauge-chart [value]="42" [maxValue]="100" [size]="200" [strokeWidth]="18"
+                                 label="Capacity" startColor="#FFC107" endColor="#F44336" />
+                <gns-gauge-chart [value]="89" [maxValue]="100" [size]="200" [strokeWidth]="18"
+                                 label="Uptime" valueLabel="99.9%" startColor="#4CAF50" endColor="#8BC34A" />
+            </div>
+        </gns-card>
+    </div>
+
+    <!-- Funnel Chart + Stacked Bar side by side -->
+    <div style="margin-top: var(--gns-space-6);">
+        <gns-grid [columns]="2" gap="6">
+
+            <gns-card>
+                <div header style="padding: var(--gns-space-4) var(--gns-space-5); border-bottom: 1px solid var(--gns-color-border-subtle);">
+                    <div style="font-size: var(--gns-text-sm); font-weight: var(--gns-font-weight-semibold); color: var(--gns-color-text-primary);">Sales Funnel</div>
+                    <div style="font-size: var(--gns-text-xs); color: var(--gns-color-text-secondary); margin-top: var(--gns-space-1);">Lead-to-close conversion pipeline</div>
+                </div>
+                <div style="padding: var(--gns-space-5); display: flex; justify-content: center;">
+                    <gns-funnel-chart [data]="funnelData" [width]="380" [stepHeight]="52" />
+                </div>
+            </gns-card>
+
+            <gns-card>
+                <div header style="padding: var(--gns-space-4) var(--gns-space-5); border-bottom: 1px solid var(--gns-color-border-subtle);">
+                    <div style="font-size: var(--gns-text-sm); font-weight: var(--gns-font-weight-semibold); color: var(--gns-color-text-primary);">Quarterly Revenue by Region</div>
+                    <div style="font-size: var(--gns-text-xs); color: var(--gns-color-text-secondary); margin-top: var(--gns-space-1);">Stacked bar chart — $ thousands</div>
+                </div>
+                <div style="padding: var(--gns-space-5);">
+                    <gns-stacked-bar-chart [series]="stackedSeries" [labels]="stackedLabels" [height]="300"
+                                           [showLabels]="true" [showLegend]="true" />
+                </div>
+            </gns-card>
+
+        </gns-grid>
+    </div>
+
+    <!-- Multiple funnel examples -->
+    <div style="margin-top: var(--gns-space-6);">
+        <gns-card>
+            <div header style="padding: var(--gns-space-4) var(--gns-space-5); border-bottom: 1px solid var(--gns-color-border-subtle);">
+                <div style="font-size: var(--gns-text-sm); font-weight: var(--gns-font-weight-semibold); color: var(--gns-color-text-primary);">Funnel Variations</div>
+                <div style="font-size: var(--gns-text-xs); color: var(--gns-color-text-secondary); margin-top: var(--gns-space-1);">The component should support more than one pipeline: sales, hiring, and customer support.</div>
+            </div>
+            <div style="padding: var(--gns-space-5); display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: var(--gns-space-5); align-items: start;">
+                <div style="display: flex; flex-direction: column; gap: var(--gns-space-3); align-items: center;">
+                    <div style="font-size: var(--gns-text-xs); font-weight: var(--gns-font-weight-semibold); color: var(--gns-color-text-primary); text-transform: uppercase; letter-spacing: var(--gns-tracking-wide);">Sales</div>
+                    <gns-funnel-chart [data]="funnelData" [width]="220" [stepHeight]="40" />
+                </div>
+                <div style="display: flex; flex-direction: column; gap: var(--gns-space-3); align-items: center;">
+                    <div style="font-size: var(--gns-text-xs); font-weight: var(--gns-font-weight-semibold); color: var(--gns-color-text-primary); text-transform: uppercase; letter-spacing: var(--gns-tracking-wide);">Hiring</div>
+                    <gns-funnel-chart [data]="hiringFunnelData" [width]="220" [stepHeight]="40" />
+                </div>
+                <div style="display: flex; flex-direction: column; gap: var(--gns-space-3); align-items: center;">
+                    <div style="font-size: var(--gns-text-xs); font-weight: var(--gns-font-weight-semibold); color: var(--gns-color-text-primary); text-transform: uppercase; letter-spacing: var(--gns-tracking-wide);">Support</div>
+                    <gns-funnel-chart [data]="supportFunnelData" [width]="220" [stepHeight]="40" />
+                </div>
+            </div>
+        </gns-card>
+    </div>
+
+    <!-- Process / Arrow Flow Chart -->
+    <div style="margin-top: var(--gns-space-6);">
+        <gns-card>
+            <div header style="padding: var(--gns-space-4) var(--gns-space-5); border-bottom: 1px solid var(--gns-color-border-subtle);">
+                <div style="font-size: var(--gns-text-sm); font-weight: var(--gns-font-weight-semibold); color: var(--gns-color-text-primary);">Process Flow</div>
+                <div style="font-size: var(--gns-text-xs); color: var(--gns-color-text-secondary); margin-top: var(--gns-space-1);">Arrow-based infographic process chart</div>
+            </div>
+            <div style="padding: var(--gns-space-5);">
+                <gns-process-chart [steps]="processSteps" />
+            </div>
+        </gns-card>
+    </div>
+
+    <!-- Line Chart with Area Gradient -->
+    <div style="margin-top: var(--gns-space-6);">
+        <gns-card>
+            <div header style="padding: var(--gns-space-4) var(--gns-space-5); border-bottom: 1px solid var(--gns-color-border-subtle);">
+                <div style="font-size: var(--gns-text-sm); font-weight: var(--gns-font-weight-semibold); color: var(--gns-color-text-primary);">Revenue Trend (Gradient Area)</div>
+                <div style="font-size: var(--gns-text-xs); color: var(--gns-color-text-secondary); margin-top: var(--gns-space-1);">Line chart with gradient fill — 6-month revenue trend</div>
+            </div>
+            <div style="padding: var(--gns-space-5);">
+                <gns-line-chart [series]="revenueVsExpenses" [labels]="monthLabels" [height]="300"
+                                [showArea]="true" [showAreaGradient]="true" [showDots]="true" [showGrid]="true" />
+            </div>
+        </gns-card>
+    </div>
+
+    <!-- Bubble chart — Market Analysis -->
+    <div style="margin-top: var(--gns-space-6);">
+        <gns-card>
+            <div header style="padding: var(--gns-space-4) var(--gns-space-5); border-bottom: 1px solid var(--gns-color-border-subtle);">
+                <div style="font-size: var(--gns-text-sm); font-weight: var(--gns-font-weight-semibold); color: var(--gns-color-text-primary);">Market Analysis</div>
+                <div style="font-size: var(--gns-text-xs); color: var(--gns-color-text-secondary); margin-top: var(--gns-space-1);">Revenue (X) vs Growth % (Y) — bubble size = customer base</div>
+            </div>
+            <div style="padding: var(--gns-space-5);">
+                <gns-bubble-chart [data]="marketAnalysis" [height]="420" />
+            </div>
+        </gns-card>
+    </div>
+
+</gns-section>

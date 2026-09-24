@@ -1,0 +1,71 @@
+<div
+    style="min-height: calc(100vh - var(--gns-size-topbar-height)); display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, var(--gns-primary-600) 0%, var(--gns-primary-900) 100%); padding: var(--gns-space-8);">
+
+    <div style="width: 100%; max-width: 24rem;">
+        <gns-card>
+            <div style="padding: var(--gns-space-8);">
+
+                <!-- Brand/Logo -->
+                <div style="text-align: center; margin-bottom: var(--gns-space-8);">
+                    <div
+                        style="display: inline-flex; align-items: center; justify-content: center; width: 3rem; height: 3rem; border-radius: var(--gns-radius-xl); background: var(--gns-primary-600); margin-bottom: var(--gns-space-3);">
+                        <svg width="24" height="24" viewBox="0 0 28 28" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path d="M7 14L13 20L21 8" stroke="white" stroke-width="2.5"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </div>
+                    <h1
+                        style="font-size: var(--gns-text-2xl); font-weight: var(--gns-font-weight-bold); color: var(--gns-color-text-primary); margin-bottom: var(--gns-space-1);">
+                        Welcome back</h1>
+                    <p style="font-size: var(--gns-text-sm); color: var(--gns-color-text-secondary);">
+                        Sign in to your Ganesha account</p>
+                </div>
+
+                <!-- Login Form -->
+                <div style="display: flex; flex-direction: column; gap: var(--gns-space-5);">
+                    <gns-input-text label="Email address" placeholder="you@example.com" type="email"
+                        [value]="authEmail()" (valueChange)="authEmail.set($event)" />
+                    <gns-input-password label="Password" placeholder="Enter your password"
+                        [value]="authPassword()" (valueChange)="authPassword.set($event)" />
+
+                    <div style="display: flex; align-items: center; justify-content: space-between;">
+                        <gns-checkbox label="Remember me"
+                            [value]="rememberMe()" (valueChange)="rememberMe.set($event)" />
+                        <a href="lab/auth"
+                            style="font-size: var(--gns-text-sm); color: var(--gns-color-text-link); text-decoration: none;">
+                            Forgot password?</a>
+                    </div>
+
+                    <gns-button label="Sign In" variant="primary" size="large" additionalCssClass="gns-w-full" />
+                </div>
+
+                <!-- Divider -->
+                <div style="display: flex; align-items: center; gap: var(--gns-space-3); margin: var(--gns-space-6) 0;">
+                    <div style="flex: 1; height: 1px; background: var(--gns-color-border-default);"></div>
+                    <span
+                        style="font-size: var(--gns-text-xs); color: var(--gns-color-text-tertiary); text-transform: uppercase; letter-spacing: var(--gns-tracking-wider);">
+                        or continue with</span>
+                    <div style="flex: 1; height: 1px; background: var(--gns-color-border-default);"></div>
+                </div>
+
+                <!-- Social Login Buttons -->
+                <div style="display: flex; gap: var(--gns-space-3);">
+                    <gns-button label="Google" variant="outline" additionalCssClass="gns-w-full" />
+                    <gns-button label="GitHub" variant="outline" additionalCssClass="gns-w-full" />
+                </div>
+
+                <!-- Sign Up Link -->
+                <p
+                    style="text-align: center; margin-top: var(--gns-space-6); font-size: var(--gns-text-sm); color: var(--gns-color-text-secondary);">
+                    Don't have an account?
+                    <a href="lab/auth"
+                        style="color: var(--gns-color-text-link); text-decoration: none; font-weight: var(--gns-font-weight-medium);">
+                        Sign up</a>
+                </p>
+
+            </div>
+        </gns-card>
+    </div>
+
+</div>

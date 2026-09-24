@@ -1,0 +1,176 @@
+/* =============================================================================
+   GnsActionListItem — Scoped Styles
+   ============================================================================= */
+
+/* ----------------------------------------------------------------------------
+   BASE
+---------------------------------------------------------------------------- */
+.gns-action-list-item {
+    display: flex;
+    align-items: stretch;
+    border-bottom: 1px solid var(--gns-color-border-default);
+    background-color: var(--gns-color-surface-default);
+    transition: background-color 120ms ease;
+    min-height: 56px;
+    position: relative;
+}
+
+/* Last child — remove the divider border */
+.gns-action-list-item:last-child {
+    border-bottom: none;
+}
+
+/* ----------------------------------------------------------------------------
+   SELECTED STATE
+---------------------------------------------------------------------------- */
+.gns-action-list-item--selected {
+    background-color: var(--gns-color-bg-subtle);
+}
+
+.gns-action-list-item--selected::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background-color: var(--gns-color-interactive-primary-bg);
+    border-radius: 0 var(--gns-radius-sm) var(--gns-radius-sm) 0;
+}
+
+/* ----------------------------------------------------------------------------
+   BODY (clickable area)
+---------------------------------------------------------------------------- */
+.gns-action-list-item__body {
+    display: flex;
+    align-items: center;
+    gap: var(--gns-space-3);
+    padding: var(--gns-space-3) var(--gns-space-4);
+    flex: 1;
+    min-width: 0;
+    outline: none;
+    cursor: default;
+}
+
+/* Clickable variant */
+.gns-action-list-item--clickable .gns-action-list-item__body {
+    cursor: pointer;
+}
+
+.gns-action-list-item--clickable:hover .gns-action-list-item__body {
+    background-color: var(--gns-color-bg-subtle);
+}
+
+.gns-action-list-item--clickable:active .gns-action-list-item__body {
+    background-color: var(--gns-color-bg-muted);
+}
+
+.gns-action-list-item--clickable .gns-action-list-item__body:focus-visible {
+    outline: var(--gns-outline-width-focus) var(--gns-outline-style-focus) var(--gns-color-interactive-focus-ring);
+    outline-offset: -2px;
+}
+
+/* ----------------------------------------------------------------------------
+   ICON
+---------------------------------------------------------------------------- */
+.gns-action-list-item__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    font-size: 18px;
+    color: var(--gns-color-text-secondary);
+}
+
+/* ----------------------------------------------------------------------------
+   TEXT (title + description)
+---------------------------------------------------------------------------- */
+.gns-action-list-item__text {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gns-space-0-5, 2px);
+    flex: 1;
+    min-width: 0;
+}
+
+.gns-action-list-item__title {
+    font-size: var(--gns-text-sm);
+    font-weight: var(--gns-font-weight-medium);
+    color: var(--gns-color-text-primary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: var(--gns-leading-snug);
+}
+
+.gns-action-list-item--selected .gns-action-list-item__title {
+    color: var(--gns-color-interactive-primary-bg);
+    font-weight: var(--gns-font-weight-semibold);
+}
+
+.gns-action-list-item__description {
+    font-size: var(--gns-text-xs);
+    color: var(--gns-color-text-secondary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: var(--gns-leading-snug);
+}
+
+/* ----------------------------------------------------------------------------
+   META
+---------------------------------------------------------------------------- */
+.gns-action-list-item__meta {
+    display: flex;
+    align-items: center;
+    gap: var(--gns-space-2);
+    flex-shrink: 0;
+    color: var(--gns-color-text-secondary);
+    font-size: var(--gns-text-xs);
+}
+
+/* ----------------------------------------------------------------------------
+   ACTIONS
+---------------------------------------------------------------------------- */
+.gns-action-list-item__actions {
+    display: flex;
+    align-items: center;
+    gap: var(--gns-space-1);
+    padding: var(--gns-space-2) var(--gns-space-3);
+    flex-shrink: 0;
+    border-left: 1px solid var(--gns-color-border-default);
+
+    /* Hidden by default, show on hover / focus-within */
+    opacity: 0;
+    transition: opacity 150ms ease;
+}
+
+.gns-action-list-item:hover .gns-action-list-item__actions,
+.gns-action-list-item:focus-within .gns-action-list-item__actions,
+.gns-action-list-item--selected .gns-action-list-item__actions {
+    opacity: 1;
+}
+
+/* Always visible on touch devices */
+@media (hover: none) {
+    .gns-action-list-item__actions {
+        opacity: 1;
+    }
+}
+
+/* ----------------------------------------------------------------------------
+   RESPONSIVE — MOBILE
+---------------------------------------------------------------------------- */
+@media (max-width: 639px) {
+    .gns-action-list-item__body {
+        padding: var(--gns-space-3);
+        gap: var(--gns-space-2);
+    }
+
+    .gns-action-list-item__actions {
+        padding: var(--gns-space-2);
+        opacity: 1;   /* always show on mobile */
+    }
+}

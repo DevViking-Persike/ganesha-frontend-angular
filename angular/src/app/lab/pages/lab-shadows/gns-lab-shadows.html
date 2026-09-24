@@ -1,0 +1,36 @@
+<div class="gns-lab-page">
+
+    <gns-page-header title="Shadows"
+                     eyebrow="Foundations"
+                     description="Elevation scale for creating depth and visual hierarchy." />
+
+    <gns-section title="Elevation Scale" subtitle="From subtle to dramatic shadow levels.">
+        <div class="gns-shadow-scale">
+            @for (shadow of shadows; track shadow.token) {
+                <div class="gns-shadow-sample">
+                    <div class="gns-shadow-sample__box" [style.box-shadow]="'var(--gns-shadow-' + shadow.token + ')'"></div>
+                    <div class="gns-shadow-sample__label">--gns-shadow-{{ shadow.token }}</div>
+                    <div style="font-size: var(--gns-text-xs); color: var(--gns-color-text-secondary); text-align: center;">{{ shadow.description }}</div>
+                </div>
+            }
+        </div>
+    </gns-section>
+
+    <gns-section title="Component Shadows" subtitle="Semantic shadow tokens mapped to specific component roles.">
+        <table class="gns-token-table">
+            <thead>
+                <tr><th>Token</th><th>Maps To</th><th>Usage</th></tr>
+            </thead>
+            <tbody>
+                @for (shadow of componentShadows; track shadow.token) {
+                    <tr>
+                        <td class="gns-token-table__name">{{ shadow.token }}</td>
+                        <td class="gns-token-table__value">{{ shadow.mapsTo }}</td>
+                        <td>{{ shadow.usage }}</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </gns-section>
+
+</div>

@@ -1,0 +1,128 @@
+/* =============================================================================
+   GANESHA DESIGN SYSTEM — SEMANTIC SIZE TOKENS
+   settings/_tokens-sizes.css
+
+   Component-level size tokens for icons, inputs, buttons, avatars,
+   and primary layout chrome (sidebar, topbar).
+   ============================================================================= */
+
+:root {
+
+  /* ---------------------------------------------------------------------------
+     ICONS
+     Standard sizes for inline icons, standalone icons, and button icons.
+  --------------------------------------------------------------------------- */
+
+  --gns-size-icon-xs:   0.75rem;   /* 12px — inline indicator, badge dot */
+  --gns-size-icon-sm:   1rem;      /* 16px — inline with small text, compact UI */
+  --gns-size-icon-md:   1.25rem;   /* 20px — default, paired with base body text */
+  --gns-size-icon-lg:   1.5rem;    /* 24px — prominent icons, navigation */
+  --gns-size-icon-xl:   2rem;      /* 32px — section icons, feature icons */
+  --gns-size-icon-2xl:  2.5rem;    /* 40px — empty states, hero icons */
+  --gns-size-icon-3xl:  3rem;      /* 48px — large decorative icons */
+
+  /* ---------------------------------------------------------------------------
+     INPUT HEIGHTS
+     Consistent across text inputs, selects, date pickers, etc.
+  --------------------------------------------------------------------------- */
+
+  --gns-size-input-height-xs:   1.75rem;   /* 28px — dense tables, compact forms */
+  --gns-size-input-height-sm:   2rem;      /* 32px — secondary / filter inputs */
+  --gns-size-input-height-md:   2.5rem;    /* 40px — default form input */
+  --gns-size-input-height-lg:   3rem;      /* 48px — prominent search bars */
+  --gns-size-input-height-xl:   3.5rem;    /* 56px — hero search, large forms */
+
+  /* ---------------------------------------------------------------------------
+     BUTTON HEIGHTS
+  --------------------------------------------------------------------------- */
+
+  --gns-size-button-height-xs:  1.75rem;   /* 28px — icon-only compact */
+  --gns-size-button-height-sm:  2rem;      /* 32px — secondary actions in dense UI */
+  --gns-size-button-height-md:  2.5rem;    /* 40px — default CTA */
+  --gns-size-button-height-lg:  3rem;      /* 48px — prominent CTA */
+  --gns-size-button-height-xl:  3.5rem;    /* 56px — hero / landing CTA */
+
+  /* ---------------------------------------------------------------------------
+     AVATARS
+  --------------------------------------------------------------------------- */
+
+  --gns-size-avatar-xs:   1.5rem;    /* 24px — inline in text, dense lists */
+  --gns-size-avatar-sm:   2rem;      /* 32px — comment threads, compact cards */
+  --gns-size-avatar-md:   2.5rem;    /* 40px — default list/table row */
+  --gns-size-avatar-lg:   3rem;      /* 48px — profile cards */
+  --gns-size-avatar-xl:   4rem;      /* 64px — user profile header */
+  --gns-size-avatar-2xl:  5rem;      /* 80px — account settings page */
+  --gns-size-avatar-3xl:  7rem;      /* 112px — full profile page hero */
+
+  /* ---------------------------------------------------------------------------
+     BADGES & INDICATORS
+  --------------------------------------------------------------------------- */
+
+  --gns-size-badge-dot:       0.5rem;     /*  8px — presence dot */
+  --gns-size-badge-sm:        1.25rem;    /* 20px — numeric badge */
+  --gns-size-badge-md:        1.5rem;     /* 24px — default badge */
+
+  /* ---------------------------------------------------------------------------
+     LAYOUT CHROME
+  --------------------------------------------------------------------------- */
+
+  /* Sidebar */
+  --gns-size-sidebar-width:          16rem;     /* 256px — default expanded */
+  --gns-size-sidebar-width-collapsed: 4rem;     /*  64px — icon-only collapsed */
+  --gns-size-sidebar-width-wide:     20rem;     /* 320px — wide panel variant */
+
+  /* Top navigation bar */
+  --gns-size-topbar-height:          3.5rem;    /* 56px — main topbar */
+  --gns-size-topbar-height-sm:       3rem;      /* 48px — compact/mobile */
+
+  /* Secondary / sub-navigation bar */
+  --gns-size-subbar-height:          2.75rem;   /* 44px */
+
+  /* Footer */
+  --gns-size-footer-height:          4rem;      /* 64px — thin footer bar */
+
+  /* ---------------------------------------------------------------------------
+     PANEL / DRAWER WIDTHS
+  --------------------------------------------------------------------------- */
+
+  --gns-size-panel-sm:   20rem;    /* 320px — notifications, mini drawers */
+  --gns-size-panel-md:   28rem;    /* 448px — standard drawer/aside */
+  --gns-size-panel-lg:   36rem;    /* 576px — detail panel */
+  --gns-size-panel-xl:   48rem;    /* 768px — wide panel / split view */
+
+  /* ---------------------------------------------------------------------------
+     MODAL WIDTHS
+  --------------------------------------------------------------------------- */
+
+  --gns-size-modal-sm:   24rem;    /* 384px — confirmation dialogs */
+  --gns-size-modal-md:   32rem;    /* 512px — standard modal */
+  --gns-size-modal-lg:   42rem;    /* 672px — form modals */
+  --gns-size-modal-xl:   56rem;    /* 896px — large content modals */
+  --gns-size-modal-full: 100%;     /* fullscreen */
+
+  /* ---------------------------------------------------------------------------
+     DROPDOWN / POPOVER
+  --------------------------------------------------------------------------- */
+
+  --gns-size-dropdown-min-width:  12rem;   /* 192px */
+  --gns-size-dropdown-max-width:  18rem;   /* 288px */
+  --gns-size-dropdown-max-height: 20rem;   /* 320px — scrollable list */
+
+  /* ---------------------------------------------------------------------------
+     FORM
+  --------------------------------------------------------------------------- */
+
+  --gns-size-form-max-width:      32rem;   /* ideal single-column form width */
+  --gns-size-label-gap:           var(--gns-space-1-5);  /* 6px — label to input */
+  --gns-size-field-gap:           var(--gns-space-4);    /* 16px — between fields */
+
+  /* ---------------------------------------------------------------------------
+     CARD / TILE
+  --------------------------------------------------------------------------- */
+
+  --gns-size-card-min-width:  16rem;   /* 256px */
+  --gns-size-thumbnail-sm:     4rem;   /* 64px */
+  --gns-size-thumbnail-md:     6rem;   /* 96px */
+  --gns-size-thumbnail-lg:     8rem;   /* 128px */
+
+}

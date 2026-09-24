@@ -1,0 +1,83 @@
+.gns-pie-chart {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25rem;
+}
+
+.gns-pie-chart__chart-wrap {
+    position: relative;
+    display: inline-flex;
+}
+
+.gns-pie-chart__svg {
+    display: block;
+}
+
+.gns-pie-chart__slice {
+    transition: transform 0.2s ease, filter 0.2s ease;
+    cursor: default;
+}
+
+.gns-pie-chart__slice:hover {
+    transform: scale(1.04);
+    filter: brightness(1.1) drop-shadow(0 2px 8px rgba(0, 0, 0, 0.15));
+}
+
+.gns-pie-chart__slice--animated {
+    opacity: 0;
+    animation: pieSliceIn 0.45s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    animation-delay: var(--gns-pie-delay, 0ms);
+}
+
+.gns-pie-chart__legend {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.25rem;
+    justify-content: center;
+}
+
+.gns-pie-chart__legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    font-size: 0.8125rem;
+    color: var(--gns-color-text-primary, #333);
+}
+
+.gns-pie-chart__legend-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 3px;
+    flex-shrink: 0;
+}
+
+.gns-pie-chart__legend-label {
+    color: var(--gns-color-text-primary, #666);
+}
+
+.gns-pie-chart__legend-pct {
+    color: var(--gns-color-text-primary, #333);
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+}
+
+.gns-pie-chart__empty {
+    text-align: center;
+    color: var(--gns-color-text-tertiary, #aaa);
+    padding: 2rem;
+}
+
+@keyframes pieSliceIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}

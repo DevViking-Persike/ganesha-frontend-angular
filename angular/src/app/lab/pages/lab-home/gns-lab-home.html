@@ -1,0 +1,109 @@
+<div class="gns-lab-page">
+
+    <!-- Hero Section -->
+    <gns-section>
+        <div style="text-align: center; padding: var(--gns-space-12) 0 var(--gns-space-8);">
+            <h1 style="font-family: var(--gns-font-display); font-size: var(--gns-text-5xl); font-weight: var(--gns-font-weight-bold); color: var(--gns-color-text-primary); margin-bottom: var(--gns-space-4); letter-spacing: var(--gns-tracking-wide);">
+                <span style="color: var(--gns-ouro-500); font-size: 1.2em;">&#x0950;</span> Ganesha Design System
+            </h1>
+            <p style="font-size: var(--gns-text-xl); color: var(--gns-color-text-secondary); max-width: 60ch; margin: 0 auto var(--gns-space-8); line-height: var(--gns-leading-relaxed);">
+                A spiritual, token-driven design system inspired by the Ganesha Supremo palette.
+                Built with mystical tokens, accessible components, and divine patterns.
+            </p>
+            <div style="display: flex; gap: var(--gns-space-3); justify-content: center; flex-wrap: wrap;">
+                <gns-button label="Browse Components" variant="primary" size="large" />
+                <gns-button label="View Tokens" variant="outline" size="large" />
+            </div>
+        </div>
+    </gns-section>
+
+    <!-- Foundations Section -->
+    <gns-section title="Foundations" subtitle="Design tokens and visual primitives that form the base of every component.">
+        <gns-grid [columns]="4" gap="4">
+            <gns-card [isHoverable]="true">
+                <div header style="padding: var(--gns-space-3) var(--gns-space-4); font-weight: var(--gns-font-weight-semibold); font-size: var(--gns-text-sm);">Colors</div>
+                <div style="display: flex; gap: var(--gns-space-1); padding: 0 var(--gns-space-1) var(--gns-space-1);">
+                    <span style="flex:1; height: 2rem; background: var(--gns-primary-500); border-radius: var(--gns-radius-sm);"></span>
+                    <span style="flex:1; height: 2rem; background: var(--gns-success-500); border-radius: var(--gns-radius-sm);"></span>
+                    <span style="flex:1; height: 2rem; background: var(--gns-warning-500); border-radius: var(--gns-radius-sm);"></span>
+                    <span style="flex:1; height: 2rem; background: var(--gns-danger-500); border-radius: var(--gns-radius-sm);"></span>
+                </div>
+                <p style="font-size: var(--gns-text-sm); color: var(--gns-color-text-secondary); padding: var(--gns-space-2) var(--gns-space-4);">
+                    Primitive and semantic color tokens for consistent theming.
+                </p>
+                <a footer href="lab/colors" style="font-size: var(--gns-text-sm); color: var(--gns-color-text-link); padding: var(--gns-space-3) var(--gns-space-4); display: block;">Explore Colors &rarr;</a>
+            </gns-card>
+
+            <gns-card [isHoverable]="true">
+                <div header style="padding: var(--gns-space-3) var(--gns-space-4); font-weight: var(--gns-font-weight-semibold); font-size: var(--gns-text-sm);">Typography</div>
+                <div style="padding: var(--gns-space-2) var(--gns-space-4);">
+                    <div style="font-size: var(--gns-text-2xl); font-weight: var(--gns-font-weight-bold); color: var(--gns-color-text-primary);">Aa</div>
+                    <div style="font-size: var(--gns-text-sm); color: var(--gns-color-text-secondary);">Inter - System UI</div>
+                </div>
+                <p style="font-size: var(--gns-text-sm); color: var(--gns-color-text-secondary); padding: var(--gns-space-2) var(--gns-space-4);">
+                    Type scale, weights, line heights, and tracking.
+                </p>
+                <a footer href="lab/typography" style="font-size: var(--gns-text-sm); color: var(--gns-color-text-link); padding: var(--gns-space-3) var(--gns-space-4); display: block;">Explore Typography &rarr;</a>
+            </gns-card>
+
+            <gns-card [isHoverable]="true">
+                <div header style="padding: var(--gns-space-3) var(--gns-space-4); font-weight: var(--gns-font-weight-semibold); font-size: var(--gns-text-sm);">Spacing</div>
+                <div style="padding: var(--gns-space-2) var(--gns-space-4);">
+                    <div style="display: flex; gap: var(--gns-space-1); align-items: flex-end;">
+                        <span style="width: 4px; height: 8px; background: var(--gns-primary-400); border-radius: 1px;"></span>
+                        <span style="width: 4px; height: 16px; background: var(--gns-primary-400); border-radius: 1px;"></span>
+                        <span style="width: 4px; height: 24px; background: var(--gns-primary-500); border-radius: 1px;"></span>
+                        <span style="width: 4px; height: 32px; background: var(--gns-primary-500); border-radius: 1px;"></span>
+                        <span style="width: 4px; height: 40px; background: var(--gns-primary-600); border-radius: 1px;"></span>
+                    </div>
+                </div>
+                <p style="font-size: var(--gns-text-sm); color: var(--gns-color-text-secondary); padding: var(--gns-space-2) var(--gns-space-4);">
+                    Consistent spacing scale from 0 to 96.
+                </p>
+                <a footer href="lab/spacing" style="font-size: var(--gns-text-sm); color: var(--gns-color-text-link); padding: var(--gns-space-3) var(--gns-space-4); display: block;">Explore Spacing &rarr;</a>
+            </gns-card>
+
+            <gns-card [isHoverable]="true">
+                <div header style="padding: var(--gns-space-3) var(--gns-space-4); font-weight: var(--gns-font-weight-semibold); font-size: var(--gns-text-sm);">Shadows</div>
+                <div style="padding: var(--gns-space-4); display: flex; justify-content: center;">
+                    <div style="width: 3rem; height: 3rem; background: var(--gns-color-surface-default); border-radius: var(--gns-radius-lg); box-shadow: var(--gns-shadow-lg);"></div>
+                </div>
+                <p style="font-size: var(--gns-text-sm); color: var(--gns-color-text-secondary); padding: var(--gns-space-2) var(--gns-space-4);">
+                    Elevation scale from subtle to dramatic.
+                </p>
+                <a footer href="lab/shadows" style="font-size: var(--gns-text-sm); color: var(--gns-color-text-link); padding: var(--gns-space-3) var(--gns-space-4); display: block;">Explore Shadows &rarr;</a>
+            </gns-card>
+        </gns-grid>
+    </gns-section>
+
+    <!-- Components Section -->
+    <gns-section title="Components" subtitle="Reusable UI building blocks designed for accessibility and composability.">
+        <gns-grid [columns]="3" gap="4">
+            @for (item of componentItems; track item.title) {
+                <gns-card [isHoverable]="true">
+                    <div style="padding: var(--gns-space-4);">
+                        <h3 style="font-size: var(--gns-text-base); font-weight: var(--gns-font-weight-semibold); margin-bottom: var(--gns-space-2);">{{ item.title }}</h3>
+                        <p style="font-size: var(--gns-text-sm); color: var(--gns-color-text-secondary); margin-bottom: var(--gns-space-3);">{{ item.description }}</p>
+                        <a [href]="item.href" style="font-size: var(--gns-text-sm); color: var(--gns-color-text-link);">View &rarr;</a>
+                    </div>
+                </gns-card>
+            }
+        </gns-grid>
+    </gns-section>
+
+    <!-- Patterns Section -->
+    <gns-section title="Patterns" subtitle="Full-page compositions showing how components work together in real applications.">
+        <gns-grid [columns]="3" gap="4">
+            @for (item of patternItems; track item.title) {
+                <gns-card [isHoverable]="true">
+                    <div style="padding: var(--gns-space-4);">
+                        <h3 style="font-size: var(--gns-text-base); font-weight: var(--gns-font-weight-semibold); margin-bottom: var(--gns-space-2);">{{ item.title }}</h3>
+                        <p style="font-size: var(--gns-text-sm); color: var(--gns-color-text-secondary); margin-bottom: var(--gns-space-3);">{{ item.description }}</p>
+                        <a [href]="item.href" style="font-size: var(--gns-text-sm); color: var(--gns-color-text-link);">View &rarr;</a>
+                    </div>
+                </gns-card>
+            }
+        </gns-grid>
+    </gns-section>
+
+</div>

@@ -1,0 +1,27 @@
+<div class="{{ cssClass() }}" role="status">
+  @if (icon()) {
+    <span class="gns-empty-state__icon {{ icon() }}" aria-hidden="true"></span>
+  } @else {
+    <span class="gns-empty-state__icon-default" aria-hidden="true">
+      <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="6" y="10" width="36" height="28" rx="4" stroke="currentColor" stroke-width="2"/>
+        <path d="M6 18H42" stroke="currentColor" stroke-width="2"/>
+        <circle cx="12" cy="14" r="1.5" fill="currentColor"/>
+        <circle cx="17" cy="14" r="1.5" fill="currentColor"/>
+        <circle cx="22" cy="14" r="1.5" fill="currentColor"/>
+        <path d="M18 28H30" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        <path d="M20 33H28" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    </span>
+  }
+
+  <h3 class="gns-empty-state__title">{{ title() }}</h3>
+
+  @if (description()) {
+    <p class="gns-empty-state__description">{{ description() }}</p>
+  }
+
+  <div class="gns-empty-state__actions">
+    <ng-content select="[actions]" />
+  </div>
+</div>

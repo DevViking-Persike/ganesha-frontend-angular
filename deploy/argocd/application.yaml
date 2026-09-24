@@ -1,0 +1,28 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: ganesha
+  namespace: argocd
+spec:
+  project: ganesha
+  source:
+    repoURL: https://github.com/DevViking-Persike/ganesha-frontend-angular.git
+    targetRevision: gitops
+    path: .
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: ganesha
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - ServerSideApply=true
+      - ApplyOutOfSyncOnly=true
+      - CreateNamespace=false
+    retry:
+      limit: 5
+      backoff:
+        duration: 10s
+        factor: 2
+        maxDuration: 5m

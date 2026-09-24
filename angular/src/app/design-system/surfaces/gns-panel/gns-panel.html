@@ -1,0 +1,33 @@
+<div [class]="cssClass()">
+    @if (hasHeader()) {
+        <div class="gns-panel__header">
+            <div class="gns-panel__header-left">
+                @if (isCollapsible()) {
+                    <button
+                        type="button"
+                        class="gns-panel__toggle"
+                        [attr.aria-expanded]="ariaExpanded()"
+                        [attr.aria-label]="toggleAriaLabel()"
+                        (click)="toggleCollapse()"
+                    >
+                        <span class="gns-panel__chevron" aria-hidden="true"></span>
+                    </button>
+                }
+                @if (title()) {
+                    <span class="gns-panel__title">{{ title() }}</span>
+                }
+            </div>
+            @if (actionsContent()) {
+                <div class="gns-panel__actions">
+                    <ng-content select="[actions]"></ng-content>
+                </div>
+            }
+        </div>
+    }
+
+    <div [class]="bodyClass()">
+        <div class="gns-panel__body-inner">
+            <ng-content></ng-content>
+        </div>
+    </div>
+</div>

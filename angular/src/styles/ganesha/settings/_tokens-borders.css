@@ -1,0 +1,72 @@
+/* =============================================================================
+   GANESHA DESIGN SYSTEM — BORDER TOKENS
+   settings/_tokens-borders.css
+   ============================================================================= */
+
+:root {
+
+  /* ---------------------------------------------------------------------------
+     BORDER WIDTHS
+  --------------------------------------------------------------------------- */
+
+  --gns-border-width-0:  0px;
+  --gns-border-width-1:  1px;
+  --gns-border-width-2:  2px;
+  --gns-border-width-4:  4px;
+  --gns-border-width-8:  8px;
+
+  /* Semantic aliases */
+  --gns-border-width-none:    var(--gns-border-width-0);
+  --gns-border-width-hairline: var(--gns-border-width-1);
+  --gns-border-width-default: var(--gns-border-width-1);
+  --gns-border-width-medium:  var(--gns-border-width-2);
+  --gns-border-width-thick:   var(--gns-border-width-4);
+
+  /* Component-specific border widths */
+  --gns-border-width-input:   var(--gns-border-width-1);
+  --gns-border-width-card:    var(--gns-border-width-1);
+  --gns-border-width-focus:   var(--gns-border-width-2);
+  --gns-border-width-divider: var(--gns-border-width-1);
+  --gns-border-width-accent:  var(--gns-border-width-4);  /* left-border accents on alerts, etc. */
+
+  /* ---------------------------------------------------------------------------
+     BORDER STYLES
+  --------------------------------------------------------------------------- */
+
+  --gns-border-style-solid:   solid;
+  --gns-border-style-dashed:  dashed;
+  --gns-border-style-dotted:  dotted;
+  --gns-border-style-none:    none;
+
+  /* Semantic aliases */
+  --gns-border-style-default: var(--gns-border-style-solid);
+  --gns-border-style-divider: var(--gns-border-style-solid);
+  --gns-border-style-subtle:  var(--gns-border-style-dashed);
+
+  /* ---------------------------------------------------------------------------
+     BORDER SHORTHANDS (width + style — color is intentionally separate)
+     Use with a color token: border: var(--gns-border-default) var(--gns-color-border-default);
+  --------------------------------------------------------------------------- */
+
+  --gns-border-none:    var(--gns-border-width-none) var(--gns-border-style-solid);
+  --gns-border-default: var(--gns-border-width-default) var(--gns-border-style-solid);
+  --gns-border-medium:  var(--gns-border-width-medium)  var(--gns-border-style-solid);
+  --gns-border-thick:   var(--gns-border-width-thick)   var(--gns-border-style-solid);
+  --gns-border-dashed:  var(--gns-border-width-default) var(--gns-border-style-dashed);
+
+  /* ---------------------------------------------------------------------------
+     OUTLINE (focus rings — separate from border so they don't affect layout)
+  --------------------------------------------------------------------------- */
+
+  --gns-outline-width-focus:  2px;
+  --gns-outline-offset-focus: 2px;
+  --gns-outline-style-focus:  solid;
+
+  /* ---------------------------------------------------------------------------
+     DIVIDER
+  --------------------------------------------------------------------------- */
+
+  --gns-divider-width:    var(--gns-border-width-1);
+  --gns-divider-style:    var(--gns-border-style-solid);
+
+}

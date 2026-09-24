@@ -1,0 +1,164 @@
+/* =============================================================================
+   GANESHA DESIGN SYSTEM — TYPOGRAPHY TOKENS
+   settings/_tokens-typography.css
+   ============================================================================= */
+
+:root {
+
+  /* ---------------------------------------------------------------------------
+     FONT FAMILIES
+  --------------------------------------------------------------------------- */
+
+  /* System UI stack — optimised for legibility across OS at any size */
+  --gns-font-sans:
+    'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif,
+    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+
+  /* Monospace — for code, data, IDs */
+  --gns-font-mono:
+    'JetBrains Mono', 'Fira Code', ui-monospace, SFMono-Regular, Menlo,
+    Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+
+  /* Display / heading — Yatra One for Sanskrit-inspired branding
+     Devanagari-inspired Latin display typeface for titles and headings */
+  --gns-font-display:
+    'Yatra One', 'Tiro Devanagari Sanskrit', Georgia, 'Times New Roman', serif;
+
+  /* ---------------------------------------------------------------------------
+     FONT SIZES
+     Named on a t-shirt scale; values in rem (base 16px assumed).
+  --------------------------------------------------------------------------- */
+
+  --gns-text-xs:   0.75rem;    /*  12px */
+  --gns-text-sm:   0.875rem;   /*  14px */
+  --gns-text-base: 1rem;       /*  16px */
+  --gns-text-lg:   1.125rem;   /*  18px */
+  --gns-text-xl:   1.25rem;    /*  20px */
+  --gns-text-2xl:  1.5rem;     /*  24px */
+  --gns-text-3xl:  1.875rem;   /*  30px */
+  --gns-text-4xl:  2.25rem;    /*  36px */
+  --gns-text-5xl:  3rem;       /*  48px */
+  --gns-text-6xl:  3.75rem;    /*  60px */
+
+  /* ---------------------------------------------------------------------------
+     FONT WEIGHTS
+  --------------------------------------------------------------------------- */
+
+  --gns-font-weight-regular:   400;
+  --gns-font-weight-medium:    500;
+  --gns-font-weight-semibold:  600;
+  --gns-font-weight-bold:      700;
+  --gns-font-weight-extrabold: 800;
+
+  /* ---------------------------------------------------------------------------
+     LINE HEIGHTS
+  --------------------------------------------------------------------------- */
+
+  --gns-leading-none:     1;
+  --gns-leading-tight:    1.25;
+  --gns-leading-snug:     1.375;
+  --gns-leading-normal:   1.5;
+  --gns-leading-relaxed:  1.625;
+  --gns-leading-loose:    2;
+
+  /* Specific heading / body recommendations */
+  --gns-leading-heading:  var(--gns-leading-tight);
+  --gns-leading-body:     var(--gns-leading-normal);
+  --gns-leading-prose:    var(--gns-leading-relaxed);
+  --gns-leading-mono:     var(--gns-leading-normal);
+
+  /* ---------------------------------------------------------------------------
+     LETTER SPACING (TRACKING)
+  --------------------------------------------------------------------------- */
+
+  --gns-tracking-tighter:  -0.05em;
+  --gns-tracking-tight:    -0.025em;
+  --gns-tracking-normal:    0em;
+  --gns-tracking-wide:      0.025em;
+  --gns-tracking-wider:     0.05em;
+  --gns-tracking-widest:    0.1em;
+
+  /* Specific use-cases */
+  --gns-tracking-display:  var(--gns-tracking-tight);
+  --gns-tracking-label:    var(--gns-tracking-wide);
+  --gns-tracking-caps:     var(--gns-tracking-widest);  /* ALL-CAPS labels */
+
+  /* ---------------------------------------------------------------------------
+     SEMANTIC TYPOGRAPHY COMPOSITES
+     Combine size + weight + leading into named roles.
+     Used for consistent heading/body application.
+  --------------------------------------------------------------------------- */
+
+  /* Display */
+  --gns-type-display-size:    var(--gns-text-5xl);
+  --gns-type-display-weight:  var(--gns-font-weight-bold);
+  --gns-type-display-leading: var(--gns-leading-none);
+  --gns-type-display-tracking: var(--gns-tracking-tighter);
+
+  /* H1 */
+  --gns-type-h1-size:    var(--gns-text-4xl);
+  --gns-type-h1-weight:  var(--gns-font-weight-bold);
+  --gns-type-h1-leading: var(--gns-leading-tight);
+  --gns-type-h1-tracking: var(--gns-tracking-tight);
+
+  /* H2 */
+  --gns-type-h2-size:    var(--gns-text-3xl);
+  --gns-type-h2-weight:  var(--gns-font-weight-semibold);
+  --gns-type-h2-leading: var(--gns-leading-tight);
+  --gns-type-h2-tracking: var(--gns-tracking-tight);
+
+  /* H3 */
+  --gns-type-h3-size:    var(--gns-text-2xl);
+  --gns-type-h3-weight:  var(--gns-font-weight-semibold);
+  --gns-type-h3-leading: var(--gns-leading-snug);
+  --gns-type-h3-tracking: var(--gns-tracking-normal);
+
+  /* H4 */
+  --gns-type-h4-size:    var(--gns-text-xl);
+  --gns-type-h4-weight:  var(--gns-font-weight-semibold);
+  --gns-type-h4-leading: var(--gns-leading-snug);
+  --gns-type-h4-tracking: var(--gns-tracking-normal);
+
+  /* H5 */
+  --gns-type-h5-size:    var(--gns-text-lg);
+  --gns-type-h5-weight:  var(--gns-font-weight-semibold);
+  --gns-type-h5-leading: var(--gns-leading-snug);
+  --gns-type-h5-tracking: var(--gns-tracking-normal);
+
+  /* H6 */
+  --gns-type-h6-size:    var(--gns-text-base);
+  --gns-type-h6-weight:  var(--gns-font-weight-semibold);
+  --gns-type-h6-leading: var(--gns-leading-normal);
+  --gns-type-h6-tracking: var(--gns-tracking-normal);
+
+  /* Body */
+  --gns-type-body-lg-size:    var(--gns-text-lg);
+  --gns-type-body-lg-weight:  var(--gns-font-weight-regular);
+  --gns-type-body-lg-leading: var(--gns-leading-relaxed);
+
+  --gns-type-body-size:    var(--gns-text-base);
+  --gns-type-body-weight:  var(--gns-font-weight-regular);
+  --gns-type-body-leading: var(--gns-leading-normal);
+
+  --gns-type-body-sm-size:    var(--gns-text-sm);
+  --gns-type-body-sm-weight:  var(--gns-font-weight-regular);
+  --gns-type-body-sm-leading: var(--gns-leading-normal);
+
+  /* Label / UI Text */
+  --gns-type-label-size:    var(--gns-text-sm);
+  --gns-type-label-weight:  var(--gns-font-weight-medium);
+  --gns-type-label-leading: var(--gns-leading-tight);
+  --gns-type-label-tracking: var(--gns-tracking-wide);
+
+  /* Caption */
+  --gns-type-caption-size:    var(--gns-text-xs);
+  --gns-type-caption-weight:  var(--gns-font-weight-regular);
+  --gns-type-caption-leading: var(--gns-leading-normal);
+
+  /* Code */
+  --gns-type-code-size:    0.9em;   /* relative — scales with parent */
+  --gns-type-code-weight:  var(--gns-font-weight-regular);
+  --gns-type-code-leading: var(--gns-leading-relaxed);
+
+}

@@ -1,0 +1,112 @@
+/* =============================================================================
+   GANESHA DESIGN SYSTEM — BREAKPOINT TOKENS
+   settings/_tokens-breakpoints.css
+
+   CSS custom properties cannot be used inside @media queries directly,
+   but they serve as documentation tokens and can be consumed by JavaScript
+   via getComputedStyle(document.documentElement).getPropertyValue('--gns-bp-lg').
+
+   For @media use, reference the values directly or use PostCSS custom-media.
+   ============================================================================= */
+
+:root {
+
+  /* ---------------------------------------------------------------------------
+     BREAKPOINT VALUES
+     Aligned with the standard responsive grid: mobile-first, min-width.
+  --------------------------------------------------------------------------- */
+
+  --gns-bp-sm:    640px;    /* Small  — large phones, landscape */
+  --gns-bp-md:    768px;    /* Medium — tablets portrait */
+  --gns-bp-lg:    1024px;   /* Large  — tablets landscape, small laptops */
+  --gns-bp-xl:    1280px;   /* XLarge — desktops */
+  --gns-bp-2xl:   1536px;   /* 2XLarge — wide desktops */
+
+  /* ---------------------------------------------------------------------------
+     CONTAINER MAX-WIDTHS
+     Paired with each breakpoint; container centers with auto margins.
+  --------------------------------------------------------------------------- */
+
+  --gns-container-sm:    640px;    /* fills sm viewport */
+  --gns-container-md:    768px;    /* fills md viewport */
+  --gns-container-lg:    1024px;   /* fills lg viewport */
+  --gns-container-xl:    1280px;   /* fills xl viewport */
+  --gns-container-2xl:   1400px;   /* slightly tighter than 2xl for readability */
+  --gns-container-prose: 72ch;     /* ideal prose line length */
+  --gns-container-narrow: 42rem;   /* forms, modals, dialogs */
+
+  /* ---------------------------------------------------------------------------
+     GRID COLUMNS (reference)
+  --------------------------------------------------------------------------- */
+
+  --gns-grid-cols-default: 12;
+  --gns-grid-cols-sm:       4;
+  --gns-grid-cols-md:       8;
+  --gns-grid-cols-lg:      12;
+
+  /* ---------------------------------------------------------------------------
+     NAMED BREAKPOINT RANGES — for JS consumption (media query strings)
+     Usage in JS: window.matchMedia(getComputedStyle(root).getPropertyValue('--gns-mq-md'))
+  --------------------------------------------------------------------------- */
+
+  --gns-mq-sm:    "(min-width: 640px)";
+  --gns-mq-md:    "(min-width: 768px)";
+  --gns-mq-lg:    "(min-width: 1024px)";
+  --gns-mq-xl:    "(min-width: 1280px)";
+  --gns-mq-2xl:   "(min-width: 1536px)";
+
+  /* ---------------------------------------------------------------------------
+     DEVICE RANGES
+  --------------------------------------------------------------------------- */
+
+  --gns-mq-mobile-only:  "(max-width: 767px)";
+  --gns-mq-tablet-only:  "(min-width: 768px) and (max-width: 1023px)";
+  --gns-mq-desktop-only: "(min-width: 1024px)";
+
+  /* ---------------------------------------------------------------------------
+     MOTION PREFERENCE
+  --------------------------------------------------------------------------- */
+
+  --gns-mq-reduced-motion: "(prefers-reduced-motion: reduce)";
+  --gns-mq-dark:            "(prefers-color-scheme: dark)";
+  --gns-mq-light:           "(prefers-color-scheme: light)";
+
+}
+
+/* ---------------------------------------------------------------------------
+   CONTAINER UTILITY (global, reusable)
+   .gns-container centers content and applies responsive max-width.
+--------------------------------------------------------------------------- */
+
+.gns-container {
+  width: 100%;
+  margin-inline: auto;
+  padding-inline: var(--gns-space-gutter-sm);
+  max-width: var(--gns-container-xl);
+}
+
+@media (min-width: 640px) {
+  .gns-container {
+    padding-inline: var(--gns-space-gutter-md);
+  }
+}
+
+@media (min-width: 1024px) {
+  .gns-container {
+    padding-inline: var(--gns-space-gutter-lg);
+  }
+}
+
+@media (min-width: 1536px) {
+  .gns-container {
+    max-width: var(--gns-container-2xl);
+  }
+}
+
+.gns-container--narrow {
+  max-width: var(--gns-container-narrow);
+}
+
+.gns-container--prose {
+  max-width: var(--gns-container-prose);
+}

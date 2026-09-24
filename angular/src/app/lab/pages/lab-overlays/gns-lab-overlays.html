@@ -1,0 +1,156 @@
+<div class="gns-lab-page">
+
+    <gns-page-header title="Overlays" eyebrow="Components"
+        description="Overlay components that appear above the main content: modals and drawers." />
+
+    <gns-section title="Modal" subtitle="Dialog windows for focused interactions. Available in multiple sizes.">
+        <div class="gns-preview">
+            <div class="gns-preview__canvas gns-preview__canvas--row">
+                <gns-button label="Small Modal" variant="outline" (onClick)="showSmallModal.set(true)" />
+                <gns-button label="Medium Modal" variant="primary" (onClick)="showMediumModal.set(true)" />
+                <gns-button label="Large Modal" variant="secondary" (onClick)="showLargeModal.set(true)" />
+            </div>
+        </div>
+    </gns-section>
+
+    <gns-modal [isOpen]="showSmallModal()" (isOpenChange)="showSmallModal.set($event)" title="Confirm Action"
+        size="sm">
+        <p style="font-size: var(--gns-text-sm); color: var(--gns-color-text-secondary);">
+            Are you sure you want to proceed with this action? This cannot be undone.</p>
+        <ng-template #footer>
+            <div style="display: flex; gap: var(--gns-space-3); justify-content: flex-end; padding: var(--gns-space-2) 0;">
+                <gns-button label="Cancel" variant="ghost" (onClick)="showSmallModal.set(false)" />
+                <gns-button label="Confirm" variant="primary" (onClick)="showSmallModal.set(false)" />
+            </div>
+        </ng-template>
+    </gns-modal>
+
+    <gns-modal [isOpen]="showMediumModal()" (isOpenChange)="showMediumModal.set($event)" title="Edit Profile"
+        size="md">
+        <div style="display: flex; flex-direction: column; gap: var(--gns-space-4);">
+            <gns-input-text label="Full Name" placeholder="Enter name"
+                [value]="modalName()" (valueChange)="modalName.set($event)" />
+            <gns-input-text label="Email" placeholder="email@example.com"
+                [value]="modalEmail()" (valueChange)="modalEmail.set($event)" />
+            <gns-textarea label="Bio" placeholder="Tell us about yourself" [rows]="3"
+                [value]="modalBio()" (valueChange)="modalBio.set($event)" />
+        </div>
+        <ng-template #footer>
+            <div style="display: flex; gap: var(--gns-space-3); justify-content: flex-end; padding: var(--gns-space-2) 0;">
+                <gns-button label="Cancel" variant="ghost" (onClick)="showMediumModal.set(false)" />
+                <gns-button label="Save Changes" variant="primary" (onClick)="showMediumModal.set(false)" />
+            </div>
+        </ng-template>
+    </gns-modal>
+
+    <gns-modal [isOpen]="showLargeModal()" (isOpenChange)="showLargeModal.set($event)" title="Application Details"
+        size="lg">
+        <div style="display: flex; flex-direction: column; gap: var(--gns-space-4);">
+            <gns-alert severity="info">
+                Please review all information before submitting.
+            </gns-alert>
+            <gns-grid templateColumns="1fr 1fr" gap="4">
+                <gns-input-text label="First Name" placeholder="John"
+                    [value]="lgFirst()" (valueChange)="lgFirst.set($event)" />
+                <gns-input-text label="Last Name" placeholder="Doe"
+                    [value]="lgLast()" (valueChange)="lgLast.set($event)" />
+            </gns-grid>
+            <gns-input-text label="Email" placeholder="john@example.com"
+                [value]="lgEmail()" (valueChange)="lgEmail.set($event)" />
+            <gns-select label="Department" placeholder="Select..."
+                [value]="lgDept()" (valueChange)="lgDept.set($event)">
+                <option value="eng">Engineering</option>
+                <option value="design">Design</option>
+                <option value="product">Product</option>
+                <option value="marketing">Marketing</option>
+            </gns-select>
+            <gns-textarea label="Cover Letter" placeholder="Write a brief cover letter..." [rows]="4"
+                [value]="lgCover()" (valueChange)="lgCover.set($event)" />
+        </div>
+        <ng-template #footer>
+            <div style="display: flex; gap: var(--gns-space-3); justify-content: flex-end; padding: var(--gns-space-2) 0;">
+                <gns-button label="Cancel" variant="ghost" (onClick)="showLargeModal.set(false)" />
+                <gns-button label="Submit Application" variant="primary" (onClick)="showLargeModal.set(false)" />
+            </div>
+        </ng-template>
+    </gns-modal>
+
+    <gns-section title="Drawer" subtitle="Slide-in panels from the left or right edge of the viewport.">
+        <div class="gns-preview">
+            <div class="gns-preview__canvas gns-preview__canvas--row">
+                <gns-button label="Open Left Drawer" variant="outline" (onClick)="openFiltersDrawer()" />
+                <gns-button label="Open Right Drawer" variant="primary" (onClick)="openDetailsDrawer()" />
+            </div>
+        </div>
+    </gns-section>
+
+    <!-- Drawer host driven by DrawerService (global state). -->
+    <gns-drawer />
+
+    <ng-template #filtersDrawer>
+        <div style="display: flex; flex-direction: column; gap: var(--gns-space-4); padding: var(--gns-space-4);">
+            <gns-input-text label="Search" placeholder="Filter by name..."
+                [value]="drawerSearch()" (valueChange)="drawerSearch.set($event)" />
+            <gns-select label="Status" placeholder="All statuses"
+                [value]="drawerStatus()" (valueChange)="drawerStatus.set($event)">
+                <option value="active">Active</option>
+                <option value="inactive">Inactive</option>
+                <option value="pending">Pending</option>
+            </gns-select>
+            <gns-select label="Category" placeholder="All categories"
+                [value]="drawerCategory()" (valueChange)="drawerCategory.set($event)">
+                <option value="electronics">Electronics</option>
+                <option value="clothing">Clothing</option>
+                <option value="books">Books</option>
+            </gns-select>
+            <gns-checkbox label="In stock only"
+                [value]="drawerInStock()" (valueChange)="drawerInStock.set($event)" />
+            <div style="display: flex; gap: var(--gns-space-3); margin-top: var(--gns-space-4);">
+                <gns-button label="Apply Filters" variant="primary" (onClick)="closeDrawer()" />
+                <gns-button label="Reset" variant="ghost" />
+            </div>
+        </div>
+    </ng-template>
+
+    <ng-template #detailsDrawer>
+        <div style="display: flex; flex-direction: column; gap: var(--gns-space-4); padding: var(--gns-space-4);">
+            <div style="display: flex; align-items: center; gap: var(--gns-space-3);">
+                <gns-avatar initials="WM" size="lg" />
+                <div>
+                    <div style="font-weight: var(--gns-font-weight-semibold);">Wireless Mouse</div>
+                    <div style="font-size: var(--gns-text-sm); color: var(--gns-color-text-secondary);">
+                        Electronics</div>
+                </div>
+            </div>
+            <gns-alert severity="success">Item is in stock with 142 units available.</gns-alert>
+            <div>
+                <div
+                    style="font-size: var(--gns-text-sm); font-weight: var(--gns-font-weight-medium); margin-bottom: var(--gns-space-1);">
+                    Description</div>
+                <p
+                    style="font-size: var(--gns-text-sm); color: var(--gns-color-text-secondary); line-height: var(--gns-leading-relaxed);">
+                    Ergonomic wireless mouse with precision tracking, USB-C charging, and multi-device
+                    Bluetooth connectivity.
+                    Designed for all-day comfort with a contoured grip and silent click buttons.
+                </p>
+            </div>
+            <div style="display: flex; gap: var(--gns-space-6);">
+                <div>
+                    <div style="font-size: var(--gns-text-xs); color: var(--gns-color-text-tertiary);">Price</div>
+                    <div style="font-size: var(--gns-text-lg); font-weight: var(--gns-font-weight-semibold);">
+                        $29.99</div>
+                </div>
+                <div>
+                    <div style="font-size: var(--gns-text-xs); color: var(--gns-color-text-tertiary);">Stock</div>
+                    <div style="font-size: var(--gns-text-lg); font-weight: var(--gns-font-weight-semibold);">142
+                    </div>
+                </div>
+            </div>
+            <div style="display: flex; gap: var(--gns-space-3); margin-top: var(--gns-space-4);">
+                <gns-button label="Edit Item" variant="primary" />
+                <gns-button label="Delete" variant="danger" />
+            </div>
+        </div>
+    </ng-template>
+
+</div>

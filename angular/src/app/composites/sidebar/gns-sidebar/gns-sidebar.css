@@ -1,0 +1,130 @@
+/* =============================================================================
+   GnsSidebar — Scoped Styles
+   ============================================================================= */
+
+/* ----------------------------------------------------------------------------
+   BASE
+---------------------------------------------------------------------------- */
+.gns-sidebar {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    background-color: var(--gns-color-surface-alt, var(--gns-color-surface-subtle));
+    border-right: 1px solid var(--gns-color-border-default);
+    overflow: hidden;
+    position: relative;
+}
+
+/* ----------------------------------------------------------------------------
+   HEADER / BRAND
+---------------------------------------------------------------------------- */
+.gns-sidebar__header {
+    flex-shrink: 0;
+    height: var(--gns-size-topbar-height, 64px);
+    display: flex;
+    align-items: center;
+    padding: 0 var(--gns-space-4);
+    border-bottom: 1px solid var(--gns-color-border-default);
+    overflow: hidden;
+}
+
+.gns-sidebar__brand {
+    display: flex;
+    align-items: center;
+    gap: var(--gns-space-3);
+    min-width: 0;
+    width: 100%;
+    text-decoration: none;
+    color: inherit;
+}
+
+.gns-sidebar__brand-logo {
+    width: 28px;
+    height: 28px;
+    border-radius: var(--gns-radius-sm);
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.gns-sidebar__brand-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.gns-sidebar__brand-name {
+    font-size: var(--gns-text-base);
+    font-weight: var(--gns-font-weight-bold);
+    color: var(--gns-color-text-primary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: opacity 150ms ease, width 150ms ease;
+}
+
+/* ----------------------------------------------------------------------------
+   NAV AREA (scrollable)
+---------------------------------------------------------------------------- */
+.gns-sidebar__nav {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: var(--gns-space-3) var(--gns-space-2);
+    display: flex;
+    flex-direction: column;
+    gap: var(--gns-space-0-5, 2px);
+}
+
+/* Custom scrollbar */
+.gns-sidebar__nav::-webkit-scrollbar {
+    width: 4px;
+}
+
+.gns-sidebar__nav::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.gns-sidebar__nav::-webkit-scrollbar-thumb {
+    background: var(--gns-color-border-default);
+    border-radius: var(--gns-radius-full);
+}
+
+.gns-sidebar__nav::-webkit-scrollbar-thumb:hover {
+    background: var(--gns-color-border-strong);
+}
+
+/* ----------------------------------------------------------------------------
+   FOOTER
+---------------------------------------------------------------------------- */
+.gns-sidebar__footer {
+    flex-shrink: 0;
+    padding: var(--gns-space-3) var(--gns-space-2);
+    border-top: 1px solid var(--gns-color-border-default);
+    overflow: hidden;
+}
+
+/* ----------------------------------------------------------------------------
+   COLLAPSED STATE
+   When collapsed, text/labels overflow hidden; icons remain visible.
+---------------------------------------------------------------------------- */
+.gns-sidebar--collapsed .gns-sidebar__brand-name {
+    opacity: 0;
+    width: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+/* Nav items inside rely on their own gns-nav-item--collapsed class or the
+   parent overflow:hidden to hide labels. The sidebar simply clips overflow. */
+.gns-sidebar--collapsed .gns-sidebar__nav {
+    padding: var(--gns-space-3) var(--gns-space-1-5, 6px);
+    align-items: center;
+}
+
+.gns-sidebar--collapsed .gns-sidebar__footer {
+    padding: var(--gns-space-3) var(--gns-space-1-5, 6px);
+    display: flex;
+    justify-content: center;
+}

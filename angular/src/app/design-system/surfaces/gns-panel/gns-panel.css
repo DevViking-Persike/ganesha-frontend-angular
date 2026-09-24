@@ -1,0 +1,102 @@
+.gns-panel {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--gns-color-surface-default);
+    border: 1px solid var(--gns-color-border-default);
+    border-radius: var(--gns-radius-lg);
+    box-shadow: var(--gns-shadow-sm);
+    overflow: hidden;
+}
+
+.gns-panel__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--gns-space-3);
+    padding: var(--gns-space-4) var(--gns-space-5);
+    border-bottom: 1px solid var(--gns-color-border-default);
+    background-color: var(--gns-color-surface-subtle);
+    flex-shrink: 0;
+}
+
+.gns-panel__header-left {
+    display: flex;
+    align-items: center;
+    gap: var(--gns-space-2);
+    min-width: 0;
+}
+
+.gns-panel__title {
+    font-size: var(--gns-font-size-base);
+    font-weight: var(--gns-font-weight-semibold);
+    color: var(--gns-color-text-default);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.gns-panel__toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    background: transparent;
+    border: none;
+    border-radius: var(--gns-radius-sm);
+    cursor: pointer;
+    color: var(--gns-color-text-muted);
+    flex-shrink: 0;
+    transition: color var(--gns-transition-fast), background-color var(--gns-transition-fast);
+    padding: 0;
+    outline: none;
+}
+
+.gns-panel__toggle:hover {
+    background-color: var(--gns-color-surface-hover);
+    color: var(--gns-color-text-default);
+}
+
+.gns-panel__toggle:focus-visible {
+    outline: 2px solid var(--gns-color-focus-ring);
+    outline-offset: 2px;
+}
+
+.gns-panel__chevron {
+    display: block;
+    width: 8px;
+    height: 8px;
+    border-right: 2px solid currentColor;
+    border-bottom: 2px solid currentColor;
+    transform: rotate(45deg);
+    transition: transform var(--gns-transition-fast);
+    margin-top: -3px;
+}
+
+.gns-panel--collapsed .gns-panel__chevron {
+    transform: rotate(-45deg);
+    margin-top: 1px;
+}
+
+.gns-panel__actions {
+    display: flex;
+    align-items: center;
+    gap: var(--gns-space-2);
+    flex-shrink: 0;
+}
+
+.gns-panel__body {
+    overflow: hidden;
+    transition: max-height var(--gns-transition-normal);
+    max-height: 9999px;
+}
+
+.gns-panel__body--hidden {
+    max-height: 0;
+    visibility: hidden;
+}
+
+.gns-panel__body-inner {
+    padding: var(--gns-space-5);
+    color: var(--gns-color-text-default);
+}

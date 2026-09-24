@@ -1,0 +1,62 @@
+<gns-section title="Progress Indicators" subtitle="Linear and radial progress components with variants and sizes.">
+
+    <gns-grid [columns]="2" gap="6">
+
+        <gns-card>
+            <div header style="padding: var(--gns-space-4) var(--gns-space-5); border-bottom: 1px solid var(--gns-color-border-subtle);">
+                <div style="font-size: var(--gns-text-sm); font-weight: var(--gns-font-weight-semibold); color: var(--gns-color-text-primary);">Variants</div>
+                <div style="font-size: var(--gns-text-xs); color: var(--gns-color-text-secondary); margin-top: var(--gns-space-1);">Default, Success, Warning, Danger, Info</div>
+            </div>
+            <div style="padding: var(--gns-space-5); display: flex; flex-direction: column; gap: var(--gns-space-4);">
+                <gns-progress-bar [value]="64" label="Storage Used" [showValue]="true" variant="default" size="medium" [isStriped]="false" />
+                <gns-progress-bar [value]="87" label="Sales Goal" [showValue]="true" variant="success" size="medium" [isStriped]="false" />
+                <gns-progress-bar [value]="51" label="Budget Remaining" [showValue]="true" variant="warning" size="medium" [isStriped]="false" />
+                <gns-progress-bar [value]="93" label="Error Rate" [showValue]="true" variant="danger" size="medium" [isStriped]="false" />
+                <gns-progress-bar [value]="38" label="Bandwidth" [showValue]="true" variant="info" size="medium" [isStriped]="false" />
+            </div>
+        </gns-card>
+
+        <gns-card>
+            <div header style="padding: var(--gns-space-4) var(--gns-space-5); border-bottom: 1px solid var(--gns-color-border-subtle);">
+                <div style="font-size: var(--gns-text-sm); font-weight: var(--gns-font-weight-semibold); color: var(--gns-color-text-primary);">Sizes & Striped</div>
+                <div style="font-size: var(--gns-text-xs); color: var(--gns-color-text-secondary); margin-top: var(--gns-space-1);">Small, Medium, Large — with striped example</div>
+            </div>
+            <div style="padding: var(--gns-space-5); display: flex; flex-direction: column; gap: var(--gns-space-4);">
+                <gns-progress-bar [value]="45" label="Small" [showValue]="true" variant="default" size="small" [isStriped]="false" />
+                <gns-progress-bar [value]="62" label="Medium" [showValue]="true" variant="default" size="medium" [isStriped]="false" />
+                <gns-progress-bar [value]="78" label="Large" [showValue]="true" variant="default" size="large" [isStriped]="false" />
+                <div style="margin-top: var(--gns-space-2);">
+                    <div style="font-size: var(--gns-text-xs); font-weight: var(--gns-font-weight-semibold); color: var(--gns-color-text-secondary); text-transform: uppercase; letter-spacing: var(--gns-tracking-wide); margin-bottom: var(--gns-space-3);">Striped</div>
+                    <gns-progress-bar [value]="55" label="Uploading Files" [showValue]="true" variant="info" size="medium" [isStriped]="true" />
+                </div>
+                <gns-progress-bar [value]="72" label="Processing" [showValue]="true" variant="success" size="large" [isStriped]="true" />
+            </div>
+        </gns-card>
+
+    </gns-grid>
+
+    <!-- Radial Progress -->
+    <div style="margin-top: var(--gns-space-6);">
+        <gns-card>
+            <div header style="padding: var(--gns-space-4) var(--gns-space-5); border-bottom: 1px solid var(--gns-color-border-subtle);">
+                <div style="font-size: var(--gns-text-sm); font-weight: var(--gns-font-weight-semibold); color: var(--gns-color-text-primary);">Radial Progress</div>
+                <div style="font-size: var(--gns-text-xs); color: var(--gns-color-text-secondary); margin-top: var(--gns-space-1);">Server resource utilization</div>
+            </div>
+            <div style="padding: var(--gns-space-6); display: flex; justify-content: space-around; align-items: center; flex-wrap: wrap; gap: var(--gns-space-6);">
+                <div style="display: flex; flex-direction: column; align-items: center; gap: var(--gns-space-3);">
+                    <gns-radial-progress [value]="72" [size]="100" [strokeWidth]="10" label="CPU" variant="warning" />
+                </div>
+                <div style="display: flex; flex-direction: column; align-items: center; gap: var(--gns-space-3);">
+                    <gns-radial-progress [value]="45" [size]="100" [strokeWidth]="10" label="Memory" variant="success" />
+                </div>
+                <div style="display: flex; flex-direction: column; align-items: center; gap: var(--gns-space-3);">
+                    <gns-radial-progress [value]="88" [size]="100" [strokeWidth]="10" label="Disk" variant="danger" />
+                </div>
+                <div style="display: flex; flex-direction: column; align-items: center; gap: var(--gns-space-3);">
+                    <gns-radial-progress [value]="23" [size]="100" [strokeWidth]="10" label="Network" variant="info" />
+                </div>
+            </div>
+        </gns-card>
+    </div>
+
+</gns-section>

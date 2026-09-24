@@ -1,0 +1,76 @@
+<div class="gns-lab-page">
+
+    <gns-page-header title="Users" eyebrow="Patterns"
+                     description="Full data table page with search, filters, and pagination.">
+        <ng-container actions>
+            <gns-button label="Add User" variant="primary" />
+        </ng-container>
+    </gns-page-header>
+
+    <!-- Search and Filters -->
+    <gns-section>
+        <div style="display: flex; gap: var(--gns-space-4); align-items: flex-end; flex-wrap: wrap; margin-bottom: var(--gns-space-4);">
+            <div style="flex: 1; min-width: 16rem;">
+                <gns-input-text placeholder="Search users by name or email..." [(value)]="search" />
+            </div>
+            <div style="min-width: 10rem;">
+                <gns-select placeholder="All Statuses" [(value)]="statusFilter">
+                    <option value="">All Statuses</option>
+                    <option value="active">Active</option>
+                    <option value="inactive">Inactive</option>
+                    <option value="pending">Pending</option>
+                </gns-select>
+            </div>
+            <div style="min-width: 10rem;">
+                <gns-select placeholder="All Roles" [(value)]="roleFilter">
+                    <option value="">All Roles</option>
+                    <option value="admin">Admin</option>
+                    <option value="editor">Editor</option>
+                    <option value="viewer">Viewer</option>
+                </gns-select>
+            </div>
+        </div>
+
+        <gns-table [items]="filteredUsers()" [isStriped]="true" [isHoverable]="true">
+            <ng-template gnsTableHeader>
+                <th class="gns-table__head-cell">Name</th>
+                <th class="gns-table__head-cell">Email</th>
+                <th class="gns-table__head-cell">Role</th>
+                <th class="gns-table__head-cell">Status</th>
+                <th class="gns-table__head-cell" style="text-align: right;">Actions</th>
+            </ng-template>
+            <ng-template gnsTableRow let-user>
+                <tr class="gns-table__body-row">
+                    <td class="gns-table__body-cell">
+                        <div style="display: flex; align-items: center; gap: var(--gns-space-3);">
+                            <gns-avatar [initials]="user.initials" size="sm" />
+                            <div>
+                                <div style="font-weight: var(--gns-font-weight-medium);">{{ user.name }}</div>
+                                <div style="font-size: var(--gns-text-xs); color: var(--gns-color-text-tertiary);">Joined {{ user.joinDate }}</div>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="gns-table__body-cell" style="color: var(--gns-color-text-secondary);">{{ user.email }}</td>
+                    <td class="gns-table__body-cell">
+                        <gns-tag [label]="user.role" [variant]="user.roleVariant" />
+                    </td>
+                    <td class="gns-table__body-cell">
+                        <gns-badge [severity]="user.statusSeverity" size="sm">{{ user.status }}</gns-badge>
+                    </td>
+                    <td class="gns-table__body-cell" style="text-align: right;">
+                        <div style="display: flex; gap: var(--gns-space-1); justify-content: flex-end;">
+                            <gns-button label="Edit" variant="ghost" size="small" />
+                            <gns-button label="Delete" variant="ghost" size="small" />
+                        </div>
+                    </td>
+                </tr>
+            </ng-template>
+        </gns-table>
+
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-top: var(--gns-space-4); flex-wrap: wrap; gap: var(--gns-space-3);">
+            <span style="font-size: var(--gns-text-sm); color: var(--gns-color-text-secondary);">Showing {{ filteredUsers().length }} of {{ allUsers.length }} users</span>
+            <gns-pagination [currentPage]="currentPage()" [totalPages]="5" (currentPageChanged)="currentPage.set($event)" />
+        </div>
+    </gns-section>
+
+</div>

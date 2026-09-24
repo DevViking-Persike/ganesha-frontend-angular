@@ -1,0 +1,101 @@
+/* =============================================================================
+   GANESHA DESIGN SYSTEM — SHADOW TOKENS
+   settings/_tokens-shadows.css
+
+   Shadow system built on layered box-shadow values.
+   The shadow color uses HSL with adjustable alpha to avoid hard-coding
+   a single color — semantic aliases reference these primitives.
+
+   Convention: shadows use a cool-dark base color aligned with the gray palette
+   (hsl(220, 30%, 10%)) to keep them natural against cool-toned surfaces.
+   ============================================================================= */
+
+:root {
+
+  /* ---------------------------------------------------------------------------
+     SHADOW PRIMITIVES — base color channels
+  --------------------------------------------------------------------------- */
+
+  /* Shadow key color: very dark cool blue-gray — more natural than pure black */
+  --gns-shadow-color:        220 30% 10%;   /* used in hsl(var(--gns-shadow-color) / alpha) */
+  --gns-shadow-color-warm:   220 20% 12%;
+
+  /* ---------------------------------------------------------------------------
+     ELEVATION SCALE
+  --------------------------------------------------------------------------- */
+
+  --gns-shadow-none:
+    none;
+
+  /* xs — subtle, for focused inputs, active states */
+  --gns-shadow-xs:
+    0 1px 2px 0 hsl(var(--gns-shadow-color) / 0.05);
+
+  /* sm — cards, dropdowns just lifting off the surface */
+  --gns-shadow-sm:
+    0 1px 3px 0  hsl(var(--gns-shadow-color) / 0.10),
+    0 1px 2px -1px hsl(var(--gns-shadow-color) / 0.10);
+
+  /* md — floating elements, popovers */
+  --gns-shadow-md:
+    0 4px 6px  -1px hsl(var(--gns-shadow-color) / 0.10),
+    0 2px 4px  -2px hsl(var(--gns-shadow-color) / 0.10);
+
+  /* lg — modals, drawers, dialogs */
+  --gns-shadow-lg:
+    0 10px 15px -3px hsl(var(--gns-shadow-color) / 0.10),
+    0  4px  6px -4px hsl(var(--gns-shadow-color) / 0.10);
+
+  /* xl — elevated panels, command palettes */
+  --gns-shadow-xl:
+    0 20px 25px -5px  hsl(var(--gns-shadow-color) / 0.10),
+    0  8px 10px -6px  hsl(var(--gns-shadow-color) / 0.10);
+
+  /* 2xl — page-level overlays, full-screen drawers */
+  --gns-shadow-2xl:
+    0 25px 50px -12px hsl(var(--gns-shadow-color) / 0.25);
+
+  /* inner — recessed / pressed / input inset */
+  --gns-shadow-inner:
+    inset 0 2px 4px 0 hsl(var(--gns-shadow-color) / 0.06);
+
+  /* ---------------------------------------------------------------------------
+     SEMANTIC / COMPONENT SHADOWS
+  --------------------------------------------------------------------------- */
+
+  --gns-shadow-card:       var(--gns-shadow-sm);
+  --gns-shadow-card-hover: var(--gns-shadow-md);
+  --gns-shadow-dropdown:   var(--gns-shadow-lg);
+  --gns-shadow-popover:    var(--gns-shadow-xl);
+  --gns-shadow-modal:      var(--gns-shadow-2xl);
+  --gns-shadow-button:     var(--gns-shadow-xs);
+  --gns-shadow-input:      var(--gns-shadow-inner);
+  --gns-shadow-tooltip:    var(--gns-shadow-md);
+
+  /* ---------------------------------------------------------------------------
+     FOCUS RING SHADOW
+     Combines with border-outline approach for a11y-compliant focus indicators.
+  --------------------------------------------------------------------------- */
+
+  --gns-shadow-focus-ring:
+    0 0 0 3px hsl(var(--gns-shadow-color) / 0.08),
+    0 0 0 3px var(--gns-color-interactive-focus-ring);
+
+  --gns-shadow-focus-ring-danger:
+    0 0 0 3px hsl(var(--gns-shadow-color) / 0.08),
+    0 0 0 3px var(--gns-color-border-danger);
+
+  /* ---------------------------------------------------------------------------
+     COLORED SHADOWS — brand elevation
+     Subtle primary-tinted shadow for CTAs / prominent elements
+  --------------------------------------------------------------------------- */
+
+  --gns-shadow-primary-sm:
+    0 1px 3px 0 hsl(250 80% 50% / 0.15),
+    0 1px 2px -1px hsl(250 80% 50% / 0.15);
+
+  --gns-shadow-primary-md:
+    0 4px 6px -1px hsl(250 80% 50% / 0.20),
+    0 2px 4px -2px hsl(250 80% 50% / 0.15);
+
+}

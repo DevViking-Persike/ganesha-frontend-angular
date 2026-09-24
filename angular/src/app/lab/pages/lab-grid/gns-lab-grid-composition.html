@@ -1,0 +1,130 @@
+<!-- Section 4 — Container Sizes -->
+<gns-section title="Container Sizes" subtitle="GnsContainer centers content with a max-width constraint. Each box below fills the container width.">
+    <div style="display: flex; flex-direction: column; gap: var(--gns-space-6);">
+        @for (demo of containerDemos; track demo.label) {
+            <div>
+                <p style="font-size: var(--gns-text-xs); font-family: var(--gns-font-mono); color: var(--gns-color-text-tertiary); margin-bottom: var(--gns-space-2);">{{ demo.label }}</p>
+                <gns-container [size]="demo.size">
+                    <div [style]="boxStyle(demo.color, '3.5rem')">{{ demo.boxText }}</div>
+                </gns-container>
+            </div>
+        }
+    </div>
+</gns-section>
+
+<!-- Section 5 — Composition Examples -->
+<gns-section title="Composition Examples" subtitle="Real-world layout patterns built from grid and stack primitives.">
+    <div style="display: flex; flex-direction: column; gap: var(--gns-space-10);">
+
+        <!-- Dashboard Layout -->
+        <div>
+            <p style="font-size: var(--gns-text-sm); font-weight: var(--gns-font-weight-semibold); margin-bottom: var(--gns-space-1);">Dashboard Layout</p>
+            <p style="font-size: var(--gns-text-xs); color: var(--gns-color-text-secondary); margin-bottom: var(--gns-space-3);">Main chart on the left, summary cards stacked on the right.</p>
+            <gns-grid templateColumns="2fr 1fr" gap="4">
+                <gns-card>
+                    <div style="padding: var(--gns-space-4);">
+                        <div style="font-size: var(--gns-text-sm); font-weight: var(--gns-font-weight-semibold); margin-bottom: var(--gns-space-3);">Revenue Overview</div>
+                        <div [style]="boxStyle('var(--gns-primary-300)', '10rem')">Chart placeholder</div>
+                    </div>
+                </gns-card>
+                <gns-stack direction="vertical" gap="3">
+                    @for (card of summaryCards; track card.caption) {
+                        <gns-card>
+                            <div style="padding: var(--gns-space-4);">
+                                <div style="font-size: var(--gns-text-xs); color: var(--gns-color-text-secondary); margin-bottom: var(--gns-space-1);">{{ card.caption }}</div>
+                                <div [style.font-size]="'var(--gns-text-2xl)'" [style.font-weight]="'var(--gns-font-weight-bold)'" [style.color]="card.color">{{ card.value }}</div>
+                            </div>
+                        </gns-card>
+                    }
+                </gns-stack>
+            </gns-grid>
+        </div>
+
+        <!-- Card Grid -->
+        <div>
+            <p style="font-size: var(--gns-text-sm); font-weight: var(--gns-font-weight-semibold); margin-bottom: var(--gns-space-1);">Card Grid</p>
+            <p style="font-size: var(--gns-text-xs); color: var(--gns-color-text-secondary); margin-bottom: var(--gns-space-3);">4-column grid of uniform cards — good for product listings or feature blocks.</p>
+            <gns-grid [columns]="4" gap="4">
+                @for (item of featureCards; track item.title) {
+                    <gns-card [isHoverable]="true">
+                        <div style="padding: var(--gns-space-4);">
+                            <div [style]="boxStyle(item.color, '2.5rem', 'margin-bottom: var(--gns-space-3); border-radius: var(--gns-radius-sm);')">{{ item.icon }}</div>
+                            <div style="font-size: var(--gns-text-sm); font-weight: var(--gns-font-weight-semibold); margin-bottom: var(--gns-space-1);">{{ item.title }}</div>
+                            <div style="font-size: var(--gns-text-xs); color: var(--gns-color-text-secondary); line-height: var(--gns-leading-relaxed);">{{ item.description }}</div>
+                        </div>
+                    </gns-card>
+                }
+            </gns-grid>
+        </div>
+
+        <!-- Form Layout -->
+        <div>
+            <p style="font-size: var(--gns-text-sm); font-weight: var(--gns-font-weight-semibold); margin-bottom: var(--gns-space-1);">Form Layout</p>
+            <p style="font-size: var(--gns-text-xs); color: var(--gns-color-text-secondary); margin-bottom: var(--gns-space-3);">2-column grid for label/field pairs — labels on left, inputs on right.</p>
+            <gns-card>
+                <div style="padding: var(--gns-space-5);">
+                    <gns-stack direction="vertical" gap="4">
+                        @for (field of formFields; track field.label) {
+                            <gns-grid [columns]="2" gap="4">
+                                <div style="display: flex; align-items: center; justify-content: flex-end; padding-right: var(--gns-space-2);">
+                                    <span style="font-size: var(--gns-text-sm); font-weight: var(--gns-font-weight-medium); color: var(--gns-color-text-secondary);">{{ field.label }}</span>
+                                </div>
+                                <div style="height: 2.5rem; border: 1px solid var(--gns-color-border-default); border-radius: var(--gns-radius-md); background: var(--gns-color-surface-raised); display: flex; align-items: center; padding: 0 var(--gns-space-3);">
+                                    <span style="font-size: var(--gns-text-sm); color: var(--gns-color-text-tertiary);">{{ field.placeholder }}</span>
+                                </div>
+                            </gns-grid>
+                        }
+                        <div style="display: flex; justify-content: flex-end; gap: var(--gns-space-2); padding-top: var(--gns-space-2);">
+                            <gns-button label="Cancel" variant="ghost" size="small" />
+                            <gns-button label="Save Changes" variant="primary" size="small" />
+                        </div>
+                    </gns-stack>
+                </div>
+            </gns-card>
+        </div>
+
+        <!-- Sidebar Layout -->
+        <div>
+            <p style="font-size: var(--gns-text-sm); font-weight: var(--gns-font-weight-semibold); margin-bottom: var(--gns-space-1);">Sidebar Layout</p>
+            <p style="font-size: var(--gns-text-xs); color: var(--gns-color-text-secondary); margin-bottom: var(--gns-space-3);">Fixed nav on the left, scrollable content on the right.</p>
+            <gns-grid templateColumns="240px 1fr" gap="4">
+                <gns-card>
+                    <div style="padding: var(--gns-space-3);">
+                        <div style="font-size: var(--gns-text-xs); font-weight: var(--gns-font-weight-semibold); color: var(--gns-color-text-tertiary); text-transform: uppercase; letter-spacing: 0.05em; padding: var(--gns-space-2) var(--gns-space-3); margin-bottom: var(--gns-space-1);">Navigation</div>
+                        @for (navItem of navItems; track navItem.label) {
+                            <div [style]="navItemStyle(navItem.active)">{{ navItem.label }}</div>
+                        }
+                    </div>
+                </gns-card>
+                <gns-card>
+                    <div style="padding: var(--gns-space-5);">
+                        <div style="font-size: var(--gns-text-lg); font-weight: var(--gns-font-weight-semibold); margin-bottom: var(--gns-space-4);">General Settings</div>
+                        <gns-stack direction="vertical" gap="4">
+                            <div style="height: 2rem; background: var(--gns-color-surface-subtle); border-radius: var(--gns-radius-md); width: 60%;"></div>
+                            <div style="height: 2rem; background: var(--gns-color-surface-subtle); border-radius: var(--gns-radius-md); width: 80%;"></div>
+                            <div style="height: 2rem; background: var(--gns-color-surface-subtle); border-radius: var(--gns-radius-md); width: 45%;"></div>
+                            <div style="height: 2rem; background: var(--gns-color-surface-subtle); border-radius: var(--gns-radius-md); width: 70%;"></div>
+                        </gns-stack>
+                    </div>
+                </gns-card>
+            </gns-grid>
+        </div>
+
+    </div>
+</gns-section>
+
+<!-- Section 6 — Gap Scale -->
+<gns-section title="Gap Scale" subtitle="The same 4-column grid with different gap values. Shows the visual impact of spacing tokens.">
+    <div style="display: flex; flex-direction: column; gap: var(--gns-space-8);">
+        @for (gap of gapValues; track gap) {
+            <div>
+                <p style="font-size: var(--gns-text-xs); font-family: var(--gns-font-mono); color: var(--gns-color-text-tertiary); margin-bottom: var(--gns-space-2);">Gap="{{ gap }}" — --gns-space-{{ gap }}</p>
+                <gns-grid [columns]="4" [gap]="gap">
+                    @for (box of gapBoxes; track box.text) {
+                        <div [style]="boxStyle(box.color, '3.5rem')">{{ box.text }}</div>
+                    }
+                </gns-grid>
+            </div>
+        }
+    </div>
+</gns-section>

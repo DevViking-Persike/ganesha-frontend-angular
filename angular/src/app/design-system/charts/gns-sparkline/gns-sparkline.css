@@ -1,0 +1,23 @@
+/* =============================================================================
+   GnsSparkline — Scoped Styles
+   ============================================================================= */
+
+.gns-sparkline {
+    display: inline-flex;
+    align-items: center;
+    vertical-align: middle;
+    flex-shrink: 0;
+}
+
+.gns-sparkline__svg {
+    display: block;
+    overflow: visible;
+}
+
+.gns-sparkline__line {
+    vector-effect: non-scaling-stroke;
+}
+
+.gns-sparkline__area {
+    vector-effect: non-scaling-stroke;
+}

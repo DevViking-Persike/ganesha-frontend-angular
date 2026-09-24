@@ -1,0 +1,56 @@
+.gns-gauge {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.gns-gauge__svg {
+    display: block;
+    overflow: visible;
+}
+
+.gns-gauge__track {
+    opacity: 0.4;
+}
+
+.gns-gauge__fill {
+    transition: stroke-dashoffset 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.gns-gauge__fill--animated {
+    animation: gaugeReveal 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    stroke-dashoffset: var(--gns-gauge-circ);
+}
+
+::deep .gns-gauge__value {
+    fill: var(--gns-color-text-primary, #1a1a2e);
+    font-size: 1.75rem;
+    font-weight: 700;
+    font-family: var(--gns-font-sans, system-ui, sans-serif);
+    font-variant-numeric: tabular-nums;
+}
+
+::deep .gns-gauge__label {
+    fill: var(--gns-color-text-primary, #666);
+    font-size: 0.75rem;
+    font-family: var(--gns-font-sans, system-ui, sans-serif);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 700;
+}
+
+::deep .gns-gauge__minmax {
+    fill: var(--gns-color-text-secondary, #999);
+    font-size: 0.6875rem;
+    font-family: var(--gns-font-sans, system-ui, sans-serif);
+    font-weight: 600;
+}
+
+@keyframes gaugeReveal {
+    0% {
+        stroke-dashoffset: var(--gns-gauge-circ);
+    }
+    100% {
+        stroke-dashoffset: var(--gns-gauge-target);
+    }
+}

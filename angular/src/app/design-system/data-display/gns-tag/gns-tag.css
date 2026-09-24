@@ -1,0 +1,112 @@
+/* =============================================================================
+   GnsTag — Scoped Styles
+   ============================================================================= */
+
+.gns-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--gns-space-1);
+    height: 1.625rem;
+    padding: 0 var(--gns-space-2);
+    border-radius: var(--gns-radius-tag);
+    border: 1px solid transparent;
+    font-family: var(--gns-font-sans);
+    font-size: var(--gns-text-xs);
+    font-weight: var(--gns-font-weight-medium);
+    line-height: var(--gns-leading-none);
+    white-space: nowrap;
+    max-width: 100%;
+    transition: background-color 150ms ease, border-color 150ms ease, color 150ms ease;
+}
+
+.gns-tag__label {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* ----------------------------------------------------------------------------
+   REMOVE BUTTON
+---------------------------------------------------------------------------- */
+.gns-tag__remove {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 0.875rem;
+    height: 0.875rem;
+    margin-left: var(--gns-space-0-5);
+    padding: 0;
+    border: none;
+    background: transparent;
+    border-radius: var(--gns-radius-full);
+    cursor: pointer;
+    color: inherit;
+    opacity: 0.6;
+    flex-shrink: 0;
+    transition: opacity 150ms ease, background-color 150ms ease;
+}
+
+.gns-tag__remove:hover {
+    opacity: 1;
+    background-color: rgba(0, 0, 0, 0.12);
+}
+
+.gns-tag__remove:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 1px;
+    opacity: 1;
+}
+
+.gns-tag__remove-icon {
+    width: 0.625rem;
+    height: 0.625rem;
+}
+
+/* ----------------------------------------------------------------------------
+   VARIANTS
+---------------------------------------------------------------------------- */
+.gns-tag--default {
+    background-color: var(--gns-color-status-neutral-bg);
+    color: var(--gns-color-status-neutral-text);
+    border-color: var(--gns-color-status-neutral-border);
+}
+
+.gns-tag--primary {
+    background-color: var(--gns-primary-100);
+    color: var(--gns-primary-800);
+    border-color: var(--gns-primary-200);
+}
+
+.gns-tag--success {
+    background-color: var(--gns-color-status-success-bg);
+    color: var(--gns-color-status-success-text);
+    border-color: var(--gns-color-status-success-border);
+}
+
+.gns-tag--warning {
+    background-color: var(--gns-color-status-warning-bg);
+    color: var(--gns-color-status-warning-text);
+    border-color: var(--gns-color-status-warning-border);
+}
+
+.gns-tag--danger {
+    background-color: var(--gns-color-status-danger-bg);
+    color: var(--gns-color-status-danger-text);
+    border-color: var(--gns-color-status-danger-border);
+}
+
+.gns-tag--info {
+    background-color: var(--gns-color-status-info-bg);
+    color: var(--gns-color-status-info-text);
+    border-color: var(--gns-color-status-info-border);
+}
+
+.gns-tag--outline {
+    background-color: transparent;
+    color: var(--gns-color-text-secondary);
+    border-color: var(--gns-color-border-default);
+}
+
+.gns-tag--outline:hover {
+    background-color: var(--gns-color-bg-subtle);
+}

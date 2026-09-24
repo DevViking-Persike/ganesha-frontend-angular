@@ -1,0 +1,24 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: ganesha
+  namespace: argocd
+spec:
+  description: Ganesha DesignLab (Angular) — workload no h6
+  sourceRepos:
+    - https://github.com/DevViking-Persike/ganesha-frontend-angular.git
+  destinations:
+    - namespace: ganesha
+      server: https://kubernetes.default.svc
+  clusterResourceWhitelist: []
+  namespaceResourceWhitelist:
+    - group: apps
+      kind: Deployment
+    - group: ""
+      kind: Service
+    - group: traefik.io
+      kind: IngressRoute
+    - group: traefik.io
+      kind: Middleware
+    - group: secrets.infisical.com
+      kind: InfisicalSecret

@@ -1,0 +1,23 @@
+.gns-tabs {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.gns-tabs__strip {
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid var(--gns-color-border-default);
+    gap: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+
+.gns-tabs__strip::-webkit-scrollbar {
+    display: none;
+}
+
+.gns-tabs__panels {
+    flex: 1;
+    padding-top: var(--gns-space-4);
+}

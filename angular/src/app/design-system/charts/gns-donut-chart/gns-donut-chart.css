@@ -1,0 +1,179 @@
+/* =============================================================================
+   GnsDonutChart — Scoped Styles
+   ============================================================================= */
+
+/* ----------------------------------------------------------------------------
+   CONTAINER
+---------------------------------------------------------------------------- */
+.gns-donut-chart {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--gns-space-4, 1rem);
+}
+
+/* ----------------------------------------------------------------------------
+   CHART WRAP (SVG + center overlay)
+---------------------------------------------------------------------------- */
+.gns-donut-chart__chart-wrap {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.gns-donut-chart__svg {
+    display: block;
+    flex-shrink: 0;
+}
+
+/* ----------------------------------------------------------------------------
+   TRACK
+---------------------------------------------------------------------------- */
+.gns-donut-chart__track {
+    stroke: var(--gns-color-bg-muted, #E0DBE8);
+}
+
+/* ----------------------------------------------------------------------------
+   SEGMENTS
+---------------------------------------------------------------------------- */
+.gns-donut-chart__segment {
+    transition: opacity 150ms ease, transform 150ms ease;
+    transform-origin: center;
+    cursor: pointer;
+}
+
+.gns-donut-chart__segment:hover {
+    opacity: 0.8;
+    transform: scale(1.04);
+}
+
+/* ----------------------------------------------------------------------------
+   ANIMATION
+---------------------------------------------------------------------------- */
+@keyframes gns-donut-reveal {
+    from {
+        stroke-dashoffset: var(--gns-donut-circumference);
+    }
+    to {
+        /* stroke-dashoffset is set inline — animation overrides from 0→inline */
+    }
+}
+
+.gns-donut-chart--animated .gns-donut-chart__segment--animated {
+    animation: gns-donut-in 800ms cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+    animation-delay: var(--gns-donut-delay, 0ms);
+}
+
+@keyframes gns-donut-in {
+    from {
+        opacity: 0;
+        stroke-dasharray: 0 var(--gns-donut-circumference);
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* ----------------------------------------------------------------------------
+   CENTER OVERLAY
+---------------------------------------------------------------------------- */
+.gns-donut-chart__center {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+}
+
+.gns-donut-chart__center-label {
+    font-family: var(--gns-font-sans, system-ui, sans-serif);
+    font-size: var(--gns-text-2xl, 1.5rem);
+    font-weight: 700;
+    line-height: 1;
+    color: var(--gns-color-text-primary, #221C2E);
+}
+
+.gns-donut-chart__center-sublabel {
+    font-family: var(--gns-font-sans, system-ui, sans-serif);
+    font-size: var(--gns-text-xs, 0.75rem);
+    color: var(--gns-color-text-muted, #857B94);
+    margin-top: var(--gns-space-1, 0.25rem);
+}
+
+/* ----------------------------------------------------------------------------
+   LEGEND
+---------------------------------------------------------------------------- */
+.gns-donut-chart__legend {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--gns-space-2, 0.5rem);
+    width: 100%;
+    max-width: 280px;
+}
+
+.gns-donut-chart__legend-item {
+    display: flex;
+    align-items: center;
+    gap: var(--gns-space-2, 0.5rem);
+    font-family: var(--gns-font-sans, system-ui, sans-serif);
+    font-size: var(--gns-text-sm, 0.875rem);
+    cursor: default;
+    padding: var(--gns-space-1, 0.25rem) var(--gns-space-2, 0.5rem);
+    border-radius: var(--gns-radius-md, 0.375rem);
+    transition: background-color 150ms ease;
+}
+
+.gns-donut-chart__legend-item:hover {
+    background-color: var(--gns-color-bg-subtle, #EFECF5);
+}
+
+.gns-donut-chart__legend-dot {
+    flex-shrink: 0;
+    width: 10px;
+    height: 10px;
+    border-radius: var(--gns-radius-full, 9999px);
+}
+
+.gns-donut-chart__legend-label {
+    flex: 1 1 auto;
+    color: var(--gns-color-text-secondary, #665C76);
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.gns-donut-chart__legend-value {
+    flex-shrink: 0;
+    font-weight: 600;
+    color: var(--gns-color-text-primary, #221C2E);
+    font-variant-numeric: tabular-nums;
+}
+
+.gns-donut-chart__legend-pct {
+    flex-shrink: 0;
+    color: var(--gns-color-text-muted, #857B94);
+    font-size: var(--gns-text-xs, 0.75rem);
+    min-width: 40px;
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+}
+
+/* ----------------------------------------------------------------------------
+   EMPTY STATE
+---------------------------------------------------------------------------- */
+.gns-donut-chart__empty {
+    color: var(--gns-color-text-muted, #857B94);
+    font-family: var(--gns-font-sans, system-ui, sans-serif);
+    font-size: var(--gns-text-sm, 0.875rem);
+    text-align: center;
+    padding: var(--gns-space-8, 2rem);
+    margin: 0;
+}

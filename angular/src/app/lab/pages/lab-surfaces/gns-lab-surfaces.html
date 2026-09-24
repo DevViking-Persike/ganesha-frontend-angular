@@ -1,0 +1,130 @@
+<div class="gns-lab-page">
+
+    <gns-page-header title="Surfaces" eyebrow="Components"
+        description="Container components for grouping and structuring content: cards and panels." />
+
+    <gns-section title="Card" subtitle="Flexible container with optional header and footer.">
+        <gns-grid [columns]="3" gap="4">
+            <gns-card>
+                <div style="padding: var(--gns-space-4);">
+                    <h3
+                        style="font-size: var(--gns-text-base); font-weight: var(--gns-font-weight-semibold); margin-bottom: var(--gns-space-2);">
+                        Default Card</h3>
+                    <p style="font-size: var(--gns-text-sm); color: var(--gns-color-text-secondary);">A simple card
+                        with body content only. No header or footer.</p>
+                </div>
+            </gns-card>
+
+            <gns-card [isHoverable]="true">
+                <div style="padding: var(--gns-space-4);">
+                    <h3
+                        style="font-size: var(--gns-text-base); font-weight: var(--gns-font-weight-semibold); margin-bottom: var(--gns-space-2);">
+                        Hoverable Card</h3>
+                    <p style="font-size: var(--gns-text-sm); color: var(--gns-color-text-secondary);">This card
+                        elevates on hover. Good for clickable items.</p>
+                </div>
+            </gns-card>
+
+            <gns-card [isCompact]="true">
+                <div style="padding: var(--gns-space-3);">
+                    <h3
+                        style="font-size: var(--gns-text-sm); font-weight: var(--gns-font-weight-semibold); margin-bottom: var(--gns-space-1);">
+                        Compact Card</h3>
+                    <p style="font-size: var(--gns-text-xs); color: var(--gns-color-text-secondary);">Less padding
+                        for dense layouts.</p>
+                </div>
+            </gns-card>
+        </gns-grid>
+    </gns-section>
+
+    <gns-section title="Card with Header &amp; Footer" subtitle="Full card anatomy with all slots populated.">
+        <gns-grid [columns]="2" gap="4">
+            <gns-card>
+                <div header
+                    style="padding: var(--gns-space-4); display: flex; align-items: center; justify-content: space-between;">
+                    <span style="font-weight: var(--gns-font-weight-semibold);">Project Details</span>
+                    <gns-badge severity="success" size="sm">Active</gns-badge>
+                </div>
+                <div style="padding: var(--gns-space-4);">
+                    <p
+                        style="font-size: var(--gns-text-sm); color: var(--gns-color-text-secondary); line-height: var(--gns-leading-relaxed);">
+                        This project is currently in active development. The team is working on the design system
+                        components and documentation.
+                    </p>
+                </div>
+                <div footer
+                    style="padding: var(--gns-space-3) var(--gns-space-4); display: flex; gap: var(--gns-space-2); justify-content: flex-end;">
+                    <gns-button label="Cancel" variant="ghost" size="small" />
+                    <gns-button label="Save" variant="primary" size="small" />
+                </div>
+            </gns-card>
+
+            <gns-card>
+                <div header style="padding: var(--gns-space-4);">
+                    <span style="font-weight: var(--gns-font-weight-semibold);">Team Members</span>
+                </div>
+                <div style="padding: var(--gns-space-4); display: flex; flex-direction: column; gap: var(--gns-space-3);">
+                    <div style="display: flex; align-items: center; gap: var(--gns-space-3);">
+                        <gns-avatar initials="JD" size="sm" />
+                        <div>
+                            <div style="font-size: var(--gns-text-sm); font-weight: var(--gns-font-weight-medium);">
+                                Jane Doe</div>
+                            <div style="font-size: var(--gns-text-xs); color: var(--gns-color-text-tertiary);">
+                                Lead Designer</div>
+                        </div>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: var(--gns-space-3);">
+                        <gns-avatar initials="MS" size="sm" />
+                        <div>
+                            <div style="font-size: var(--gns-text-sm); font-weight: var(--gns-font-weight-medium);">
+                                Mike Smith</div>
+                            <div style="font-size: var(--gns-text-xs); color: var(--gns-color-text-tertiary);">
+                                Senior Developer</div>
+                        </div>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: var(--gns-space-3);">
+                        <gns-avatar initials="AL" size="sm" />
+                        <div>
+                            <div style="font-size: var(--gns-text-sm); font-weight: var(--gns-font-weight-medium);">
+                                Anna Lee</div>
+                            <div style="font-size: var(--gns-text-xs); color: var(--gns-color-text-tertiary);">
+                                Product Manager</div>
+                        </div>
+                    </div>
+                </div>
+                <div footer style="padding: var(--gns-space-3) var(--gns-space-4);">
+                    <a href="lab/profile" style="font-size: var(--gns-text-sm); color: var(--gns-color-text-link);">
+                        View all members &rarr;</a>
+                </div>
+            </gns-card>
+        </gns-grid>
+    </gns-section>
+
+    <gns-section title="Panel" subtitle="Collapsible content container with title and optional actions.">
+        <div style="display: flex; flex-direction: column; gap: var(--gns-space-4); max-width: 40rem;">
+            <gns-panel title="Default Panel">
+                <p style="font-size: var(--gns-text-sm); color: var(--gns-color-text-secondary);">This is a standard
+                    panel with a title and content area. Panels are useful for organizing related content.</p>
+            </gns-panel>
+
+            <gns-panel title="Collapsible Panel" [isCollapsible]="true">
+                <p style="font-size: var(--gns-text-sm); color: var(--gns-color-text-secondary);">This panel can be
+                    collapsed by clicking the toggle. Try it out! The content smoothly hides and shows.</p>
+            </gns-panel>
+
+            <gns-panel title="Panel with Actions" [isCollapsible]="true">
+                <div actions>
+                    <gns-button label="Edit" variant="ghost" size="small" />
+                </div>
+                <p style="font-size: var(--gns-text-sm); color: var(--gns-color-text-secondary);">This collapsible
+                    panel also has action buttons in the header area for quick access to related operations.</p>
+            </gns-panel>
+
+            <gns-panel title="Initially Collapsed" [isCollapsible]="true" [isCollapsed]="true">
+                <p style="font-size: var(--gns-text-sm); color: var(--gns-color-text-secondary);">This panel starts
+                    in a collapsed state. Click to expand and see the content.</p>
+            </gns-panel>
+        </div>
+    </gns-section>
+
+</div>

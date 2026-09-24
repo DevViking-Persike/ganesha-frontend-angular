@@ -1,0 +1,21 @@
+<div [class]="cssClass()" role="region" aria-label="Process flow chart">
+    @for (step of stepVms(); track $index) {
+        <div class="gns-process-chart__step"
+             [class.gns-process-chart__step--animated]="isAnimated()"
+             [style.--gns-step-delay]="step.animDelay"
+             [style.--gns-step-color]="step.color">
+            <div class="gns-process-chart__arrow-container">
+                <svg class="gns-process-chart__arrow" viewBox="0 0 100 100" preserveAspectRatio="none">
+                    <polygon points="0,0 80,0 100,50 80,100 0,100 20,50" [attr.fill]="step.color" />
+                </svg>
+                <div class="gns-process-chart__content">
+                    <span class="gns-process-chart__title">{{ step.title }}</span>
+                    <span class="gns-process-chart__value">{{ step.value }}</span>
+                </div>
+            </div>
+            @if (step.description) {
+                <p class="gns-process-chart__description">{{ step.description }}</p>
+            }
+        </div>
+    }
+</div>

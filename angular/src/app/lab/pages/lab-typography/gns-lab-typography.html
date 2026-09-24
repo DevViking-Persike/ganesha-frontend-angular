@@ -1,0 +1,87 @@
+<div class="gns-lab-page">
+
+    <gns-page-header title="Typography"
+                     eyebrow="Foundations"
+                     description="Type scale, font weights, line heights, and tracking values for consistent text styling." />
+
+    <!-- Heading Scale -->
+    <gns-section title="Heading Scale" subtitle="Six heading levels from H1 to H6.">
+        @for (sample of headings; track sample.label) {
+            <div class="gns-type-sample">
+                <div class="gns-type-sample__meta">
+                    <span class="gns-type-sample__label">{{ sample.label }}</span>
+                    <span class="gns-type-sample__specs" [innerHTML]="sample.specs"></span>
+                </div>
+                <div class="gns-type-sample__text"
+                     [style.font-size]="'var(' + sample.sizeVar + ')'"
+                     [style.font-weight]="'var(' + sample.weightVar + ')'"
+                     [style.line-height]="sample.leadingVar ? 'var(' + sample.leadingVar + ')' : null">
+                    {{ sample.text }}
+                </div>
+            </div>
+        }
+    </gns-section>
+
+    <!-- Body Text -->
+    <gns-section title="Body Text" subtitle="Body text at three sizes.">
+        @for (sample of bodySamples; track sample.label) {
+            <div class="gns-type-sample">
+                <div class="gns-type-sample__meta">
+                    <span class="gns-type-sample__label">{{ sample.label }}</span>
+                    <span class="gns-type-sample__specs" [innerHTML]="sample.specs"></span>
+                </div>
+                <div class="gns-type-sample__text"
+                     [style.font-size]="'var(' + sample.sizeVar + ')'"
+                     [style.font-weight]="'var(' + sample.weightVar + ')'"
+                     [style.line-height]="sample.leadingVar ? 'var(' + sample.leadingVar + ')' : null">
+                    {{ sample.text }}
+                </div>
+            </div>
+        }
+    </gns-section>
+
+    <!-- Font Weights -->
+    <gns-section title="Font Weights" subtitle="Available weight variations.">
+        @for (weight of weights; track weight.label) {
+            <div class="gns-type-sample">
+                <div class="gns-type-sample__meta"><span class="gns-type-sample__label">{{ weight.label }}</span></div>
+                <div class="gns-type-sample__text" [style.font-size]="'var(--gns-text-xl)'" [style.font-weight]="'var(' + weight.weightVar + ')'">{{ fox }}</div>
+            </div>
+        }
+    </gns-section>
+
+    <!-- Font Size Scale -->
+    <gns-section title="Font Size Scale" subtitle="All available font sizes from xs to 6xl.">
+        <table class="gns-type-scale-table">
+            <thead><tr><th>Token</th><th>Size</th><th>Sample</th></tr></thead>
+            <tbody>
+                @for (size of fontSizes; track size.token) {
+                    <tr>
+                        <td>{{ size.token }}</td>
+                        <td>{{ size.size }}</td>
+                        <td [style.font-size]="'var(' + size.token + ')'">The quick brown fox</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </gns-section>
+
+    <!-- Code / Mono -->
+    <gns-section title="Code / Monospace" subtitle="Monospace font for code, data, and identifiers.">
+        <div class="gns-type-sample">
+            <div class="gns-type-sample__meta"><span class="gns-type-sample__label">Code Block</span></div>
+            <div class="gns-type-sample__text" style="font-family: var(--gns-font-mono); font-size: var(--gns-text-sm); background: var(--gns-color-bg-subtle); padding: var(--gns-space-4); border-radius: var(--gns-radius-lg); border: 1px solid var(--gns-color-border-default);">
+                <div>const theme = useTheme();</div>
+                <div>const primary = theme.colors.primary[600];</div>
+                <div>console.log("Current: " + primary);</div>
+            </div>
+        </div>
+        <div class="gns-type-sample">
+            <div class="gns-type-sample__meta"><span class="gns-type-sample__label">Inline Code</span></div>
+            <div class="gns-type-sample__text" style="font-size: var(--gns-text-base);">
+                Use the <code style="font-family: var(--gns-font-mono); font-size: 0.9em; background: var(--gns-color-bg-subtle); padding: 0.1em 0.4em; border-radius: var(--gns-radius-sm); border: 1px solid var(--gns-color-border-default);">--gns-primary-600</code> token for primary actions.
+            </div>
+        </div>
+    </gns-section>
+
+</div>

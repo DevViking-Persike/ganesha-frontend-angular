@@ -1,0 +1,47 @@
+<div [class]="wrapperClass()">
+  @if (label()?.trim()) {
+    <label class="gns-select__label" [attr.for]="selectId">
+      {{ label() }}
+      @if (isRequired()) {
+        <span class="gns-select__required" aria-hidden="true">*</span>
+      }
+    </label>
+  }
+
+  <div class="gns-select__control">
+    <select
+      [id]="selectId"
+      [class]="selectClass()"
+      [value]="innerValue()"
+      [disabled]="disabled()"
+      [required]="isRequired()"
+      [attr.aria-required]="isRequired()"
+      [attr.aria-invalid]="hasError()"
+      [attr.aria-describedby]="describedBy()"
+      (change)="handleChange($event)"
+      (blur)="handleBlur()"
+    >
+      @if (placeholder()?.trim()) {
+        <option value="" disabled [selected]="!innerValue()">
+          {{ placeholder() }}
+        </option>
+      }
+
+      <ng-content></ng-content>
+    </select>
+
+    <span class="gns-select__chevron" aria-hidden="true">
+      <span class="gns-select__chevron-icon"></span>
+    </span>
+  </div>
+
+  @if (hasError()) {
+    <span [id]="errorId" class="gns-select__error" role="alert">
+      {{ errorMessage() }}
+    </span>
+  } @else if (helperText()?.trim()) {
+    <span [id]="helperId" class="gns-select__helper">
+      {{ helperText() }}
+    </span>
+  }
+</div>

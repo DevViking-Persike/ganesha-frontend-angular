@@ -1,0 +1,68 @@
+.gns-interactive-chart {
+    background: var(--gns-color-bg-card, #fff);
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.04);
+    border: 1px solid var(--gns-color-border-subtle, rgba(0, 0, 0, 0.06));
+}
+
+.gns-interactive-chart__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.25rem;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.gns-interactive-chart__title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--gns-color-text-primary, #1a1a2e);
+    margin: 0;
+}
+
+.gns-interactive-chart__options {
+    display: flex;
+    gap: 0.25rem;
+    background: var(--gns-color-bg-muted, #f0f0f5);
+    border-radius: 8px;
+    padding: 3px;
+}
+
+.gns-interactive-chart__option {
+    padding: 0.375rem 0.875rem;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    border: none;
+    border-radius: 6px;
+    background: transparent;
+    color: var(--gns-color-text-secondary, #666);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+.gns-interactive-chart__option:hover {
+    color: var(--gns-color-text-primary, #1a1a2e);
+    background: rgba(0, 0, 0, 0.04);
+}
+
+.gns-interactive-chart__option--selected {
+    background: var(--gns-color-bg-card, #fff);
+    color: var(--gns-primary-500, #3F51B5);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.gns-interactive-chart__body {
+    min-height: 200px;
+}
+
+.gns-interactive-chart__bubble-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 200px;
+    color: var(--gns-color-text-tertiary, #aaa);
+    font-size: 0.875rem;
+}

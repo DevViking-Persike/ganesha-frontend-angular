@@ -1,0 +1,75 @@
+<div class="gns-lab-page">
+
+    <gns-page-header title="Dashboard" eyebrow="Patterns"
+                     description="A realistic dashboard layout with metrics, data tables, and notification panels.">
+        <ng-container actions>
+            <gns-select [(value)]="dateRange">
+                <option value="7d">Last 7 days</option>
+                <option value="30d">Last 30 days</option>
+                <option value="90d">Last 90 days</option>
+                <option value="1y">Last year</option>
+            </gns-select>
+        </ng-container>
+    </gns-page-header>
+
+    <!-- Metric Cards -->
+    <gns-section>
+        <gns-grid [columns]="4" gap="4">
+            <gns-stat-card title="Revenue" value="$128,430" trend="+14.2%" trendDirection="up" description="vs previous period" />
+            <gns-stat-card title="Active Users" value="8,492" trend="+5.8%" trendDirection="up" description="currently online: 342" />
+            <gns-stat-card title="Orders" value="3,847" trend="-2.3%" trendDirection="down" description="vs previous period" />
+            <gns-stat-card title="Conversion" value="4.62%" trend="+0.8%" trendDirection="up" description="goal: 5.0%" />
+        </gns-grid>
+    </gns-section>
+
+    <!-- Recent Orders Table -->
+    <gns-section title="Recent Orders" subtitle="Latest orders placed by customers.">
+        <ng-container actions>
+            <gns-button label="Export" variant="outline" size="small" />
+            <gns-button label="View All" variant="ghost" size="small" />
+        </ng-container>
+        <gns-table [items]="orders" [isHoverable]="true">
+            <ng-template gnsTableHeader>
+                <th class="gns-table__head-cell">Order ID</th>
+                <th class="gns-table__head-cell">Customer</th>
+                <th class="gns-table__head-cell">Product</th>
+                <th class="gns-table__head-cell">Amount</th>
+                <th class="gns-table__head-cell">Status</th>
+                <th class="gns-table__head-cell">Date</th>
+            </ng-template>
+            <ng-template gnsTableRow let-order>
+                <tr class="gns-table__body-row">
+                    <td class="gns-table__body-cell" style="font-family: var(--gns-font-mono); font-size: var(--gns-text-xs);">{{ order.id }}</td>
+                    <td class="gns-table__body-cell">
+                        <div style="display: flex; align-items: center; gap: var(--gns-space-2);">
+                            <gns-avatar [initials]="order.customerInitials" size="sm" />
+                            <span>{{ order.customer }}</span>
+                        </div>
+                    </td>
+                    <td class="gns-table__body-cell">{{ order.product }}</td>
+                    <td class="gns-table__body-cell" style="font-weight: var(--gns-font-weight-medium);">{{ order.amount | currency }}</td>
+                    <td class="gns-table__body-cell">
+                        <gns-badge [severity]="order.statusSeverity" size="sm">{{ order.status }}</gns-badge>
+                    </td>
+                    <td class="gns-table__body-cell" style="color: var(--gns-color-text-secondary);">{{ order.date }}</td>
+                </tr>
+            </ng-template>
+        </gns-table>
+    </gns-section>
+
+    <!-- Notifications -->
+    <gns-section title="Notifications" subtitle="Recent system alerts and updates.">
+        <div style="display: flex; flex-direction: column; gap: var(--gns-space-3);">
+            <gns-alert severity="warning" [isDismissible]="true" title="Server Load Warning">
+                CPU usage has exceeded 85% on production server us-east-1. Consider scaling up.
+            </gns-alert>
+            <gns-alert severity="success" [isDismissible]="true">
+                Deployment v2.4.1 completed successfully across all regions.
+            </gns-alert>
+            <gns-alert severity="info" [isDismissible]="true">
+                Scheduled maintenance window: Saturday 2:00 AM - 4:00 AM UTC.
+            </gns-alert>
+        </div>
+    </gns-section>
+
+</div>

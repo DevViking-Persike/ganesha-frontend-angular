@@ -1,0 +1,67 @@
+/* =============================================================================
+   GnsMetricGrid — Scoped Styles
+   ============================================================================= */
+
+/* ----------------------------------------------------------------------------
+   BASE GRID
+---------------------------------------------------------------------------- */
+.gns-metric-grid {
+    --_metric-cols:  4;   /* overridden by modifier classes below */
+    --_metric-gap:   var(--gns-space-4);
+
+    display: grid;
+    grid-template-columns: repeat(var(--_metric-cols), minmax(0, 1fr));
+    gap: var(--_metric-gap);
+    width: 100%;
+}
+
+/* ----------------------------------------------------------------------------
+   COLUMN MODIFIERS (1–6)
+---------------------------------------------------------------------------- */
+.gns-metric-grid--cols-1 { --_metric-cols: 1; }
+.gns-metric-grid--cols-2 { --_metric-cols: 2; }
+.gns-metric-grid--cols-3 { --_metric-cols: 3; }
+.gns-metric-grid--cols-4 { --_metric-cols: 4; }
+.gns-metric-grid--cols-5 { --_metric-cols: 5; }
+.gns-metric-grid--cols-6 { --_metric-cols: 6; }
+
+/* ----------------------------------------------------------------------------
+   RESPONSIVE BREAKPOINTS
+   xl  (≥1280px) → requested column count (default 4)
+   lg  (≥1024px) → clamp to 3 if cols > 3
+   md  (≥768px)  → 2 columns
+   sm  (<768px)  → 1 column
+---------------------------------------------------------------------------- */
+
+/* Large screens — reduce 5/6 col grids to 3 */
+@media (max-width: 1279px) {
+    .gns-metric-grid--cols-5,
+    .gns-metric-grid--cols-6 {
+        --_metric-cols: 3;
+    }
+}
+
+/* Medium screens (tablets) — 2 columns for all */
+@media (max-width: 1023px) {
+    .gns-metric-grid--cols-3,
+    .gns-metric-grid--cols-4,
+    .gns-metric-grid--cols-5,
+    .gns-metric-grid--cols-6 {
+        --_metric-cols: 2;
+    }
+}
+
+/* Small screens (mobile) — single column */
+@media (max-width: 639px) {
+    .gns-metric-grid--cols-2,
+    .gns-metric-grid--cols-3,
+    .gns-metric-grid--cols-4,
+    .gns-metric-grid--cols-5,
+    .gns-metric-grid--cols-6 {
+        --_metric-cols: 1;
+    }
+
+    .gns-metric-grid {
+        --_metric-gap: var(--gns-space-3);
+    }
+}

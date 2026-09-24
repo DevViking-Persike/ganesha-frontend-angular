@@ -1,0 +1,95 @@
+/* =============================================================================
+   GnsToastContainer — Scoped Styles
+   ============================================================================= */
+
+.gns-toast-container {
+    position: fixed;
+    z-index: var(--gns-z-toast, 9000);
+    display: flex;
+    flex-direction: column;
+    gap: var(--gns-space-2);
+    pointer-events: none;
+    padding: var(--gns-space-4);
+    max-height: 100vh;
+    overflow: hidden;
+}
+
+.gns-toast-container > * {
+    pointer-events: all;
+}
+
+/* ----------------------------------------------------------------------------
+   POSITION VARIANTS
+---------------------------------------------------------------------------- */
+.gns-toast-container--top-right {
+    top: 0;
+    right: 0;
+    align-items: flex-end;
+}
+
+.gns-toast-container--top-left {
+    top: 0;
+    left: 0;
+    align-items: flex-start;
+}
+
+.gns-toast-container--bottom-right {
+    bottom: 0;
+    right: 0;
+    align-items: flex-end;
+    flex-direction: column-reverse;
+}
+
+.gns-toast-container--bottom-left {
+    bottom: 0;
+    left: 0;
+    align-items: flex-start;
+    flex-direction: column-reverse;
+}
+
+.gns-toast-container--top-center {
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    align-items: center;
+}
+
+.gns-toast-container--bottom-center {
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    align-items: center;
+    flex-direction: column-reverse;
+}
+
+/* ----------------------------------------------------------------------------
+   RESPONSIVE
+---------------------------------------------------------------------------- */
+@media (max-width: 480px) {
+    .gns-toast-container {
+        padding: var(--gns-space-3);
+        right: 0;
+        left: 0;
+        align-items: stretch;
+    }
+
+    .gns-toast-container--top-right,
+    .gns-toast-container--top-left,
+    .gns-toast-container--top-center {
+        top: 0;
+        bottom: auto;
+        transform: none;
+        left: 0;
+        right: 0;
+    }
+
+    .gns-toast-container--bottom-right,
+    .gns-toast-container--bottom-left,
+    .gns-toast-container--bottom-center {
+        bottom: 0;
+        top: auto;
+        transform: none;
+        left: 0;
+        right: 0;
+    }
+}

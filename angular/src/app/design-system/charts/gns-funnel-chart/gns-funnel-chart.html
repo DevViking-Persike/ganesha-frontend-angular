@@ -1,0 +1,44 @@
+<div [class]="cssClass()" role="img" aria-label="Funnel chart">
+    @if (vm(); as funnel) {
+        <svg class="gns-funnel__svg"
+             [attr.width]="funnel.svgWidth"
+             [attr.height]="funnel.svgHeight"
+             [attr.viewBox]="'0 0 ' + funnel.svgWidth + ' ' + funnel.svgHeight"
+             xmlns="http://www.w3.org/2000/svg">
+
+            <defs>
+                @for (grad of funnel.gradients; track grad.id) {
+                    <linearGradient [attr.id]="grad.id" x1="0" x2="1" y1="0" y2="0">
+                        <stop offset="0%" [attr.stop-color]="grad.color" stop-opacity="0.85" />
+                        <stop offset="50%" [attr.stop-color]="grad.color" stop-opacity="1" />
+                        <stop offset="100%" [attr.stop-color]="grad.color" stop-opacity="0.85" />
+                    </linearGradient>
+                }
+            </defs>
+
+            @for (step of funnel.steps; track $index) {
+                <g class="gns-funnel__step"
+                   [class.gns-funnel__step--animated]="isAnimated()"
+                   [style.--gns-funnel-delay]="step.animDelay">
+                    <polygon class="gns-funnel__shape"
+                             [attr.points]="step.points"
+                             [attr.fill]="'url(#' + step.gradientId + ')'" />
+
+                    <text class="gns-funnel__title"
+                          [attr.x]="funnel.cx.toFixed(1)"
+                          [attr.y]="step.titleY.toFixed(1)"
+                          text-anchor="middle"
+                          dominant-baseline="middle">{{ step.title }}</text>
+
+                    <text class="gns-funnel__value"
+                          [attr.x]="funnel.cx.toFixed(1)"
+                          [attr.y]="step.valueY.toFixed(1)"
+                          text-anchor="middle"
+                          dominant-baseline="middle">{{ step.valueText }}</text>
+                </g>
+            }
+        </svg>
+    } @else {
+        <p class="gns-funnel__empty">No data</p>
+    }
+</div>

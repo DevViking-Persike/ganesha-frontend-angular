@@ -1,0 +1,120 @@
+/* =============================================================================
+   GnsRadioOption — Scoped Styles
+   ============================================================================= */
+
+/* ----------------------------------------------------------------------------
+   WRAPPER LABEL
+---------------------------------------------------------------------------- */
+.gns-radio-option {
+    display: inline-flex;
+    align-items: flex-start;
+    gap: var(--gns-space-2-5);
+    cursor: pointer;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.gns-radio-option--disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+/* ----------------------------------------------------------------------------
+   CONTROL (hidden input + visual circle)
+---------------------------------------------------------------------------- */
+.gns-radio-option__control {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 1.125rem;  /* 18px */
+    height: 1.125rem;
+    margin-top: 0.0625rem; /* optical alignment */
+}
+
+.gns-radio-option__input {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    cursor: inherit;
+    z-index: 1;
+}
+
+/* ----------------------------------------------------------------------------
+   VISUAL CIRCLE
+---------------------------------------------------------------------------- */
+.gns-radio-option__circle {
+    position: absolute;
+    inset: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--gns-radius-radio);
+    border: var(--gns-border-width-default) solid var(--gns-color-border-strong);
+    background-color: var(--gns-color-surface-default);
+    transition:
+        background-color 150ms ease,
+        border-color     150ms ease,
+        box-shadow       150ms ease;
+}
+
+/* Hover */
+.gns-radio-option:not(.gns-radio-option--disabled):hover .gns-radio-option__circle {
+    border-color: var(--gns-color-border-focus);
+}
+
+/* Focus-visible */
+.gns-radio-option__input:focus-visible ~ .gns-radio-option__circle {
+    outline: var(--gns-outline-width-focus) var(--gns-outline-style-focus) var(--gns-color-interactive-focus-ring);
+    outline-offset: var(--gns-outline-offset-focus);
+}
+
+/* Checked */
+.gns-radio-option--checked .gns-radio-option__circle {
+    border-color: var(--gns-color-interactive-primary-bg);
+    background-color: var(--gns-color-surface-default);
+}
+
+.gns-radio-option--checked:not(.gns-radio-option--disabled):hover .gns-radio-option__circle {
+    border-color: var(--gns-color-interactive-primary-bg-hover);
+}
+
+/* ----------------------------------------------------------------------------
+   INNER DOT
+---------------------------------------------------------------------------- */
+.gns-radio-option__dot {
+    display: block;
+    width: 0.5rem;   /* 8px */
+    height: 0.5rem;
+    border-radius: var(--gns-radius-full);
+    background-color: var(--gns-color-interactive-primary-bg);
+    transform: scale(0);
+    transition: transform 150ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.gns-radio-option--checked .gns-radio-option__dot {
+    transform: scale(1);
+}
+
+.gns-radio-option--checked:not(.gns-radio-option--disabled):hover .gns-radio-option__dot {
+    background-color: var(--gns-color-interactive-primary-bg-hover);
+}
+
+/* ----------------------------------------------------------------------------
+   LABEL TEXT
+---------------------------------------------------------------------------- */
+.gns-radio-option__label {
+    font-family: var(--gns-font-sans);
+    font-size: var(--gns-text-sm);
+    font-weight: var(--gns-font-weight-regular);
+    color: var(--gns-color-text-primary);
+    line-height: var(--gns-leading-normal);
+}
+
+.gns-radio-option--disabled .gns-radio-option__label {
+    color: var(--gns-color-text-disabled);
+}

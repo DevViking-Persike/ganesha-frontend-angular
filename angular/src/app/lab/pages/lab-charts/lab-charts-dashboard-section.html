@@ -1,0 +1,121 @@
+<gns-section title="Dashboard Composition" subtitle="A realistic mini-dashboard combining multiple chart types in a cohesive layout.">
+
+    <!-- Top row — 4 stat cards with sparklines -->
+    <gns-grid [columns]="4" gap="4">
+
+        <gns-card>
+            <div style="padding: var(--gns-space-4);">
+                <div style="display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: var(--gns-space-3);">
+                    <div>
+                        <div style="font-size: var(--gns-text-xs); font-weight: var(--gns-font-weight-semibold); color: var(--gns-color-text-secondary); text-transform: uppercase; letter-spacing: var(--gns-tracking-wide);">Total Revenue</div>
+                        <div style="font-size: var(--gns-text-xl); font-weight: var(--gns-font-weight-bold); color: var(--gns-color-text-primary); margin-top: var(--gns-space-1);">$128.4K</div>
+                    </div>
+                    <span style="font-size: var(--gns-text-xs); font-weight: var(--gns-font-weight-semibold); color: var(--gns-success-600); background: var(--gns-success-50); padding: var(--gns-space-1) var(--gns-space-2); border-radius: var(--gns-radius-full);">+14.2%</span>
+                </div>
+                <gns-sparkline [values]="dashSparkRevenue" [width]="160" [height]="36" color="var(--gns-success-500)" [showArea]="true" />
+                <div style="font-size: var(--gns-text-xs); color: var(--gns-color-text-tertiary); margin-top: var(--gns-space-2);">vs $112.4K last month</div>
+            </div>
+        </gns-card>
+
+        <gns-card>
+            <div style="padding: var(--gns-space-4);">
+                <div style="display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: var(--gns-space-3);">
+                    <div>
+                        <div style="font-size: var(--gns-text-xs); font-weight: var(--gns-font-weight-semibold); color: var(--gns-color-text-secondary); text-transform: uppercase; letter-spacing: var(--gns-tracking-wide);">Active Users</div>
+                        <div style="font-size: var(--gns-text-xl); font-weight: var(--gns-font-weight-bold); color: var(--gns-color-text-primary); margin-top: var(--gns-space-1);">24,391</div>
+                    </div>
+                    <span style="font-size: var(--gns-text-xs); font-weight: var(--gns-font-weight-semibold); color: var(--gns-success-600); background: var(--gns-success-50); padding: var(--gns-space-1) var(--gns-space-2); border-radius: var(--gns-radius-full);">+5.8%</span>
+                </div>
+                <gns-sparkline [values]="dashSparkUsers" [width]="160" [height]="36" color="var(--gns-primary-500)" [showArea]="true" />
+                <div style="font-size: var(--gns-text-xs); color: var(--gns-color-text-tertiary); margin-top: var(--gns-space-2);">342 online right now</div>
+            </div>
+        </gns-card>
+
+        <gns-card>
+            <div style="padding: var(--gns-space-4);">
+                <div style="display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: var(--gns-space-3);">
+                    <div>
+                        <div style="font-size: var(--gns-text-xs); font-weight: var(--gns-font-weight-semibold); color: var(--gns-color-text-secondary); text-transform: uppercase; letter-spacing: var(--gns-tracking-wide);">New Orders</div>
+                        <div style="font-size: var(--gns-text-xl); font-weight: var(--gns-font-weight-bold); color: var(--gns-color-text-primary); margin-top: var(--gns-space-1);">3,847</div>
+                    </div>
+                    <span style="font-size: var(--gns-text-xs); font-weight: var(--gns-font-weight-semibold); color: var(--gns-danger-600); background: var(--gns-danger-50); padding: var(--gns-space-1) var(--gns-space-2); border-radius: var(--gns-radius-full);">-2.3%</span>
+                </div>
+                <gns-sparkline [values]="dashSparkOrders" [width]="160" [height]="36" color="var(--gns-warning-500)" [showArea]="true" />
+                <div style="font-size: var(--gns-text-xs); color: var(--gns-color-text-tertiary); margin-top: var(--gns-space-2);">vs 3,937 last month</div>
+            </div>
+        </gns-card>
+
+        <gns-card>
+            <div style="padding: var(--gns-space-4);">
+                <div style="display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: var(--gns-space-3);">
+                    <div>
+                        <div style="font-size: var(--gns-text-xs); font-weight: var(--gns-font-weight-semibold); color: var(--gns-color-text-secondary); text-transform: uppercase; letter-spacing: var(--gns-tracking-wide);">Conversion</div>
+                        <div style="font-size: var(--gns-text-xl); font-weight: var(--gns-font-weight-bold); color: var(--gns-color-text-primary); margin-top: var(--gns-space-1);">4.62%</div>
+                    </div>
+                    <span style="font-size: var(--gns-text-xs); font-weight: var(--gns-font-weight-semibold); color: var(--gns-success-600); background: var(--gns-success-50); padding: var(--gns-space-1) var(--gns-space-2); border-radius: var(--gns-radius-full);">+0.8%</span>
+                </div>
+                <gns-sparkline [values]="dashSparkConversion" [width]="160" [height]="36" color="var(--gns-info-500)" [showArea]="true" />
+                <div style="font-size: var(--gns-text-xs); color: var(--gns-color-text-tertiary); margin-top: var(--gns-space-2);">Goal: 5.0%</div>
+            </div>
+        </gns-card>
+
+    </gns-grid>
+
+    <!-- Middle row — Line chart (2/3) + Donut chart (1/3) -->
+    <div style="margin-top: var(--gns-space-5);">
+        <gns-grid templateColumns="2fr 1fr" gap="5">
+
+            <gns-card>
+                <div header style="padding: var(--gns-space-4) var(--gns-space-5); border-bottom: 1px solid var(--gns-color-border-subtle); display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <div style="font-size: var(--gns-text-sm); font-weight: var(--gns-font-weight-semibold); color: var(--gns-color-text-primary);">Revenue Trend</div>
+                        <div style="font-size: var(--gns-text-xs); color: var(--gns-color-text-secondary); margin-top: var(--gns-space-1);">Monthly revenue vs target ($ thousands)</div>
+                    </div>
+                    <div style="display: flex; gap: var(--gns-space-4); font-size: var(--gns-text-xs); color: var(--gns-color-text-secondary);">
+                        <span style="display: flex; align-items: center; gap: var(--gns-space-1);">
+                            <span style="width: 12px; height: 3px; background: var(--gns-primary-500); border-radius: 2px; display: inline-block;"></span>
+                            Actual
+                        </span>
+                        <span style="display: flex; align-items: center; gap: var(--gns-space-1);">
+                            <span style="width: 12px; height: 3px; background: var(--gns-color-border-default); border-radius: 2px; display: inline-block;"></span>
+                            Target
+                        </span>
+                    </div>
+                </div>
+                <div style="padding: var(--gns-space-5);">
+                    <gns-line-chart [series]="dashRevenueSeries" [labels]="dashMonthLabels" [height]="300"
+                                    [showArea]="true" [showDots]="true" [showGrid]="true" />
+                </div>
+            </gns-card>
+
+            <gns-card>
+                <div header style="padding: var(--gns-space-4) var(--gns-space-5); border-bottom: 1px solid var(--gns-color-border-subtle);">
+                    <div style="font-size: var(--gns-text-sm); font-weight: var(--gns-font-weight-semibold); color: var(--gns-color-text-primary);">Traffic Sources</div>
+                    <div style="font-size: var(--gns-text-xs); color: var(--gns-color-text-secondary); margin-top: var(--gns-space-1);">Acquisition channels</div>
+                </div>
+                <div style="padding: var(--gns-space-5); display: flex; justify-content: center;">
+                    <gns-donut-chart [data]="trafficSources" [size]="200" [strokeWidth]="32"
+                                     centerLabel="100%" centerSubLabel="Traffic" [showLegend]="true" />
+                </div>
+            </gns-card>
+
+        </gns-grid>
+    </div>
+
+    <!-- Bottom row — Horizontal bar chart -->
+    <div style="margin-top: var(--gns-space-5);">
+        <gns-card>
+            <div header style="padding: var(--gns-space-4) var(--gns-space-5); border-bottom: 1px solid var(--gns-color-border-subtle); display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                    <div style="font-size: var(--gns-text-sm); font-weight: var(--gns-font-weight-semibold); color: var(--gns-color-text-primary);">Top Revenue Sources</div>
+                    <div style="font-size: var(--gns-text-xs); color: var(--gns-color-text-secondary); margin-top: var(--gns-space-1);">Revenue by product line, current quarter ($ thousands)</div>
+                </div>
+                <gns-button label="Full Report" variant="ghost" size="small" />
+            </div>
+            <div style="padding: var(--gns-space-5);">
+                <gns-horizontal-bar-chart [data]="dashProductRevenue" [barHeight]="30" [showValues]="true" />
+            </div>
+        </gns-card>
+    </div>
+
+</gns-section>

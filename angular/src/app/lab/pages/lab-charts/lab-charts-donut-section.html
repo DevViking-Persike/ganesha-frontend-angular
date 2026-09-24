@@ -1,0 +1,29 @@
+<gns-section title="Donut Charts" subtitle="Ring charts for part-to-whole relationships.">
+
+    <gns-grid [columns]="2" gap="6">
+
+        <gns-card>
+            <div header style="padding: var(--gns-space-4) var(--gns-space-5); border-bottom: 1px solid var(--gns-color-border-subtle);">
+                <div style="font-size: var(--gns-text-sm); font-weight: var(--gns-font-weight-semibold); color: var(--gns-color-text-primary);">Budget Allocation</div>
+                <div style="font-size: var(--gns-text-xs); color: var(--gns-color-text-secondary); margin-top: var(--gns-space-1);">Annual budget by department</div>
+            </div>
+            <div style="padding: var(--gns-space-5); display: flex; justify-content: center;">
+                <gns-donut-chart [data]="budgetAllocation" [size]="240" [strokeWidth]="36"
+                                 centerLabel="$4.2M" centerSubLabel="Total" [showLegend]="true" />
+            </div>
+        </gns-card>
+
+        <gns-card>
+            <div header style="padding: var(--gns-space-4) var(--gns-space-5); border-bottom: 1px solid var(--gns-color-border-subtle);">
+                <div style="font-size: var(--gns-text-sm); font-weight: var(--gns-font-weight-semibold); color: var(--gns-color-text-primary);">Task Status</div>
+                <div style="font-size: var(--gns-text-xs); color: var(--gns-color-text-secondary); margin-top: var(--gns-space-1);">Sprint progress breakdown</div>
+            </div>
+            <div style="padding: var(--gns-space-5); display: flex; justify-content: center;">
+                <gns-donut-chart [data]="taskStatus" [size]="240" [strokeWidth]="36"
+                                 centerLabel="148" centerSubLabel="Total Tasks" [showLegend]="true" />
+            </div>
+        </gns-card>
+
+    </gns-grid>
+
+</gns-section>

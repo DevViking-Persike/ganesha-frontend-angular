@@ -1,0 +1,53 @@
+<div [class]="cssClass()" role="img" aria-label="Stacked bar chart">
+    @if (vm(); as chart) {
+        <svg class="gns-stacked-bar__svg"
+             [attr.viewBox]="'0 0 ' + chart.chartWidth + ' ' + chart.chartHeight"
+             xmlns="http://www.w3.org/2000/svg"
+             [attr.width]="chart.chartWidth"
+             [attr.height]="chart.chartHeight">
+
+            @for (grid of chart.gridLines; track $index) {
+                <line class="gns-stacked-bar__grid-line"
+                      x1="80"
+                      [attr.y1]="grid.y.toFixed(1)"
+                      [attr.x2]="grid.x2"
+                      [attr.y2]="grid.y.toFixed(1)" />
+                <text class="gns-stacked-bar__y-label"
+                      [attr.x]="grid.labelX"
+                      [attr.y]="grid.y.toFixed(1)"
+                      text-anchor="end"
+                      dominant-baseline="middle">{{ grid.label }}</text>
+            }
+
+            @for (bar of chart.bars; track $index) {
+                <rect class="gns-stacked-bar__bar"
+                      [class.gns-stacked-bar__bar--animated]="isAnimated()"
+                      [attr.x]="bar.x.toFixed(1)"
+                      [attr.y]="bar.y.toFixed(1)"
+                      [attr.width]="bar.width.toFixed(1)"
+                      [attr.height]="bar.height.toFixed(1)"
+                      [attr.rx]="bar.rx"
+                      [attr.fill]="bar.fill"
+                      [style.transform-origin]="bar.transformOrigin"
+                      [style.--gns-bar-delay]="bar.animDelay">
+                    <title>{{ bar.title }}</title>
+                </rect>
+            }
+
+            @for (label of chart.xLabels; track $index) {
+                <text class="gns-stacked-bar__x-label"
+                      [attr.x]="label.x.toFixed(1)"
+                      [attr.y]="label.y.toFixed(1)"
+                      text-anchor="middle">{{ label.text }}</text>
+            }
+
+            @for (item of chart.legend; track $index) {
+                <rect [attr.x]="item.x" [attr.y]="item.rectY.toFixed(1)" width="12" height="12" rx="2" [attr.fill]="item.color" />
+                <text [attr.x]="item.textX" [attr.y]="item.textY.toFixed(1)"
+                      class="gns-stacked-bar__legend-text" dominant-baseline="middle">{{ item.name }}</text>
+            }
+        </svg>
+    } @else {
+        <p class="gns-stacked-bar__empty">No data</p>
+    }
+</div>

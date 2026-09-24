@@ -1,0 +1,375 @@
+/* =============================================================================
+   GANESHA DESIGN SYSTEM — CSS RESET
+   base/_reset.css
+
+   Modern, opinionated reset.
+   Goals:
+     - Normalize cross-browser inconsistencies
+     - Set sensible defaults that tokens can layer on top of
+     - Never override component-level styles
+     - Support smooth scroll, reduced motion, and accessible focus
+   ============================================================================= */
+
+/* ---------------------------------------------------------------------------
+   BOX MODEL
+--------------------------------------------------------------------------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* ---------------------------------------------------------------------------
+   DOCUMENT
+--------------------------------------------------------------------------- */
+
+html {
+  /* Prevent font size inflation on mobile landscape */
+  -moz-text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+
+  /* Smooth scrolling — disabled for users who prefer reduced motion */
+  scroll-behavior: smooth;
+
+  /* Tab size for <pre>/<code> */
+  tab-size: 4;
+
+  /* Use tokens once they're loaded */
+  font-family: var(--gns-font-sans, ui-sans-serif, system-ui, sans-serif);
+  font-size: 100%;    /* respect user browser font size setting */
+  line-height: var(--gns-leading-normal, 1.5);
+  color: var(--gns-color-text-primary);
+  background-color: var(--gns-color-bg-page);
+
+  /* Kerning & ligatures */
+  font-kerning: normal;
+  font-variant-ligatures: common-ligatures;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   BODY
+--------------------------------------------------------------------------- */
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  min-height: 100dvh;   /* dynamic viewport on mobile */
+  line-height: inherit;
+}
+
+/* ---------------------------------------------------------------------------
+   THEME PROVIDER
+   Ensures theme wrapper covers full viewport so dark mode bg propagates
+   to html/body behind it.
+--------------------------------------------------------------------------- */
+
+.gns-theme-provider {
+  min-height: 100vh;
+  min-height: 100dvh;
+  background-color: var(--gns-color-bg-page);
+  color: var(--gns-color-text-primary);
+}
+
+/* ---------------------------------------------------------------------------
+   RESET MARGINS & PADDINGS
+   Remove browser default margins from block elements.
+--------------------------------------------------------------------------- */
+
+h1, h2, h3, h4, h5, h6,
+p, figure, blockquote, dl, dd,
+ul, ol, menu,
+fieldset, legend,
+pre {
+  margin: 0;
+  padding: 0;
+}
+
+/* ---------------------------------------------------------------------------
+   LISTS
+   Remove bullets/numbers from lists that have a role or class.
+   Use role="list" on styled <ul>/<ol> to signal intent.
+--------------------------------------------------------------------------- */
+
+ul[role='list'],
+ol[role='list'],
+menu[role='list'] {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* ---------------------------------------------------------------------------
+   HEADINGS
+--------------------------------------------------------------------------- */
+
+h1, h2, h3, h4, h5, h6 {
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: var(--gns-leading-tight, 1.25);
+}
+
+/* ---------------------------------------------------------------------------
+   ANCHORS
+--------------------------------------------------------------------------- */
+
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+/* ---------------------------------------------------------------------------
+   MEDIA & EMBEDDED CONTENT
+--------------------------------------------------------------------------- */
+
+img,
+svg,
+video,
+canvas,
+audio,
+iframe,
+embed,
+object {
+  display: block;
+  vertical-align: middle;
+}
+
+img,
+video {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Prevent SVGs from being taller than their container */
+svg {
+  overflow: hidden;
+}
+
+/* ---------------------------------------------------------------------------
+   FORMS & INTERACTIVE ELEMENTS
+--------------------------------------------------------------------------- */
+
+/* Inherit font in all form controls */
+input,
+button,
+textarea,
+select,
+optgroup {
+  font: inherit;
+  color: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
+}
+
+/* Remove default button styles */
+button,
+[type='button'],
+[type='reset'],
+[type='submit'] {
+  -webkit-appearance: button;
+  background-color: transparent;
+  background-image: none;
+  cursor: pointer;
+  border: 0;
+  padding: 0;
+}
+
+/* Pointer cursor on buttons */
+button:not(:disabled),
+[role='button']:not([aria-disabled='true']) {
+  cursor: pointer;
+}
+
+/* Disabled state */
+:disabled,
+[aria-disabled='true'] {
+  cursor: not-allowed;
+}
+
+/* Remove inner border and padding in Firefox */
+::-moz-focus-inner {
+  border-style: none;
+  padding: 0;
+}
+
+/* Textarea — don't allow horizontal resize by default */
+textarea {
+  resize: vertical;
+  overflow: auto;
+}
+
+/* Number input — hide spinners */
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  height: auto;
+}
+
+/* Search input — normalize appearance */
+input[type='search'] {
+  -webkit-appearance: textfield;
+  outline-offset: -2px;
+}
+
+input[type='search']::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/* Color swatch inputs */
+input[type='color'] {
+  border: 0;
+  padding: 0;
+}
+
+/* File input button */
+::-webkit-file-upload-button {
+  -webkit-appearance: button;
+  font: inherit;
+}
+
+/* ---------------------------------------------------------------------------
+   TABLES
+--------------------------------------------------------------------------- */
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+th {
+  text-align: inherit;
+  text-align: -webkit-match-parent;
+  font-weight: var(--gns-font-weight-semibold, 600);
+}
+
+/* ---------------------------------------------------------------------------
+   TYPOGRAPHY HELPERS
+--------------------------------------------------------------------------- */
+
+/* Strong / bold */
+b, strong {
+  font-weight: var(--gns-font-weight-semibold, 600);
+}
+
+/* Small */
+small {
+  font-size: var(--gns-text-sm, 0.875em);
+}
+
+/* Sub / sup positioning */
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub { bottom: -0.25em; }
+sup { top: -0.5em; }
+
+/* Horizontal rule */
+hr {
+  height: 0;
+  color: inherit;
+  border-top: var(--gns-border-width-1, 1px) solid var(--gns-color-border-default);
+  margin: 0;
+}
+
+/* Abbreviations */
+abbr[title] {
+  text-decoration: underline dotted;
+  cursor: help;
+  text-decoration-skip-ink: none;
+}
+
+/* Code / pre */
+code,
+kbd,
+samp,
+pre {
+  font-family: var(--gns-font-mono, ui-monospace, monospace);
+  font-size: 1em;
+}
+
+/* ---------------------------------------------------------------------------
+   DETAILS / SUMMARY
+--------------------------------------------------------------------------- */
+
+details {
+  display: block;
+}
+
+summary {
+  cursor: pointer;
+  display: list-item;
+}
+
+/* ---------------------------------------------------------------------------
+   DIALOG
+--------------------------------------------------------------------------- */
+
+dialog {
+  padding: 0;
+  border: none;
+  background: transparent;
+}
+
+/* ---------------------------------------------------------------------------
+   FOCUS STYLES
+   Remove default :focus outline and provide consistent :focus-visible styles.
+   Components override as needed with their own focus ring implementation.
+--------------------------------------------------------------------------- */
+
+:focus {
+  outline: none;
+}
+
+:focus-visible {
+  outline: var(--gns-outline-width-focus, 2px) solid var(--gns-color-interactive-focus-ring);
+  outline-offset: var(--gns-outline-offset-focus, 2px);
+  border-radius: var(--gns-radius-sm, 0.25rem);
+}
+
+/* ---------------------------------------------------------------------------
+   SELECTION
+--------------------------------------------------------------------------- */
+
+::selection {
+  background-color: var(--gns-primary-200, #9FA8DA);
+  color: var(--gns-primary-900, #1A237E);
+}
+
+/* ---------------------------------------------------------------------------
+   HIDDEN ATTRIBUTE
+--------------------------------------------------------------------------- */
+
+[hidden] {
+  display: none !important;
+}
+
+/* ---------------------------------------------------------------------------
+   POINTER EVENTS
+--------------------------------------------------------------------------- */
+
+[aria-disabled='true'],
+[disabled] {
+  pointer-events: none;
+}
+
+/* ---------------------------------------------------------------------------
+   CONTENT VISIBILITY (performance)
+   opt-in with class; do not apply universally
+--------------------------------------------------------------------------- */
+
+.gns-content-auto {
+  content-visibility: auto;
+}

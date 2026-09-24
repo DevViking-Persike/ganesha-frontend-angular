@@ -1,0 +1,16 @@
+<li class="gns-breadcrumb-item" [attr.aria-current]="isActive() ? 'page' : null">
+  @if (!isActive() && href()) {
+    <a class="gns-breadcrumb-item__link" [href]="href()">{{ label() }}</a>
+  } @else {
+    <span
+      class="gns-breadcrumb-item__label"
+      [class.gns-breadcrumb-item__label--active]="isActive()"
+      >{{ label() }}</span
+    >
+  }
+  @if (!isActive()) {
+    <span class="gns-breadcrumb-item__separator" aria-hidden="true">{{
+      separator()
+    }}</span>
+  }
+</li>

@@ -1,0 +1,40 @@
+<div class="{{ cssClass() }}" role="banner">
+
+  <!-- ── Left section ────────────────────────────────────────────────── -->
+  <div class="gns-top-bar__left">
+
+    <!-- Hamburger toggle -->
+    <button
+      type="button"
+      class="gns-top-bar__menu-btn"
+      aria-label="Toggle navigation menu"
+      (click)="handleMenuToggle()">
+      <span class="gns-top-bar__menu-icon" aria-hidden="true">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M2.5 5h15M2.5 10h15M2.5 15h15"
+                stroke="currentColor"
+                stroke-width="1.75"
+                stroke-linecap="round" />
+        </svg>
+      </span>
+    </button>
+
+    <!-- Custom left content (e.g., breadcrumb from parent) -->
+    @if (hasLeftContent()) {
+      <div class="gns-top-bar__left-content">
+        <ng-container [ngTemplateOutlet]="leftTpl()!" />
+      </div>
+    } @else if (title()) {
+      <span class="gns-top-bar__title">{{ title() }}</span>
+    }
+
+  </div>
+
+  <!-- ── Right section ───────────────────────────────────────────────── -->
+  @if (hasRightContent()) {
+    <div class="gns-top-bar__right">
+      <ng-container [ngTemplateOutlet]="rightTpl()!" />
+    </div>
+  }
+
+</div>

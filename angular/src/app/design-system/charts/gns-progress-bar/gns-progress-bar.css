@@ -1,0 +1,126 @@
+/* =============================================================================
+   GnsProgressBar — Scoped Styles
+   ============================================================================= */
+
+/* ----------------------------------------------------------------------------
+   WRAPPER
+---------------------------------------------------------------------------- */
+.gns-progress-bar {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gns-space-1-5, 0.375rem);
+    width: 100%;
+}
+
+/* ----------------------------------------------------------------------------
+   HEADER (label + value)
+---------------------------------------------------------------------------- */
+.gns-progress-bar__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--gns-space-2, 0.5rem);
+}
+
+.gns-progress-bar__label {
+    font-family: var(--gns-font-sans, system-ui, sans-serif);
+    font-size: var(--gns-text-sm, 0.875rem);
+    font-weight: 500;
+    color: var(--gns-color-text-secondary, #665C76);
+}
+
+.gns-progress-bar__value {
+    font-family: var(--gns-font-sans, system-ui, sans-serif);
+    font-size: var(--gns-text-sm, 0.875rem);
+    font-weight: 600;
+    color: var(--gns-color-text-primary, #221C2E);
+    font-variant-numeric: tabular-nums;
+}
+
+/* ----------------------------------------------------------------------------
+   TRACK
+---------------------------------------------------------------------------- */
+.gns-progress-bar__track {
+    width: 100%;
+    background-color: var(--gns-color-bg-muted, #E0DBE8);
+    border-radius: var(--gns-radius-full, 9999px);
+    overflow: hidden;
+}
+
+/* ----------------------------------------------------------------------------
+   FILL — BASE
+---------------------------------------------------------------------------- */
+.gns-progress-bar__fill {
+    height: 8px; /* medium default */
+    border-radius: var(--gns-radius-full, 9999px);
+    width: 0%;
+    transition: none;
+}
+
+/* ----------------------------------------------------------------------------
+   SIZES
+---------------------------------------------------------------------------- */
+.gns-progress-bar__fill--sm { height: 4px; }
+.gns-progress-bar__fill--md { height: 8px; }
+.gns-progress-bar__fill--lg { height: 12px; }
+
+/* ----------------------------------------------------------------------------
+   VARIANTS
+---------------------------------------------------------------------------- */
+.gns-progress-bar__fill--default {
+    background-color: var(--gns-primary-500, #3F51B5);
+}
+
+.gns-progress-bar__fill--success {
+    background-color: var(--gns-success-500, #4CAF50);
+}
+
+.gns-progress-bar__fill--warning {
+    background-color: var(--gns-warning-500, #FFC107);
+}
+
+.gns-progress-bar__fill--danger {
+    background-color: var(--gns-danger-500, #F44336);
+}
+
+.gns-progress-bar__fill--info {
+    background-color: var(--gns-info-500, #00BCD4);
+}
+
+/* ----------------------------------------------------------------------------
+   STRIPED
+---------------------------------------------------------------------------- */
+.gns-progress-bar__fill--striped {
+    background-image: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 8px,
+        rgba(255, 255, 255, 0.2) 8px,
+        rgba(255, 255, 255, 0.2) 16px
+    );
+    background-size: 22px 22px;
+}
+
+/* ----------------------------------------------------------------------------
+   ANIMATION
+---------------------------------------------------------------------------- */
+@keyframes gns-pbar-expand {
+    from { width: 0%; }
+    to   { width: var(--gns-pbar-target-width, 100%); }
+}
+
+@keyframes gns-stripe-slide {
+    from { background-position: 0 0; }
+    to   { background-position: 22px 0; }
+}
+
+.gns-progress-bar__fill--animated {
+    animation: gns-pbar-expand 700ms cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+.gns-progress-bar__fill--animated.gns-progress-bar__fill--striped {
+    animation:
+        gns-pbar-expand 700ms cubic-bezier(0.25, 0.46, 0.45, 0.94) both,
+        gns-stripe-slide 1s linear infinite;
+    animation-delay: 0ms, 700ms;
+}

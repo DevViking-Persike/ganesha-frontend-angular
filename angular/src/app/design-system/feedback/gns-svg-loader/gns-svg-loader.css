@@ -1,0 +1,93 @@
+/* =============================================================================
+   GnsSvgLoader — SVG fill loader
+   ============================================================================= */
+
+.gns-svg-loader {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--gns-space-2-5);
+    color: var(--gns-color-interactive-primary-bg);
+}
+
+.gns-svg-loader__art {
+    position: relative;
+    display: inline-block;
+    flex-shrink: 0;
+}
+
+.gns-svg-loader__bg,
+.gns-svg-loader__fill {
+    position: absolute;
+    inset: 0;
+    display: block;
+}
+
+.gns-svg-loader__bg {
+    background:
+        radial-gradient(circle at 50% 20%, color-mix(in srgb, var(--gns-color-interactive-primary-bg) 20%, transparent), transparent 60%),
+        color-mix(in srgb, var(--gns-color-border-default) 90%, transparent);
+    opacity: 0.55;
+}
+
+.gns-svg-loader__fill {
+    background:
+        linear-gradient(
+            180deg,
+            color-mix(in srgb, var(--gns-color-interactive-primary-bg) 32%, transparent) 0%,
+            var(--gns-color-interactive-primary-bg) 55%,
+            color-mix(in srgb, var(--gns-color-interactive-primary-bg) 75%, white) 100%);
+    clip-path: inset(82% 0 0 0);
+    animation: gns-svg-loader-fill 2.2s ease-in-out infinite;
+    filter: drop-shadow(0 0 1rem color-mix(in srgb, var(--gns-color-interactive-primary-bg) 18%, transparent));
+}
+
+.gns-svg-loader--sm .gns-svg-loader__art {
+    height: 1.25rem;
+}
+
+.gns-svg-loader--md .gns-svg-loader__art {
+    height: 2rem;
+}
+
+.gns-svg-loader--lg .gns-svg-loader__art {
+    height: 3rem;
+}
+
+.gns-svg-loader__label {
+    font-size: var(--gns-text-sm);
+    font-weight: var(--gns-font-weight-medium);
+    color: var(--gns-color-text-secondary);
+    line-height: var(--gns-leading-tight);
+}
+
+.gns-svg-loader--sm .gns-svg-loader__label {
+    font-size: var(--gns-text-xs);
+}
+
+.gns-svg-loader--lg .gns-svg-loader__label {
+    font-size: var(--gns-text-base);
+}
+
+@keyframes gns-svg-loader-fill {
+    0% {
+        clip-path: inset(82% 0 0 0);
+        opacity: 0.45;
+    }
+
+    45% {
+        clip-path: inset(0 0 0 0);
+        opacity: 1;
+    }
+
+    70% {
+        clip-path: inset(5% 0 0 0);
+        opacity: 0.92;
+    }
+
+    100% {
+        clip-path: inset(82% 0 0 0);
+        opacity: 0.45;
+    }
+}

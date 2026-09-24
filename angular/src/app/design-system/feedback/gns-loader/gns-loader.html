@@ -1,0 +1,7 @@
+<div class="{{ cssClass() }}" role="status" [attr.aria-label]="label() ?? 'Loading'">
+  <span class="gns-loader__spinner" aria-hidden="true"></span>
+  @if (label()) {
+    <span class="gns-loader__label">{{ label() }}</span>
+  }
+  <span class="gns-sr-only">{{ label() ?? 'Loading…' }}</span>
+</div>

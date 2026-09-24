@@ -20,3 +20,8 @@ src/Coleção de elementos infográficos de gradiente _ Vetor Grátis.html
 src/Coleção de elementos infográficos de gradiente _ Vetor Grátis_files/
 .worktrees/
 .worktrees/*
+
+# Angular
+.angular/
+**/dist/
+

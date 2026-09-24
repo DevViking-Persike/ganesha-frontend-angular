@@ -1,0 +1,94 @@
+<div class="gns-lab-page">
+
+    <gns-page-header title="User Profile" eyebrow="Patterns"
+                     description="User profile page with avatar, stats, activity feed, and settings.">
+        <ng-container breadcrumb>
+            <gns-breadcrumb>
+                <gns-breadcrumb-item label="Dashboard" href="/lab" />
+                <gns-breadcrumb-item label="Users" href="/lab/table-page" />
+                <gns-breadcrumb-item label="Sarah Johnson" [isActive]="true" />
+            </gns-breadcrumb>
+        </ng-container>
+        <ng-container actions>
+            <gns-button label="Edit Profile" variant="primary" />
+        </ng-container>
+    </gns-page-header>
+
+    <!-- Profile Card -->
+    <gns-section>
+        <gns-card>
+            <div style="padding: var(--gns-space-8); display: flex; gap: var(--gns-space-8); align-items: flex-start; flex-wrap: wrap;">
+                <gns-avatar initials="SJ" size="xl" />
+                <div style="flex: 1; min-width: 16rem;">
+                    <h2 style="font-size: var(--gns-text-2xl); font-weight: var(--gns-font-weight-bold); margin-bottom: var(--gns-space-1);">Sarah Johnson</h2>
+                    <p style="font-size: var(--gns-text-base); color: var(--gns-color-text-secondary); margin-bottom: var(--gns-space-2);">Lead Product Designer</p>
+                    <div style="display: flex; gap: var(--gns-space-2); margin-bottom: var(--gns-space-4); flex-wrap: wrap;">
+                        <gns-tag label="Design" variant="primary" />
+                        <gns-tag label="UX Research" variant="info" />
+                        <gns-tag label="Figma" variant="default" />
+                    </div>
+                    <p style="font-size: var(--gns-text-sm); color: var(--gns-color-text-secondary); line-height: var(--gns-leading-relaxed); max-width: 48ch;">
+                        Passionate about creating intuitive and accessible user experiences.
+                        Over 8 years of experience in product design for SaaS applications.
+                        Currently leading the design system team.
+                    </p>
+                </div>
+            </div>
+        </gns-card>
+    </gns-section>
+
+    <!-- Stats Row -->
+    <gns-section>
+        <gns-grid [columns]="3" gap="4">
+            <gns-stat-card title="Projects" value="24" description="12 active, 12 completed" />
+            <gns-stat-card title="Tasks" value="186" trend="+8" trendDirection="up" description="this month" />
+            <gns-stat-card title="Reviews" value="47" description="avg rating: 4.8/5" />
+        </gns-grid>
+    </gns-section>
+
+    <!-- Activity Feed -->
+    <gns-section title="Recent Activity" subtitle="Latest actions and contributions.">
+        <gns-card>
+            <div style="display: flex; flex-direction: column;">
+                @for (activity of activities; track activity.time) {
+                    <div style="display: flex; gap: var(--gns-space-4); padding: var(--gns-space-4); border-bottom: 1px solid var(--gns-color-border-subtle);">
+                        <div style="width: 2rem; height: 2rem; border-radius: var(--gns-radius-full); background: var(--gns-color-bg-subtle); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <span style="font-size: var(--gns-text-xs); color: var(--gns-color-text-tertiary);">{{ activity.icon }}</span>
+                        </div>
+                        <div style="flex: 1; min-width: 0;">
+                            <div style="font-size: var(--gns-text-sm);">
+                                <span style="font-weight: var(--gns-font-weight-medium);">{{ activity.action }}</span>
+                                <span style="color: var(--gns-color-text-secondary);"> {{ activity.target }}</span>
+                            </div>
+                            <div style="font-size: var(--gns-text-xs); color: var(--gns-color-text-tertiary); margin-top: var(--gns-space-1);">{{ activity.time }}</div>
+                        </div>
+                        @if (activity.badge !== null) {
+                            <gns-badge [severity]="activity.badge" size="sm">{{ activity.badgeLabel }}</gns-badge>
+                        }
+                    </div>
+                }
+            </div>
+        </gns-card>
+    </gns-section>
+
+    <!-- Settings Panel -->
+    <gns-section title="Settings" subtitle="Profile preferences and notification settings.">
+        <gns-panel title="Notification Preferences" [isCollapsible]="true">
+            <div style="display: flex; flex-direction: column; gap: var(--gns-space-4); padding: var(--gns-space-2) 0;">
+                <gns-switch label="Email notifications for project updates" [(value)]="emailNotif" />
+                <gns-switch label="Push notifications for mentions" [(value)]="pushNotif" />
+                <gns-switch label="Weekly digest summary" [(value)]="weeklyDigest" />
+                <gns-switch label="Marketing communications" [(value)]="marketing" />
+            </div>
+        </gns-panel>
+        <div style="margin-top: var(--gns-space-4);">
+            <gns-panel title="Privacy" [isCollapsible]="true" [isCollapsed]="true">
+                <div style="display: flex; flex-direction: column; gap: var(--gns-space-4); padding: var(--gns-space-2) 0;">
+                    <gns-switch label="Show profile to other users" [(value)]="profileVisible" />
+                    <gns-switch label="Show activity in team feed" [(value)]="activityVisible" />
+                </div>
+            </gns-panel>
+        </div>
+    </gns-section>
+
+</div>

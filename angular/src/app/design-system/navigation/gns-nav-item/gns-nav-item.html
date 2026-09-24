@@ -1,0 +1,40 @@
+<div [class]="cssClass()">
+  @if (href() && !hasChildren()) {
+    <a
+      class="gns-nav-item__trigger"
+      [href]="href()"
+      [attr.aria-current]="isActive() ? 'page' : null"
+    >
+      <ng-container [ngTemplateOutlet]="trigger" />
+    </a>
+  } @else {
+    <button
+      type="button"
+      class="gns-nav-item__trigger"
+      [attr.aria-expanded]="hasChildren() ? expanded() : null"
+      [attr.aria-current]="isActive() ? 'page' : null"
+      (click)="handleClick()"
+    >
+      <ng-container [ngTemplateOutlet]="trigger" />
+    </button>
+  }
+
+  @if (hasChildren() && expanded()) {
+    <div class="gns-nav-item__children" role="group">
+      <ng-content></ng-content>
+    </div>
+  }
+</div>
+
+<ng-template #trigger>
+  @if (icon()) {
+    <span [class]="iconClass()" aria-hidden="true"></span>
+  }
+  <span class="gns-nav-item__label">{{ label() }}</span>
+  @if (badge()) {
+    <span class="gns-nav-item__badge">{{ badge() }}</span>
+  }
+  @if (hasChildren()) {
+    <span class="gns-nav-item__chevron" aria-hidden="true"></span>
+  }
+</ng-template>

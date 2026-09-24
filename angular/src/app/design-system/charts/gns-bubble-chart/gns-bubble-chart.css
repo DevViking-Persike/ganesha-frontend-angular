@@ -1,0 +1,136 @@
+/* =============================================================================
+   GnsBubbleChart — Scoped Styles (Infographic-inspired)
+   ============================================================================= */
+
+/* ----------------------------------------------------------------------------
+   CONTAINER
+---------------------------------------------------------------------------- */
+.gns-bubble-chart {
+    display: block;
+    width: 100%;
+    position: relative;
+}
+
+.gns-bubble-chart__svg {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    overflow: visible;
+}
+
+/* ----------------------------------------------------------------------------
+   GRID — solid quadriculado for clear data reading
+---------------------------------------------------------------------------- */
+::deep .gns-bubble-chart__grid-h,
+::deep .gns-bubble-chart__grid-v {
+    stroke: var(--gns-color-border-default, #E0DBE8);
+    stroke-width: 1;
+    stroke-dasharray: none;
+    opacity: 0.35;
+}
+
+/* ----------------------------------------------------------------------------
+   AXIS LABELS (::deep needed — SVG <text> rendered via MarkupString)
+---------------------------------------------------------------------------- */
+::deep .gns-bubble-chart__y-label,
+::deep .gns-bubble-chart__x-label {
+    font-family: var(--gns-font-sans, system-ui, sans-serif);
+    font-size: 11px;
+    fill: var(--gns-color-text-secondary, #857B94);
+    pointer-events: none;
+}
+
+/* ----------------------------------------------------------------------------
+   CONNECTOR LINES — infographic-style dotted leads to labels
+---------------------------------------------------------------------------- */
+.gns-bubble-chart__connector {
+    stroke-width: 1;
+    stroke-dasharray: 3 3;
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+.gns-bubble-chart__connector-dot {
+    pointer-events: none;
+}
+
+/* ----------------------------------------------------------------------------
+   LABELS — positioned via connector lines
+---------------------------------------------------------------------------- */
+::deep .gns-bubble-chart__label {
+    font-family: var(--gns-font-sans, system-ui, sans-serif);
+    font-size: 11px;
+    font-weight: 600;
+    fill: var(--gns-color-text-primary, #665C76);
+    pointer-events: none;
+    letter-spacing: 0.02em;
+}
+
+/* ----------------------------------------------------------------------------
+   BUBBLES — gradient-filled with drop shadow for 3D depth
+---------------------------------------------------------------------------- */
+.gns-bubble-chart__bubble {
+    cursor: pointer;
+    transition: filter 200ms ease, stroke-opacity 200ms ease, transform 200ms ease;
+}
+
+.gns-bubble-chart__bubble:hover {
+    filter: var(--gns-bubble-hover-filter) !important;
+    stroke-opacity: 1;
+}
+
+/* ----------------------------------------------------------------------------
+   HIGHLIGHT — inner specular glint for 3D gloss
+---------------------------------------------------------------------------- */
+.gns-bubble-chart__highlight {
+    pointer-events: none;
+}
+
+/* ----------------------------------------------------------------------------
+   VALUE BADGE — bold number inside larger bubbles
+---------------------------------------------------------------------------- */
+::deep .gns-bubble-chart__value {
+    font-family: var(--gns-font-sans, system-ui, sans-serif);
+    font-size: 11px;
+    font-weight: 700;
+    fill: white;
+    pointer-events: none;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* ----------------------------------------------------------------------------
+   ANIMATION — scale-in with spring bounce (staggered)
+---------------------------------------------------------------------------- */
+@keyframes gns-bubble-appear {
+    0% {
+        opacity: 0;
+        transform: scale(0);
+    }
+    60% {
+        opacity: 1;
+        transform: scale(1.1);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.gns-bubble-chart--animated .gns-bubble-chart__bubble--animated {
+    transform-origin: center;
+    transform-box: fill-box;
+    animation: gns-bubble-appear 600ms cubic-bezier(0.34, 1.56, 0.64, 1) both;
+    animation-delay: var(--gns-bubble-delay, 0ms);
+}
+
+/* ----------------------------------------------------------------------------
+   EMPTY STATE
+---------------------------------------------------------------------------- */
+.gns-bubble-chart__empty {
+    color: var(--gns-color-text-secondary, #857B94);
+    font-family: var(--gns-font-sans, system-ui, sans-serif);
+    font-size: var(--gns-text-sm, 0.875rem);
+    text-align: center;
+    padding: var(--gns-space-8, 2rem);
+    margin: 0;
+}

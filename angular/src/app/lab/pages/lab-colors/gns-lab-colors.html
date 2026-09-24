@@ -1,0 +1,79 @@
+<div class="gns-lab-page">
+
+    <gns-page-header title="Colors"
+                     eyebrow="Foundations"
+                     description="Primitive color scales and semantic aliases that form the visual identity of the design system." />
+
+    <!-- Primary Scale -->
+    <gns-section title="Primary Scale" subtitle="The brand color scale from 50 to 950.">
+        <div class="gns-swatch-grid">
+            @for (swatch of primaryScale.swatches; track swatch.step) {
+                <div class="gns-swatch">
+                    <div class="gns-swatch__color" [style.background-color]="'var(' + primaryScale.tokenPrefix + '-' + swatch.step + ')'"></div>
+                    <div class="gns-swatch__info">
+                        <div class="gns-swatch__name">{{ primaryScale.name }} {{ swatch.step }}</div>
+                        <div class="gns-swatch__value">{{ swatch.hex }}</div>
+                        <div class="gns-swatch__token">{{ primaryScale.tokenPrefix }}-{{ swatch.step }}</div>
+                    </div>
+                </div>
+            }
+        </div>
+    </gns-section>
+
+    <!-- Gray Scale -->
+    <gns-section title="Gray Scale" subtitle="Neutral palette with a cool blue-gray undertone.">
+        <div class="gns-swatch-grid">
+            @for (swatch of grayScale.swatches; track swatch.step) {
+                <div class="gns-swatch">
+                    <div class="gns-swatch__color" [style.background-color]="'var(' + grayScale.tokenPrefix + '-' + swatch.step + ')'"></div>
+                    <div class="gns-swatch__info">
+                        <div class="gns-swatch__name">{{ grayScale.name }} {{ swatch.step }}</div>
+                        <div class="gns-swatch__value">{{ swatch.hex }}</div>
+                        <div class="gns-swatch__token">{{ grayScale.tokenPrefix }}-{{ swatch.step }}</div>
+                    </div>
+                </div>
+            }
+        </div>
+    </gns-section>
+
+    <!-- Semantic Colors -->
+    <gns-section title="Semantic Colors" subtitle="Status and feedback color scales.">
+        @for (scaleItem of semanticScales; track scaleItem.name; let last = $last) {
+            <h3 style="font-size: var(--gns-text-lg); font-weight: var(--gns-font-weight-semibold); margin-bottom: var(--gns-space-4); color: var(--gns-color-text-primary);">{{ scaleItem.name }}</h3>
+            <div class="gns-swatch-grid" [style.margin-bottom]="last ? null : 'var(--gns-space-8)'">
+                @for (swatch of scaleItem.swatches; track swatch.step) {
+                    <div class="gns-swatch">
+                        <div class="gns-swatch__color" [style.background-color]="'var(' + scaleItem.tokenPrefix + '-' + swatch.step + ')'"></div>
+                        <div class="gns-swatch__info">
+                            <div class="gns-swatch__name">{{ scaleItem.name }} {{ swatch.step }}</div>
+                            <div class="gns-swatch__value">{{ swatch.hex }}</div>
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+    </gns-section>
+
+    <!-- Semantic Surface/Text Tokens -->
+    <gns-section title="Semantic Tokens" subtitle="Context-aware tokens for backgrounds, surfaces, text, and borders.">
+        <table class="gns-token-table">
+            <thead>
+                <tr>
+                    <th>Preview</th>
+                    <th>Token</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (token of semanticTokens; track token.token) {
+                    <tr>
+                        <td><div class="gns-token-table__color-dot" [style.background-color]="'var(' + token.token + ')'"></div></td>
+                        <td class="gns-token-table__name">{{ token.token }}</td>
+                        <td class="gns-token-table__description">{{ token.description }}</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </gns-section>
+
+</div>

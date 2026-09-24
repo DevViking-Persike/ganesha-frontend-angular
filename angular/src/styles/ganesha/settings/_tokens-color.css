@@ -1,0 +1,310 @@
+/* =============================================================================
+   GANESHA DESIGN SYSTEM — COLOR TOKENS
+   settings/_tokens-color.css
+
+   Paleta: GANESHA SUPREMO
+   Cores primitivas derivadas da iconografia hindu de Ganesha.
+   Tons de cinza com subtom violeta para harmonia com a paleta mística.
+   Escalas de acento incluem Violeta Místico, Rosa Lótus, Ouro Real e Bronze.
+   ============================================================================= */
+
+:root {
+
+  /* ---------------------------------------------------------------------------
+     PRIMITIVE SCALE — GRAY (subtom violeta-místico)
+     Base: Preto Carvão #212121 → Branco Pérola #F5F5F5
+     Com leve deslocamento para violeta, harmonizando com a paleta espiritual.
+  --------------------------------------------------------------------------- */
+
+  --gns-gray-50:  #F8F6FB;
+  --gns-gray-100: #EFECF5;
+  --gns-gray-200: #E0DBE8;
+  --gns-gray-300: #C8C0D4;
+  --gns-gray-400: #A79EB5;
+  --gns-gray-500: #857B94;
+  --gns-gray-600: #665C76;
+  --gns-gray-700: #4D445B;
+  --gns-gray-800: #342D42;
+  --gns-gray-900: #221C2E;
+  --gns-gray-950: #14101D;
+
+  /* ---------------------------------------------------------------------------
+     PRIMITIVE SCALE — PRIMARY (Índigo Profundo)
+     Âncora: #1A237E — sombras profundas e contraste espiritual
+  --------------------------------------------------------------------------- */
+
+  --gns-primary-50:  #E8EAF6;
+  --gns-primary-100: #C5CAE9;
+  --gns-primary-200: #9FA8DA;
+  --gns-primary-300: #7986CB;
+  --gns-primary-400: #5C6BC0;
+  --gns-primary-500: #3F51B5;
+  --gns-primary-600: #3949AB;  /* brand anchor */
+  --gns-primary-700: #303F9F;
+  --gns-primary-800: #283593;
+  --gns-primary-900: #1A237E;
+  --gns-primary-950: #0D1147;
+
+  /* ---------------------------------------------------------------------------
+     PRIMITIVE SCALE — VIOLETA MÍSTICO (acento espiritual)
+     Âncora: #6A1B9A — transições suaves, flores, fundos cósmicos
+  --------------------------------------------------------------------------- */
+
+  --gns-violet-50:  #F3E5F5;
+  --gns-violet-100: #E1BEE7;
+  --gns-violet-200: #CE93D8;
+  --gns-violet-300: #BA68C8;
+  --gns-violet-400: #AB47BC;
+  --gns-violet-500: #9C27B0;
+  --gns-violet-600: #8E24AA;
+  --gns-violet-700: #7B1FA2;
+  --gns-violet-800: #6A1B9A;
+  --gns-violet-900: #4A148C;
+  --gns-violet-950: #2A0A52;
+
+  /* ---------------------------------------------------------------------------
+     PRIMITIVE SCALE — ROSA LÓTUS (acento sagrado)
+     Âncora: #F06292 — pétalas, mãos, tromba de Ganesha
+  --------------------------------------------------------------------------- */
+
+  --gns-rosa-50:  #FCE4EC;
+  --gns-rosa-100: #F8BBD0;
+  --gns-rosa-200: #F48FB1;
+  --gns-rosa-300: #F06292;
+  --gns-rosa-400: #EC407A;
+  --gns-rosa-500: #E91E63;
+  --gns-rosa-600: #D81B60;
+  --gns-rosa-700: #C2185B;
+  --gns-rosa-800: #AD1457;
+  --gns-rosa-900: #880E4F;
+  --gns-rosa-950: #4E0730;
+
+  /* ---------------------------------------------------------------------------
+     PRIMITIVE SCALE — OURO REAL (metálico sagrado)
+     Âncora: #D4AF37 — coroas, colares, Mukuta
+  --------------------------------------------------------------------------- */
+
+  --gns-ouro-50:  #FFF9E6;
+  --gns-ouro-100: #FFF0BF;
+  --gns-ouro-200: #FFE699;
+  --gns-ouro-300: #FFD966;
+  --gns-ouro-400: #E8C84A;
+  --gns-ouro-500: #D4AF37;
+  --gns-ouro-600: #BF9B2E;
+  --gns-ouro-700: #A68425;
+  --gns-ouro-800: #8D6E1D;
+  --gns-ouro-900: #6B5315;
+  --gns-ouro-950: #3D300C;
+
+  /* ---------------------------------------------------------------------------
+     PRIMITIVE SCALE — BRONZE ANTIGO (metálico secundário)
+     Âncora: #8D6E63 — sombreamento de joias e esculturas
+  --------------------------------------------------------------------------- */
+
+  --gns-bronze-50:  #EFEBE9;
+  --gns-bronze-100: #D7CCC8;
+  --gns-bronze-200: #BCAAA4;
+  --gns-bronze-300: #A1887F;
+  --gns-bronze-400: #8D6E63;
+  --gns-bronze-500: #795548;
+  --gns-bronze-600: #6D4C41;
+  --gns-bronze-700: #5D4037;
+  --gns-bronze-800: #4E342E;
+  --gns-bronze-900: #3E2723;
+  --gns-bronze-950: #241614;
+
+  /* ---------------------------------------------------------------------------
+     PRIMITIVE SCALE — SUCCESS (Verde Esmeralda)
+     Âncora: #2E7D32 — pedras preciosas, natureza sagrada
+  --------------------------------------------------------------------------- */
+
+  --gns-success-50:  #E8F5E9;
+  --gns-success-100: #C8E6C9;
+  --gns-success-200: #A5D6A7;
+  --gns-success-300: #81C784;
+  --gns-success-400: #66BB6A;
+  --gns-success-500: #4CAF50;
+  --gns-success-600: #43A047;
+  --gns-success-700: #388E3C;
+  --gns-success-800: #2E7D32;
+  --gns-success-900: #1B5E20;
+  --gns-success-950: #0D3311;
+
+  /* ---------------------------------------------------------------------------
+     PRIMITIVE SCALE — WARNING (Açafrão + Âmbar)
+     Âncoras: #FF9933 (Açafrão Vibrante) + #FFC107 (Âmbar Brilhante)
+  --------------------------------------------------------------------------- */
+
+  --gns-warning-50:  #FFF8E1;
+  --gns-warning-100: #FFECB3;
+  --gns-warning-200: #FFE082;
+  --gns-warning-300: #FFD54F;
+  --gns-warning-400: #FFCA28;
+  --gns-warning-500: #FFC107;  /* Âmbar Brilhante */
+  --gns-warning-600: #FFB300;
+  --gns-warning-700: #FF9933;  /* Açafrão Vibrante */
+  --gns-warning-800: #E68A00;
+  --gns-warning-900: #BF6F00;
+  --gns-warning-950: #6D3F00;
+
+  /* ---------------------------------------------------------------------------
+     PRIMITIVE SCALE — DANGER (Vermelho Carmesim)
+     Âncora: #B71C1C — Tilaka, marcas rituais, tecidos de poder
+  --------------------------------------------------------------------------- */
+
+  --gns-danger-50:  #FFEBEE;
+  --gns-danger-100: #FFCDD2;
+  --gns-danger-200: #EF9A9A;
+  --gns-danger-300: #E57373;
+  --gns-danger-400: #EF5350;
+  --gns-danger-500: #F44336;
+  --gns-danger-600: #E53935;
+  --gns-danger-700: #D32F2F;
+  --gns-danger-800: #C62828;
+  --gns-danger-900: #B71C1C;
+  --gns-danger-950: #6B0F0F;
+
+  /* ---------------------------------------------------------------------------
+     PRIMITIVE SCALE — INFO (Ciano Etéreo)
+     Âncora: #4DD0E1 — aura espiritual, reflexos de luz divina
+  --------------------------------------------------------------------------- */
+
+  --gns-info-50:  #E0F7FA;
+  --gns-info-100: #B2EBF2;
+  --gns-info-200: #80DEEA;
+  --gns-info-300: #4DD0E1;  /* Ciano Etéreo */
+  --gns-info-400: #26C6DA;
+  --gns-info-500: #00BCD4;
+  --gns-info-600: #00ACC1;
+  --gns-info-700: #0097A7;
+  --gns-info-800: #00838F;
+  --gns-info-900: #006064;
+  --gns-info-950: #003538;
+
+  /* ===========================================================================
+     SEMANTIC ALIASES — BACKGROUND
+     Layered surface model: page → subtle → muted → elevated
+  =========================================================================== */
+
+  --gns-color-bg-page:          var(--gns-gray-50);
+  --gns-color-bg-subtle:        var(--gns-gray-100);
+  --gns-color-bg-muted:         var(--gns-gray-200);
+  --gns-color-bg-overlay:       rgba(20, 16, 29, 0.48);
+
+  /* ===========================================================================
+     SEMANTIC ALIASES — SURFACE
+     Component-level backgrounds (cards, panels, modals, popovers)
+  =========================================================================== */
+
+  --gns-color-surface-default:  #FFFFFF;
+  --gns-color-surface-raised:   #FFFFFF;
+  --gns-color-surface-overlay:  #FFFFFF;
+  --gns-color-surface-sunken:   var(--gns-gray-100);
+  --gns-color-surface-inverse:  var(--gns-gray-900);
+
+  /* ===========================================================================
+     SEMANTIC ALIASES — TEXT
+  =========================================================================== */
+
+  --gns-color-text-primary:     var(--gns-gray-900);
+  --gns-color-text-secondary:   var(--gns-gray-600);
+  --gns-color-text-tertiary:    var(--gns-gray-500);
+  --gns-color-text-disabled:    var(--gns-gray-400);
+  --gns-color-text-placeholder: var(--gns-gray-400);
+  --gns-color-text-inverse:     #FFFFFF;
+  --gns-color-text-on-accent:   #FFFFFF;
+  --gns-color-text-link:        var(--gns-primary-600);
+  --gns-color-text-link-hover:  var(--gns-primary-700);
+  --gns-color-text-danger:      var(--gns-danger-600);
+  --gns-color-text-success:     var(--gns-success-700);
+  --gns-color-text-warning:     var(--gns-warning-700);
+  --gns-color-text-info:        var(--gns-info-700);
+
+  /* ===========================================================================
+     SEMANTIC ALIASES — BORDER
+  =========================================================================== */
+
+  --gns-color-border-default:   var(--gns-gray-200);
+  --gns-color-border-subtle:    var(--gns-gray-100);
+  --gns-color-border-strong:    var(--gns-gray-300);
+  --gns-color-border-focus:     var(--gns-primary-500);
+  --gns-color-border-danger:    var(--gns-danger-500);
+  --gns-color-border-success:   var(--gns-success-500);
+  --gns-color-border-warning:   var(--gns-warning-500);
+  --gns-color-border-info:      var(--gns-info-500);
+  --gns-color-border-inverse:   var(--gns-gray-700);
+
+  /* ===========================================================================
+     SEMANTIC ALIASES — INTERACTIVE (buttons, links, controls)
+  =========================================================================== */
+
+  /* Primary */
+  --gns-color-interactive-primary-bg:           var(--gns-primary-600);
+  --gns-color-interactive-primary-bg-hover:     var(--gns-primary-700);
+  --gns-color-interactive-primary-bg-active:    var(--gns-primary-800);
+  --gns-color-interactive-primary-bg-disabled:  var(--gns-gray-200);
+  --gns-color-interactive-primary-text:         #FFFFFF;
+  --gns-color-interactive-primary-text-disabled: var(--gns-gray-400);
+  --gns-color-interactive-primary-border:       var(--gns-primary-600);
+
+  /* Secondary / Ghost */
+  --gns-color-interactive-secondary-bg:         transparent;
+  --gns-color-interactive-secondary-bg-hover:   var(--gns-primary-50);
+  --gns-color-interactive-secondary-bg-active:  var(--gns-primary-100);
+  --gns-color-interactive-secondary-text:       var(--gns-primary-600);
+  --gns-color-interactive-secondary-border:     var(--gns-primary-300);
+
+  /* Neutral */
+  --gns-color-interactive-neutral-bg:           var(--gns-gray-100);
+  --gns-color-interactive-neutral-bg-hover:     var(--gns-gray-200);
+  --gns-color-interactive-neutral-bg-active:    var(--gns-gray-300);
+  --gns-color-interactive-neutral-text:         var(--gns-gray-700);
+  --gns-color-interactive-neutral-border:       var(--gns-gray-200);
+
+  /* Danger */
+  --gns-color-interactive-danger-bg:            var(--gns-danger-600);
+  --gns-color-interactive-danger-bg-hover:      var(--gns-danger-700);
+  --gns-color-interactive-danger-bg-active:     var(--gns-danger-800);
+  --gns-color-interactive-danger-text:          #FFFFFF;
+  --gns-color-interactive-danger-border:        var(--gns-danger-600);
+
+  /* Danger Subtle */
+  --gns-color-interactive-danger-subtle-bg:        var(--gns-danger-50);
+  --gns-color-interactive-danger-subtle-bg-hover:  var(--gns-danger-100);
+  --gns-color-interactive-danger-subtle-text:      var(--gns-danger-700);
+  --gns-color-interactive-danger-subtle-border:    var(--gns-danger-200);
+
+  /* Focus ring */
+  --gns-color-interactive-focus-ring:           var(--gns-primary-500);
+  --gns-color-interactive-focus-ring-offset:    #FFFFFF;
+
+  /* ===========================================================================
+     SEMANTIC ALIASES — STATUS / FEEDBACK BACKGROUNDS
+  =========================================================================== */
+
+  --gns-color-status-success-bg:      var(--gns-success-50);
+  --gns-color-status-success-text:    var(--gns-success-800);
+  --gns-color-status-success-border:  var(--gns-success-200);
+  --gns-color-status-success-icon:    var(--gns-success-600);
+
+  --gns-color-status-warning-bg:      var(--gns-warning-50);
+  --gns-color-status-warning-text:    var(--gns-warning-900);
+  --gns-color-status-warning-border:  var(--gns-warning-200);
+  --gns-color-status-warning-icon:    var(--gns-warning-600);
+
+  --gns-color-status-danger-bg:       var(--gns-danger-50);
+  --gns-color-status-danger-text:     var(--gns-danger-800);
+  --gns-color-status-danger-border:   var(--gns-danger-200);
+  --gns-color-status-danger-icon:     var(--gns-danger-600);
+
+  --gns-color-status-info-bg:         var(--gns-info-50);
+  --gns-color-status-info-text:       var(--gns-info-800);
+  --gns-color-status-info-border:     var(--gns-info-200);
+  --gns-color-status-info-icon:       var(--gns-info-600);
+
+  --gns-color-status-neutral-bg:      var(--gns-gray-100);
+  --gns-color-status-neutral-text:    var(--gns-gray-700);
+  --gns-color-status-neutral-border:  var(--gns-gray-200);
+  --gns-color-status-neutral-icon:    var(--gns-gray-500);
+
+}

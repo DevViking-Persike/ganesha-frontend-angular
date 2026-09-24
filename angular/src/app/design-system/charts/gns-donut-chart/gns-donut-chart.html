@@ -1,0 +1,63 @@
+<div [class]="cssClass()" role="img" aria-label="Donut chart">
+    @if (vm(); as donut) {
+        <div class="gns-donut-chart__chart-wrap">
+            <svg class="gns-donut-chart__svg"
+                 [attr.width]="size()"
+                 [attr.height]="size()"
+                 [attr.viewBox]="'0 0 ' + size() + ' ' + size()"
+                 xmlns="http://www.w3.org/2000/svg"
+                 style="transform: rotate(-90deg);">
+
+                <circle class="gns-donut-chart__track"
+                        [attr.cx]="donut.cx"
+                        [attr.cy]="donut.cy"
+                        [attr.r]="donut.radius"
+                        [attr.stroke-width]="strokeWidth()"
+                        fill="none" />
+
+                @for (seg of donut.segments; track $index) {
+                    <circle class="gns-donut-chart__segment"
+                            [class.gns-donut-chart__segment--animated]="isAnimated()"
+                            [attr.cx]="donut.cx"
+                            [attr.cy]="donut.cy"
+                            [attr.r]="donut.radius"
+                            [attr.stroke]="seg.color"
+                            [attr.stroke-width]="strokeWidth()"
+                            fill="none"
+                            [attr.stroke-dasharray]="seg.dashLen + ' ' + seg.dashGap"
+                            [attr.stroke-dashoffset]="seg.dashOffset"
+                            [style.--gns-donut-circumference]="donut.circumference"
+                            [style.--gns-donut-delay]="seg.animDelay">
+                        <title>{{ seg.title }}</title>
+                    </circle>
+                }
+            </svg>
+
+            @if (centerLabel() || centerSubLabel()) {
+                <div class="gns-donut-chart__center" [style.width.px]="size()" [style.height.px]="size()">
+                    @if (centerLabel()) {
+                        <span class="gns-donut-chart__center-label">{{ centerLabel() }}</span>
+                    }
+                    @if (centerSubLabel()) {
+                        <span class="gns-donut-chart__center-sublabel">{{ centerSubLabel() }}</span>
+                    }
+                </div>
+            }
+        </div>
+
+        @if (showLegend()) {
+            <ul class="gns-donut-chart__legend" role="list">
+                @for (item of donut.legend; track $index) {
+                    <li class="gns-donut-chart__legend-item">
+                        <span class="gns-donut-chart__legend-dot" [style.background-color]="item.color" aria-hidden="true"></span>
+                        <span class="gns-donut-chart__legend-label">{{ item.label }}</span>
+                        <span class="gns-donut-chart__legend-value">{{ item.valueText }}</span>
+                        <span class="gns-donut-chart__legend-pct">{{ item.pct }}%</span>
+                    </li>
+                }
+            </ul>
+        }
+    } @else {
+        <p class="gns-donut-chart__empty">No data</p>
+    }
+</div>

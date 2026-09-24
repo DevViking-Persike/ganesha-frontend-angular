@@ -1,0 +1,10 @@
+<div class="{{ cssClass() }}" role="status" [attr.aria-label]="label() ?? 'Loading'">
+  <span class="gns-svg-loader__art" aria-hidden="true" [style.aspect-ratio]="aspectRatio()">
+    <span class="gns-svg-loader__bg" [style]="maskStyle()"></span>
+    <span class="gns-svg-loader__fill" [style]="maskStyle()"></span>
+  </span>
+  @if (label()) {
+    <span class="gns-svg-loader__label">{{ label() }}</span>
+  }
+  <span class="gns-sr-only">{{ label() ?? 'Loading…' }}</span>
+</div>

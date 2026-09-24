@@ -1,0 +1,416 @@
+/* =============================================================================
+   GANESHA DESIGN SYSTEM — BASE TYPOGRAPHY
+   base/_typography.css
+
+   Global typographic defaults applied to HTML elements.
+   These are the lowest-specificity styles; components override as needed.
+   ============================================================================= */
+
+/* ---------------------------------------------------------------------------
+   BODY
+--------------------------------------------------------------------------- */
+
+body {
+  font-family: var(--gns-font-sans);
+  font-size: var(--gns-text-base);
+  font-weight: var(--gns-font-weight-regular);
+  line-height: var(--gns-leading-body);
+  color: var(--gns-color-text-primary);
+  letter-spacing: var(--gns-tracking-normal);
+}
+
+/* ---------------------------------------------------------------------------
+   HEADINGS
+   Applied globally to h1-h6 elements; use .gns-h* classes for component-level control.
+--------------------------------------------------------------------------- */
+
+h1 {
+  font-family: var(--gns-font-display);
+  font-size: var(--gns-type-h1-size);
+  font-weight: var(--gns-type-h1-weight);
+  line-height: var(--gns-type-h1-leading);
+  letter-spacing: var(--gns-type-h1-tracking);
+  color: var(--gns-color-text-primary);
+}
+
+h2 {
+  font-family: var(--gns-font-display);
+  font-size: var(--gns-type-h2-size);
+  font-weight: var(--gns-type-h2-weight);
+  line-height: var(--gns-type-h2-leading);
+  letter-spacing: var(--gns-type-h2-tracking);
+  color: var(--gns-color-text-primary);
+}
+
+h3 {
+  font-family: var(--gns-font-display);
+  font-size: var(--gns-type-h3-size);
+  font-weight: var(--gns-type-h3-weight);
+  line-height: var(--gns-type-h3-leading);
+  letter-spacing: var(--gns-type-h3-tracking);
+  color: var(--gns-color-text-primary);
+}
+
+h4 {
+  font-size: var(--gns-type-h4-size);
+  font-weight: var(--gns-type-h4-weight);
+  line-height: var(--gns-type-h4-leading);
+  letter-spacing: var(--gns-type-h4-tracking);
+  color: var(--gns-color-text-primary);
+}
+
+h5 {
+  font-size: var(--gns-type-h5-size);
+  font-weight: var(--gns-type-h5-weight);
+  line-height: var(--gns-type-h5-leading);
+  letter-spacing: var(--gns-type-h5-tracking);
+  color: var(--gns-color-text-primary);
+}
+
+h6 {
+  font-size: var(--gns-type-h6-size);
+  font-weight: var(--gns-type-h6-weight);
+  line-height: var(--gns-type-h6-leading);
+  letter-spacing: var(--gns-type-h6-tracking);
+  color: var(--gns-color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: var(--gns-tracking-wider);
+}
+
+/* ---------------------------------------------------------------------------
+   PARAGRAPH
+--------------------------------------------------------------------------- */
+
+p {
+  line-height: var(--gns-leading-body);
+  color: var(--gns-color-text-primary);
+}
+
+p + p {
+  margin-top: var(--gns-space-4);
+}
+
+/* ---------------------------------------------------------------------------
+   LINKS
+--------------------------------------------------------------------------- */
+
+a {
+  color: var(--gns-color-text-link);
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 3px;
+  transition:
+    color 150ms ease,
+    text-decoration-color 150ms ease;
+}
+
+a:hover {
+  color: var(--gns-color-text-link-hover);
+  text-decoration-color: currentColor;
+}
+
+a:focus-visible {
+  outline: var(--gns-outline-width-focus) var(--gns-outline-style-focus) var(--gns-color-interactive-focus-ring);
+  outline-offset: var(--gns-outline-offset-focus);
+  border-radius: var(--gns-radius-xs);
+}
+
+/* External link indicator — opt-in with class */
+a[target='_blank'].gns-link-external::after {
+  content: '\2197';  /* ↗ arrow */
+  font-size: 0.8em;
+  margin-inline-start: 0.2em;
+  vertical-align: super;
+}
+
+/* ---------------------------------------------------------------------------
+   INLINE TEXT ELEMENTS
+--------------------------------------------------------------------------- */
+
+strong, b {
+  font-weight: var(--gns-font-weight-semibold);
+}
+
+em, i {
+  font-style: italic;
+}
+
+small {
+  font-size: var(--gns-text-sm);
+  color: var(--gns-color-text-secondary);
+}
+
+mark {
+  background-color: var(--gns-warning-200);
+  color: var(--gns-gray-900);
+  padding: 0 var(--gns-space-0-5);
+  border-radius: var(--gns-radius-xs);
+}
+
+del {
+  color: var(--gns-color-text-tertiary);
+  text-decoration: line-through;
+}
+
+ins {
+  color: var(--gns-color-text-success);
+  text-decoration: none;
+}
+
+kbd {
+  font-family: var(--gns-font-mono);
+  font-size: var(--gns-text-xs);
+  font-weight: var(--gns-font-weight-medium);
+  background-color: var(--gns-color-bg-subtle);
+  color: var(--gns-color-text-secondary);
+  border: 1px solid var(--gns-color-border-strong);
+  border-bottom-width: 2px;
+  border-radius: var(--gns-radius-sm);
+  padding: var(--gns-space-0-5) var(--gns-space-1-5);
+  white-space: nowrap;
+}
+
+/* ---------------------------------------------------------------------------
+   CODE & PRE
+--------------------------------------------------------------------------- */
+
+code {
+  font-family: var(--gns-font-mono);
+  font-size: var(--gns-type-code-size);
+  font-weight: var(--gns-type-code-weight);
+  background-color: var(--gns-color-bg-subtle);
+  color: var(--gns-primary-700);
+  padding: var(--gns-space-0-5) var(--gns-space-1-5);
+  border-radius: var(--gns-radius-sm);
+  border: 1px solid var(--gns-color-border-subtle);
+  word-break: break-word;
+}
+
+[data-theme="dark"] code {
+  color: var(--gns-primary-300);
+  background-color: rgba(63, 81, 181, 0.12);
+  border-color: rgba(63, 81, 181, 0.20);
+}
+
+pre {
+  font-family: var(--gns-font-mono);
+  font-size: var(--gns-text-sm);
+  line-height: var(--gns-type-code-leading);
+  background-color: var(--gns-gray-900);
+  color: var(--gns-gray-100);
+  padding: var(--gns-space-4) var(--gns-space-6);
+  border-radius: var(--gns-radius-lg);
+  overflow-x: auto;
+  tab-size: 2;
+  white-space: pre;
+  border: 1px solid var(--gns-color-border-default);
+}
+
+pre code {
+  font-size: inherit;
+  background: none;
+  border: none;
+  padding: 0;
+  border-radius: 0;
+  color: inherit;
+  word-break: normal;
+}
+
+/* ---------------------------------------------------------------------------
+   BLOCKQUOTE
+--------------------------------------------------------------------------- */
+
+blockquote {
+  border-inline-start: var(--gns-border-width-accent) solid var(--gns-primary-400);
+  padding: var(--gns-space-3) var(--gns-space-5);
+  margin-block: var(--gns-space-6);
+  background-color: var(--gns-color-bg-subtle);
+  border-radius: 0 var(--gns-radius-md) var(--gns-radius-md) 0;
+  color: var(--gns-color-text-secondary);
+  font-style: italic;
+}
+
+blockquote p {
+  font-size: var(--gns-text-lg);
+  line-height: var(--gns-leading-relaxed);
+}
+
+blockquote footer,
+blockquote cite {
+  display: block;
+  margin-top: var(--gns-space-3);
+  font-size: var(--gns-text-sm);
+  font-style: normal;
+  color: var(--gns-color-text-tertiary);
+}
+
+blockquote footer::before {
+  content: '— ';
+}
+
+/* ---------------------------------------------------------------------------
+   LISTS
+--------------------------------------------------------------------------- */
+
+ul, ol {
+  padding-inline-start: var(--gns-space-6);
+  line-height: var(--gns-leading-relaxed);
+}
+
+ul {
+  list-style-type: disc;
+}
+
+ol {
+  list-style-type: decimal;
+}
+
+li + li {
+  margin-top: var(--gns-space-1);
+}
+
+li::marker {
+  color: var(--gns-color-text-tertiary);
+}
+
+/* Nested lists */
+li ul,
+li ol {
+  margin-top: var(--gns-space-1);
+}
+
+/* Definition list */
+dl {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--gns-space-1) var(--gns-space-4);
+}
+
+dt {
+  font-weight: var(--gns-font-weight-semibold);
+  color: var(--gns-color-text-secondary);
+}
+
+dd {
+  color: var(--gns-color-text-primary);
+}
+
+/* ---------------------------------------------------------------------------
+   FIGURE & FIGCAPTION
+--------------------------------------------------------------------------- */
+
+figure {
+  margin-block: var(--gns-space-6);
+  text-align: center;
+}
+
+figcaption {
+  margin-top: var(--gns-space-2);
+  font-size: var(--gns-text-sm);
+  color: var(--gns-color-text-tertiary);
+  line-height: var(--gns-leading-normal);
+}
+
+/* ---------------------------------------------------------------------------
+   HORIZONTAL RULE
+--------------------------------------------------------------------------- */
+
+hr {
+  margin-block: var(--gns-space-8);
+  border-color: var(--gns-color-border-default);
+}
+
+/* ---------------------------------------------------------------------------
+   UTILITY CLASSES — Typographic
+--------------------------------------------------------------------------- */
+
+/* Heading classes — use when semantic heading level differs from visual level */
+.gns-h1 {
+  font-family: var(--gns-font-display);
+  font-size: var(--gns-type-h1-size);
+  font-weight: var(--gns-type-h1-weight);
+  line-height: var(--gns-type-h1-leading);
+  letter-spacing: var(--gns-type-h1-tracking);
+}
+
+.gns-h2 {
+  font-family: var(--gns-font-display);
+  font-size: var(--gns-type-h2-size);
+  font-weight: var(--gns-type-h2-weight);
+  line-height: var(--gns-type-h2-leading);
+  letter-spacing: var(--gns-type-h2-tracking);
+}
+
+.gns-h3 {
+  font-size: var(--gns-type-h3-size);
+  font-weight: var(--gns-type-h3-weight);
+  line-height: var(--gns-type-h3-leading);
+}
+
+.gns-h4 {
+  font-size: var(--gns-type-h4-size);
+  font-weight: var(--gns-type-h4-weight);
+  line-height: var(--gns-type-h4-leading);
+}
+
+.gns-h5 {
+  font-size: var(--gns-type-h5-size);
+  font-weight: var(--gns-type-h5-weight);
+  line-height: var(--gns-type-h5-leading);
+}
+
+.gns-h6 {
+  font-size: var(--gns-type-h6-size);
+  font-weight: var(--gns-type-h6-weight);
+  line-height: var(--gns-type-h6-leading);
+  text-transform: uppercase;
+  letter-spacing: var(--gns-tracking-wider);
+  color: var(--gns-color-text-secondary);
+}
+
+/* Display heading */
+.gns-display {
+  font-family: var(--gns-font-display);
+  font-size: var(--gns-type-display-size);
+  font-weight: var(--gns-type-display-weight);
+  line-height: var(--gns-type-display-leading);
+  letter-spacing: var(--gns-type-display-tracking);
+}
+
+/* Overline / eyebrow label */
+.gns-overline {
+  font-size: var(--gns-text-xs);
+  font-weight: var(--gns-font-weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: var(--gns-tracking-caps);
+  color: var(--gns-color-text-tertiary);
+}
+
+/* Lead paragraph */
+.gns-lead {
+  font-size: var(--gns-text-lg);
+  line-height: var(--gns-leading-relaxed);
+  color: var(--gns-color-text-secondary);
+}
+
+/* Caption */
+.gns-caption {
+  font-size: var(--gns-text-xs);
+  line-height: var(--gns-leading-normal);
+  color: var(--gns-color-text-tertiary);
+}
+
+/* Prose — comfortable reading width */
+.gns-prose {
+  max-width: var(--gns-container-prose);
+}
+
+.gns-prose > * + * {
+  margin-top: var(--gns-space-4);
+}
+
+.gns-prose h2,
+.gns-prose h3,
+.gns-prose h4 {
+  margin-top: var(--gns-space-8);
+}

@@ -1,0 +1,63 @@
+.gns-funnel {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.gns-funnel__svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    overflow: visible;
+}
+
+.gns-funnel__shape {
+    transition: filter 0.2s ease, transform 0.15s ease;
+    cursor: default;
+}
+
+.gns-funnel__shape:hover {
+    filter: brightness(1.1) drop-shadow(0 2px 6px rgba(0, 0, 0, 0.12));
+}
+
+.gns-funnel__step--animated {
+    opacity: 0;
+    animation: funnelStepIn 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    animation-delay: var(--gns-funnel-delay, 0ms);
+}
+
+::deep .gns-funnel__title {
+    fill: #fff;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-family: var(--gns-font-sans, system-ui, sans-serif);
+    pointer-events: none;
+}
+
+::deep .gns-funnel__value {
+    fill: var(--gns-color-text-primary, rgba(255, 255, 255, 0.9));
+    font-size: 0.875rem;
+    font-weight: 700;
+    font-family: var(--gns-font-sans, system-ui, sans-serif);
+    font-variant-numeric: tabular-nums;
+    pointer-events: none;
+}
+
+.gns-funnel__empty {
+    text-align: center;
+    color: var(--gns-color-text-tertiary, #aaa);
+    padding: 2rem;
+}
+
+@keyframes funnelStepIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-10px) scaleX(0.8);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scaleX(1);
+    }
+}

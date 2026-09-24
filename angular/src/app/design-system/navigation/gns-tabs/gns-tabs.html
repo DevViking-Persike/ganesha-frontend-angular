@@ -1,0 +1,31 @@
+<div [class]="cssClass()">
+  <div class="gns-tabs__strip" role="tablist" aria-label="Tabs">
+    @for (tab of tabs(); track tab; let i = $index) {
+      <button
+        type="button"
+        [class]="tabClass(i)"
+        role="tab"
+        [attr.aria-selected]="isActiveIndex(i)"
+        [attr.aria-disabled]="tab.isDisabled()"
+        [attr.tabindex]="isActiveIndex(i) ? 0 : -1"
+        [disabled]="tab.isDisabled()"
+        (click)="handleTabClick(i)"
+      >
+        @if (tab.icon()) {
+          <span [class]="tabIconClass(tab)" aria-hidden="true"></span>
+        }
+        <span class="gns-tab__title">{{ tab.title() }}</span>
+      </button>
+    }
+  </div>
+
+  <div class="gns-tabs__panels">
+    @for (tab of tabs(); track tab; let i = $index) {
+      @if (isActiveIndex(i)) {
+        <div class="gns-tab__panel" role="tabpanel">
+          <ng-container [ngTemplateOutlet]="tab.content()" />
+        </div>
+      }
+    }
+  </div>
+</div>

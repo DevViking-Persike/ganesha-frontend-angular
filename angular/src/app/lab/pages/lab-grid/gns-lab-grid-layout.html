@@ -1,0 +1,29 @@
+<gns-section title="Grid System" subtitle="GnsGrid with standard column counts using equal-width fr columns.">
+    <div style="display: flex; flex-direction: column; gap: var(--gns-space-6);">
+        @for (demo of gridDemos; track demo.label) {
+            <div>
+                <p style="font-size: var(--gns-text-xs); font-family: var(--gns-font-mono); color: var(--gns-color-text-tertiary); margin-bottom: var(--gns-space-2);">{{ demo.label }}</p>
+                <gns-grid [columns]="demo.columns" gap="2">
+                    @for (i of demo.boxes; track i) {
+                        <div [style]="boxStyle(demo.color, demo.height)">{{ demo.boxLabel }}</div>
+                    }
+                </gns-grid>
+            </div>
+        }
+    </div>
+</gns-section>
+
+<gns-section title="Custom Grid Templates" subtitle="Using the TemplateColumns parameter for asymmetric layouts.">
+    <div style="display: flex; flex-direction: column; gap: var(--gns-space-8);">
+        @for (demo of templateDemos; track demo.label) {
+            <div>
+                <p style="font-size: var(--gns-text-xs); font-family: var(--gns-font-mono); color: var(--gns-color-text-tertiary); margin-bottom: var(--gns-space-2);">{{ demo.label }}</p>
+                <gns-grid [columns]="demo.boxes.length" [gap]="demo.gap" [templateColumns]="demo.template">
+                    @for (box of demo.boxes; track box.text) {
+                        <div [style]="boxStyle(box.color, box.height)">{{ box.text }}</div>
+                    }
+                </gns-grid>
+            </div>
+        }
+    </div>
+</gns-section>

@@ -1,0 +1,45 @@
+<div [class]="wrapperClass()">
+  @if (label()?.trim()) {
+    <label class="gns-input-text__label" [attr.for]="inputId">
+      {{ label() }}
+      @if (isRequired()) {
+        <span class="gns-input-text__required" aria-hidden="true">*</span>
+      }
+    </label>
+  }
+
+  <div class="gns-input-text__control">
+    @if (iconLeft()?.trim()) {
+      <span
+        class="gns-input-text__icon gns-input-text__icon--left {{ iconLeft() }}"
+        aria-hidden="true"
+      ></span>
+    }
+
+    <input
+      [id]="inputId"
+      [type]="type()"
+      [class]="inputClass()"
+      [value]="innerValue()"
+      [attr.placeholder]="placeholder()"
+      [disabled]="disabled()"
+      [readOnly]="isReadOnly()"
+      [required]="isRequired()"
+      [attr.aria-required]="isRequired()"
+      [attr.aria-invalid]="hasError()"
+      [attr.aria-describedby]="describedBy()"
+      (input)="handleInput($event)"
+      (blur)="handleBlur()"
+    />
+  </div>
+
+  @if (hasError()) {
+    <span [id]="errorId" class="gns-input-text__error" role="alert">
+      {{ errorMessage() }}
+    </span>
+  } @else if (helperText()?.trim()) {
+    <span [id]="helperId" class="gns-input-text__helper">
+      {{ helperText() }}
+    </span>
+  }
+</div>

@@ -1,0 +1,63 @@
+.gns-stacked-bar {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.gns-stacked-bar__svg {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.gns-stacked-bar__grid-line {
+    stroke: var(--gns-color-border-subtle, rgba(0, 0, 0, 0.08));
+    stroke-width: 1;
+    stroke-dasharray: 4 4;
+}
+
+::deep .gns-stacked-bar__y-label {
+    fill: var(--gns-color-text-secondary, #999);
+    font-size: 11px;
+    font-family: var(--gns-font-sans, system-ui, sans-serif);
+}
+
+::deep .gns-stacked-bar__x-label {
+    fill: var(--gns-color-text-primary, #666);
+    font-size: 11px;
+    font-family: var(--gns-font-sans, system-ui, sans-serif);
+    font-weight: 600;
+}
+
+.gns-stacked-bar__bar {
+    transition: opacity 0.2s ease;
+    cursor: default;
+}
+
+.gns-stacked-bar__bar:hover {
+    opacity: 0.85;
+    filter: brightness(1.1);
+}
+
+.gns-stacked-bar__bar--animated {
+    animation: stackedBarGrow 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    animation-delay: var(--gns-bar-delay, 0ms);
+    transform: scaleY(0);
+}
+
+::deep .gns-stacked-bar__legend-text {
+    fill: var(--gns-color-text-primary, #666);
+    font-size: 11px;
+    font-family: var(--gns-font-sans, system-ui, sans-serif);
+    font-weight: 600;
+}
+
+.gns-stacked-bar__empty {
+    text-align: center;
+    color: var(--gns-color-text-tertiary, #aaa);
+    padding: 2rem;
+}
+
+@keyframes stackedBarGrow {
+    0% { transform: scaleY(0); }
+    100% { transform: scaleY(1); }
+}

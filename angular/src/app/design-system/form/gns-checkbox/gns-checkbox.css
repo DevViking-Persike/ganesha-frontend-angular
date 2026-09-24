@@ -1,0 +1,129 @@
+/* =============================================================================
+   GnsCheckbox — Scoped Styles
+   ============================================================================= */
+
+/* ----------------------------------------------------------------------------
+   WRAPPER LABEL
+---------------------------------------------------------------------------- */
+.gns-checkbox {
+    display: inline-flex;
+    align-items: flex-start;
+    gap: var(--gns-space-2-5);
+    cursor: pointer;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.gns-checkbox--disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+/* ----------------------------------------------------------------------------
+   CONTROL (stacks hidden input + visual box)
+---------------------------------------------------------------------------- */
+.gns-checkbox__control {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 1.125rem;  /* 18px */
+    height: 1.125rem; /* 18px */
+    margin-top: 0.0625rem; /* 1px optical alignment with label text */
+}
+
+/* Hide native input but keep it accessible */
+.gns-checkbox__input {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    cursor: inherit;
+    z-index: 1;
+}
+
+/* ----------------------------------------------------------------------------
+   VISUAL BOX
+---------------------------------------------------------------------------- */
+.gns-checkbox__box {
+    position: absolute;
+    inset: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--gns-radius-checkbox);
+    border: var(--gns-border-width-default) solid var(--gns-color-border-strong);
+    background-color: var(--gns-color-surface-default);
+    transition:
+        background-color 150ms ease,
+        border-color     150ms ease,
+        box-shadow       150ms ease;
+}
+
+/* Hover */
+.gns-checkbox:not(.gns-checkbox--disabled) .gns-checkbox__input:hover ~ .gns-checkbox__box,
+.gns-checkbox:not(.gns-checkbox--disabled):hover .gns-checkbox__box {
+    border-color: var(--gns-color-border-focus);
+}
+
+/* Focus-visible */
+.gns-checkbox__input:focus-visible ~ .gns-checkbox__box {
+    outline: var(--gns-outline-width-focus) var(--gns-outline-style-focus) var(--gns-color-interactive-focus-ring);
+    outline-offset: var(--gns-outline-offset-focus);
+}
+
+/* Checked state — box */
+.gns-checkbox--checked .gns-checkbox__box {
+    background-color: var(--gns-color-interactive-primary-bg);
+    border-color:     var(--gns-color-interactive-primary-bg);
+}
+
+.gns-checkbox--checked:not(.gns-checkbox--disabled):hover .gns-checkbox__box {
+    background-color: var(--gns-color-interactive-primary-bg-hover);
+    border-color:     var(--gns-color-interactive-primary-bg-hover);
+}
+
+/* ----------------------------------------------------------------------------
+   CHECK MARK (CSS-drawn checkmark)
+---------------------------------------------------------------------------- */
+.gns-checkbox__check {
+    display: block;
+    width: 0.625rem; /* 10px */
+    height: 0.625rem;
+    opacity: 0;
+    transform: scale(0.6) rotate(-10deg);
+    transition:
+        opacity  150ms ease,
+        transform 150ms cubic-bezier(0.34, 1.56, 0.64, 1);
+
+    background-color: #FFFFFF;
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='2 6 5 9 10 3'/%3E%3C/svg%3E");
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='2 6 5 9 10 3'/%3E%3C/svg%3E");
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-size: contain;
+    mask-size: contain;
+}
+
+.gns-checkbox--checked .gns-checkbox__check {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+}
+
+/* ----------------------------------------------------------------------------
+   LABEL TEXT
+---------------------------------------------------------------------------- */
+.gns-checkbox__label {
+    font-family: var(--gns-font-sans);
+    font-size: var(--gns-text-sm);
+    font-weight: var(--gns-font-weight-regular);
+    color: var(--gns-color-text-primary);
+    line-height: var(--gns-leading-normal);
+}
+
+.gns-checkbox--disabled .gns-checkbox__label {
+    color: var(--gns-color-text-disabled);
+}

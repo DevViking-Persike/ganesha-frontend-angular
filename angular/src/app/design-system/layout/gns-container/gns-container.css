@@ -1,0 +1,41 @@
+.gns-container {
+    width: 100%;
+    margin-inline: auto;
+    padding-inline: var(--gns-space-4);
+}
+
+.gns-container--default {
+    max-width: 1280px;
+}
+
+.gns-container--sm {
+    max-width: 640px;
+}
+
+.gns-container--md {
+    max-width: 768px;
+}
+
+.gns-container--lg {
+    max-width: 1024px;
+}
+
+.gns-container--xl {
+    max-width: 1440px;
+}
+
+.gns-container--full {
+    max-width: 100%;
+}
+
+@media (min-width: 640px) {
+    .gns-container {
+        padding-inline: var(--gns-space-6);
+    }
+}
+
+@media (min-width: 1024px) {
+    .gns-container {
+        padding-inline: var(--gns-space-8);
+    }
+}

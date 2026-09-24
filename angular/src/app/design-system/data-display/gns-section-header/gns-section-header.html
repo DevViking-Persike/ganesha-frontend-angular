@@ -1,0 +1,14 @@
+<header class="{{ cssClass() }}">
+    <div class="gns-section-header__text">
+        <h2 class="gns-section-header__title">{{ title() }}</h2>
+        @if (subtitle()) {
+            <p class="gns-section-header__subtitle">{{ subtitle() }}</p>
+        }
+    </div>
+
+    @if (actions(); as actions) {
+        <div class="gns-section-header__actions">
+            <ng-content select="[gnsSectionHeaderActions]" />
+        </div>
+    }
+</header>
