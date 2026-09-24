@@ -38,6 +38,7 @@ jobs:
         with:
           node-version: 22
       - run: corepack enable
+      - run: corepack prepare pnpm@11.7.0 --activate
       - run: pnpm --dir angular install --frozen-lockfile
       - run: pnpm --dir angular build
       - name: Validar manifests e scripts
