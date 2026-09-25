@@ -8,5 +8,5 @@ resources:
   - infisical-zot.yaml
 images:
   - name: 127.0.0.1:30500/ganesha
-    newTag: prod-fcf4e7e5a3f014e0b1cdd9df2d364dbe7924a5f9-36076100786-1
-    digest: sha256:060ec66b4fa286affcf1dca89c246ef2d4883a3519201cb43020e19778dc0112
+    newTag: prod-79857f499a9a126125d799cd33b01c4886ffad61-36080774195-1
+    digest: sha256:aea463d2d84121f9fee9b5dbdfe8380f82f94ed8fc31950fc0a904d9eab45add
