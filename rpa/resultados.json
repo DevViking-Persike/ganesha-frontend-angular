@@ -1,0 +1,182 @@
+[
+  {
+    "rota": "/lab",
+    "nome": "lab-home",
+    "status": 200,
+    "marcadorOk": true,
+    "vazio": false,
+    "erros": [],
+    "pass": true
+  },
+  {
+    "rota": "/lab/colors",
+    "nome": "lab-colors",
+    "status": 200,
+    "marcadorOk": true,
+    "vazio": false,
+    "erros": [],
+    "pass": true
+  },
+  {
+    "rota": "/lab/typography",
+    "nome": "lab-typography",
+    "status": 200,
+    "marcadorOk": true,
+    "vazio": false,
+    "erros": [],
+    "pass": true
+  },
+  {
+    "rota": "/lab/spacing",
+    "nome": "lab-spacing",
+    "status": 200,
+    "marcadorOk": true,
+    "vazio": false,
+    "erros": [],
+    "pass": true
+  },
+  {
+    "rota": "/lab/shadows",
+    "nome": "lab-shadows",
+    "status": 200,
+    "marcadorOk": true,
+    "vazio": false,
+    "erros": [],
+    "pass": true
+  },
+  {
+    "rota": "/lab/buttons",
+    "nome": "lab-buttons",
+    "status": 200,
+    "marcadorOk": true,
+    "vazio": false,
+    "erros": [],
+    "pass": true
+  },
+  {
+    "rota": "/lab/forms",
+    "nome": "lab-forms",
+    "status": 200,
+    "marcadorOk": true,
+    "vazio": false,
+    "erros": [],
+    "pass": true
+  },
+  {
+    "rota": "/lab/data-display",
+    "nome": "lab-data-display",
+    "status": 200,
+    "marcadorOk": true,
+    "vazio": false,
+    "erros": [],
+    "pass": true
+  },
+  {
+    "rota": "/lab/feedback",
+    "nome": "lab-feedback",
+    "status": 200,
+    "marcadorOk": true,
+    "vazio": false,
+    "erros": [],
+    "pass": true
+  },
+  {
+    "rota": "/lab/navigation",
+    "nome": "lab-navigation",
+    "status": 200,
+    "marcadorOk": true,
+    "vazio": false,
+    "erros": [],
+    "pass": true
+  },
+  {
+    "rota": "/lab/surfaces",
+    "nome": "lab-surfaces",
+    "status": 200,
+    "marcadorOk": true,
+    "vazio": false,
+    "erros": [],
+    "pass": true
+  },
+  {
+    "rota": "/lab/overlays",
+    "nome": "lab-overlays",
+    "status": 200,
+    "marcadorOk": true,
+    "vazio": false,
+    "erros": [],
+    "pass": true
+  },
+  {
+    "rota": "/lab/charts",
+    "nome": "lab-charts",
+    "status": 200,
+    "marcadorOk": true,
+    "vazio": false,
+    "erros": [],
+    "pass": true
+  },
+  {
+    "rota": "/lab/grid",
+    "nome": "lab-grid",
+    "status": 200,
+    "marcadorOk": true,
+    "vazio": false,
+    "erros": [],
+    "pass": true
+  },
+  {
+    "rota": "/lab/dashboard",
+    "nome": "lab-dashboard",
+    "status": 200,
+    "marcadorOk": true,
+    "vazio": false,
+    "erros": [],
+    "pass": true
+  },
+  {
+    "rota": "/lab/table",
+    "nome": "lab-table-page",
+    "status": 200,
+    "marcadorOk": true,
+    "vazio": false,
+    "erros": [],
+    "pass": true
+  },
+  {
+    "rota": "/lab/table-page",
+    "nome": "lab-table-page-alt",
+    "status": 200,
+    "marcadorOk": true,
+    "vazio": false,
+    "erros": [],
+    "pass": true
+  },
+  {
+    "rota": "/lab/form-page",
+    "nome": "lab-form-page",
+    "status": 200,
+    "marcadorOk": true,
+    "vazio": false,
+    "erros": [],
+    "pass": true
+  },
+  {
+    "rota": "/lab/profile",
+    "nome": "lab-profile",
+    "status": 200,
+    "marcadorOk": true,
+    "vazio": false,
+    "erros": [],
+    "pass": true
+  },
+  {
+    "rota": "/lab/auth",
+    "nome": "lab-auth",
+    "status": 200,
+    "marcadorOk": true,
+    "vazio": false,
+    "erros": [],
+    "pass": true
+  }
+]

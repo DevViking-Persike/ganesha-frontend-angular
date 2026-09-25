@@ -6,14 +6,14 @@ Repo público: `DevViking-Persike/ganesha-frontend-angular`.
 
 ## App
 
-- `angular/` — SPA Angular 22 (Design System Ganesha migrado do Blazor).
-- `src/` — código Blazor legado (referência histórica; o runtime agora é o Angular).
+- Repo 100% Angular na raiz (app standalone Angular 22, Design System Ganesha migrado do Blazor).
+- `rpa/` — RPA de validação das telas (Playwright).
 - `run.sh` — dev/build/docker local.
 
 ## Esteira
 
 1. Push na `main` ou `gh workflow run deploy.yml --ref main`.
-2. CI: `pnpm --dir angular install --frozen-lockfile`, `pnpm --dir angular build`
+2. CI: `pnpm install --frozen-lockfile`, `pnpm build`
    (build AOT cobre type-check), kustomize e `bash -n` dos scripts.
 3. Build amd64 da imagem nginx, publicação HTTPS em `zot.victorpersike.dev.br/ganesha`
    e validação de arquitetura/digest no registry.

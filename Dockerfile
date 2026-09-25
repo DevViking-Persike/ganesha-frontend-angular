@@ -7,10 +7,10 @@ WORKDIR /app
 RUN chown -R node:node /app
 USER node
 
-COPY --chown=node:node angular/package.json angular/pnpm-lock.yaml ./
+COPY --chown=node:node package.json pnpm-lock.yaml ./
 RUN pnpm install --frozen-lockfile --ignore-scripts
 
-COPY --chown=node:node angular/ ./
+COPY --chown=node:node ./
 ARG APP_REVISION=local
 ENV APP_REVISION=${APP_REVISION}
 RUN node -e "const f='src/index.html',fs=require('fs');fs.writeFileSync(f,fs.readFileSync(f,'utf8').replace('</title>','</title>\n  <meta name=\"app-revision\" content=\"'+process.env.APP_REVISION+'\">'))"

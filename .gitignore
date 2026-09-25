@@ -1,27 +1,43 @@
+# See https://docs.github.com/get-started/getting-started-with-git/ignoring-files for more information.
+
+# Compiled output
+/dist
+/tmp
+/out-tsc
+/bazel-out
+
+# Node
+/node_modules
+npm-debug.log
+yarn-error.log
+
+# IDEs and editors
+.idea/
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/mcp.json
+.history/*
+
+# Miscellaneous
+/.angular/cache
+.sass-cache/
+/connect.lock
+/coverage
+/libpeerconnection.log
+testem.log
+/typings
+__screenshots__/
+rpa/shots/
+
+# System files
 .DS_Store
-**/bin/
-**/obj/
-*.user
-.vs/
-scripts/.logs/
-scripts/.pids/
-node_modules/
-
-# Exportacoes locais de referencias visuais
-src/Template Infográfico _ Vetor Grátis.html
-src/Template Infográfico _ Vetor Grátis_files/
-src/Modelo de infográfico de gráfico de barras com opções. _ Vetor Premium.html
-src/Modelo de infográfico de gráfico de barras com opções. _ Vetor Premium_files/
-src/Gráficos e gráficos de elementos de infográficos de negócios _ Vetor Premium.html
-src/Gráficos e gráficos de elementos de infográficos de negócios _ Vetor Premium_files/
-src/Elemento de gráfico de seta de infográficos. _ Vetor Premium.html
-src/Elemento de gráfico de seta de infográficos. _ Vetor Premium_files/
-src/Coleção de elementos infográficos de gradiente _ Vetor Grátis.html
-src/Coleção de elementos infográficos de gradiente _ Vetor Grátis_files/
-.worktrees/
-.worktrees/*
-
-# Angular
-.angular/
-**/dist/
-
+Thumbs.db

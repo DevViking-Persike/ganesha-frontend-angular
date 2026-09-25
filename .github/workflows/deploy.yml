@@ -4,7 +4,13 @@ on:
   push:
     branches: [main]
     paths:
-      - 'angular/**'
+      - 'src/**'
+      - 'public/**'
+      - 'rpa/**'
+      - 'package.json'
+      - 'pnpm-lock.yaml'
+      - 'angular.json'
+      - 'tsconfig*.json'
       - 'Dockerfile'
       - '.dockerignore'
       - 'docker-compose.yml'
@@ -40,9 +46,7 @@ jobs:
       - run: corepack enable
       - run: corepack prepare pnpm@11.7.0 --activate
       - run: pnpm install --frozen-lockfile --ignore-scripts
-        working-directory: angular
       - run: pnpm build
-        working-directory: angular
       - name: Validar manifests e scripts
         run: |
           kubectl kustomize deploy/kubernetes > /dev/null

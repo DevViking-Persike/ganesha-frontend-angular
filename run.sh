@@ -40,16 +40,16 @@ show_help() {
 
 case "${1:-help}" in
     install|i)
-        pnpm --dir angular install
+        pnpm install
         ;;
     dev|all)
-        pnpm --dir angular start
+        pnpm start
         ;;
     check|build)
-        pnpm --dir angular build
+        pnpm build
         ;;
     preview)
-        cd angular/dist/ganesha-designlab/browser && python3 -m http.server 8099
+        cd dist/ganesha-designlab/browser && python3 -m http.server 8099
         ;;
     docker-build)
         docker compose build
