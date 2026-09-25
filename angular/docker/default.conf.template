@@ -1,4 +1,4 @@
-# Envsubst do entrypoint do nginx resolve ${APP_REVISION} no start do container.
+# O placeholder __APP_REVISION__ é substituído no build da imagem (sed no Dockerfile).
 server {
     listen 8080;
     server_name _;
@@ -7,7 +7,7 @@ server {
 
     location = /healthz {
         default_type application/json;
-        return 200 '{"status":"ok","revision":"${APP_REVISION}"}';
+        return 200 '{"status":"ok","revision":"__APP_REVISION__"}';
     }
 
     # SPA: rotas do Angular Router caem no index.html.

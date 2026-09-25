@@ -38,9 +38,6 @@ spec:
           ports:
             - name: http
               containerPort: 8080
-          env:
-            - name: NGINX_ENTRYPOINT_QUIET_LOGS
-              value: "1"
           securityContext:
             allowPrivilegeEscalation: false
             readOnlyRootFilesystem: true
@@ -58,6 +55,8 @@ spec:
               mountPath: /var/cache/nginx
             - name: nginx-run
               mountPath: /run
+            - name: nginx-tmp
+              mountPath: /tmp
           startupProbe:
             httpGet:
               path: /healthz
@@ -78,4 +77,6 @@ spec:
         - name: nginx-cache
           emptyDir: {}
         - name: nginx-run
+          emptyDir: {}
+        - name: nginx-tmp
           emptyDir: {}

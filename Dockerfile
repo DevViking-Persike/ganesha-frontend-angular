@@ -14,16 +14,14 @@ COPY --chown=node:node angular/ ./
 ARG APP_REVISION=local
 ENV APP_REVISION=${APP_REVISION}
 RUN node -e "const f='src/index.html',fs=require('fs');fs.writeFileSync(f,fs.readFileSync(f,'utf8').replace('</title>','</title>\n  <meta name=\"app-revision\" content=\"'+process.env.APP_REVISION+'\">'))"
+RUN sed "s/__APP_REVISION__/${APP_REVISION}/g" docker/default.conf.template > default.conf
 RUN pnpm build
 
 FROM nginxinc/nginx-unprivileged:1.27-alpine AS runner
 
 COPY --from=builder --chown=101:0 /app/dist/ganesha-designlab/browser ./usr/share/nginx/html
-COPY angular/docker/default.conf.template /etc/nginx/templates/default.conf.template
+COPY --from=builder --chown=101:0 /app/default.conf /etc/nginx/conf.d/default.conf
 
-ARG APP_REVISION=local
-ENV APP_REVISION=${APP_REVISION}
-ENV NGINX_ENTRYPOINT_QUIET_LOGS=1
 EXPOSE 8080
 HEALTHCHECK --interval=10s --timeout=3s --start-period=15s --retries=10 \
   CMD curl -fsS http://localhost:8080/healthz >/dev/null 2>&1 || exit 1
