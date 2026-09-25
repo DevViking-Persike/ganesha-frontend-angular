@@ -46,3 +46,14 @@
 .gns-card--compact .gns-card__footer {
     padding: var(--gns-space-3) var(--gns-space-4);
 }
+
+/* Host flex column: estica na celula do grid e alinha header/body/footer. */
+:host {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.gns-card {
+    flex: 1 1 auto;
+}

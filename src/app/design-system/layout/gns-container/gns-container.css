@@ -39,3 +39,8 @@
         padding-inline: var(--gns-space-8);
     }
 }
+
+/* Host como block: custom element e inline por padrão. */
+:host {
+    display: block;
+}

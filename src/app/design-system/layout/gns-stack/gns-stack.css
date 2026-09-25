@@ -31,3 +31,8 @@
 .gns-stack--horizontal.gns-stack--align-end     { align-items: flex-end; }
 .gns-stack--horizontal.gns-stack--align-stretch { align-items: stretch; }
 .gns-stack--horizontal.gns-stack--align-between { justify-content: space-between; align-items: center; }
+
+/* Host como block: custom element e inline por padrão. */
+:host {
+    display: block;
+}

@@ -30,6 +30,7 @@ const PATTERN_ITEMS: readonly NavItem[] = [
 @Component({
     selector: 'gns-lab-home',
     templateUrl: './gns-lab-home.html',
+    styleUrls: ['./gns-lab-home.css'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [GnsButton, GnsCard, GnsCardHeader, GnsCardFooter, GnsSection, GnsGrid],
 })

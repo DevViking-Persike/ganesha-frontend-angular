@@ -1,0 +1,14 @@
+/* Zona de demo uniforme dos cards de Foundations: mesma altura e centro comum. */
+.gns-lab-home__demo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 6rem;
+    padding: var(--gns-space-3) var(--gns-space-4);
+}
+
+.gns-lab-home__swatches {
+    display: flex;
+    gap: var(--gns-space-1);
+    width: 100%;
+}

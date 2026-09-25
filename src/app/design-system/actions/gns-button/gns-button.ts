@@ -54,9 +54,15 @@ export class GnsButton {
     () => `gns-button--${this.variant()}` as const,
   );
 
-  private readonly sizeClass = computed(
-    () => `gns-button--${this.size()}` as const,
-  );
+  private readonly sizeClass = computed(() => {
+    // API amigável (small|medium|large) → classes CSS do DS (sm|md|lg).
+    const map: Record<ButtonSize, string> = {
+      small: 'sm',
+      medium: 'md',
+      large: 'lg',
+    };
+    return `gns-button--${map[this.size()]}`;
+  });
 
   protected readonly svgMaskStyle = computed(() => {
     const asset = this.loadingAssetPath();

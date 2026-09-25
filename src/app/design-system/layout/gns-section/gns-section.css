@@ -49,3 +49,8 @@
 .gns-section__content {
     width: 100%;
 }
+
+/* Host como block: custom element e inline por padrão. */
+:host {
+    display: block;
+}

@@ -22,13 +22,15 @@
         <gns-grid [columns]="4" gap="4">
             <gns-card [isHoverable]="true">
                 <div header style="padding: var(--gns-space-3) var(--gns-space-4); font-weight: var(--gns-font-weight-semibold); font-size: var(--gns-text-sm);">Colors</div>
-                <div style="display: flex; gap: var(--gns-space-1); padding: 0 var(--gns-space-1) var(--gns-space-1);">
-                    <span style="flex:1; height: 2rem; background: var(--gns-primary-500); border-radius: var(--gns-radius-sm);"></span>
-                    <span style="flex:1; height: 2rem; background: var(--gns-success-500); border-radius: var(--gns-radius-sm);"></span>
-                    <span style="flex:1; height: 2rem; background: var(--gns-warning-500); border-radius: var(--gns-radius-sm);"></span>
-                    <span style="flex:1; height: 2rem; background: var(--gns-danger-500); border-radius: var(--gns-radius-sm);"></span>
+                <div class="gns-lab-home__demo">
+                    <div class="gns-lab-home__swatches">
+                        <span style="flex:1; height: 2rem; background: var(--gns-primary-500); border-radius: var(--gns-radius-sm);"></span>
+                        <span style="flex:1; height: 2rem; background: var(--gns-success-500); border-radius: var(--gns-radius-sm);"></span>
+                        <span style="flex:1; height: 2rem; background: var(--gns-warning-500); border-radius: var(--gns-radius-sm);"></span>
+                        <span style="flex:1; height: 2rem; background: var(--gns-danger-500); border-radius: var(--gns-radius-sm);"></span>
+                    </div>
                 </div>
-                <p style="font-size: var(--gns-text-sm); color: var(--gns-color-text-secondary); padding: var(--gns-space-2) var(--gns-space-4);">
+                <p style="font-size: var(--gns-text-sm); color: var(--gns-color-text-secondary); padding: var(--gns-space-2) var(--gns-space-4); margin: 0;">
                     Primitive and semantic color tokens for consistent theming.
                 </p>
                 <a footer href="lab/colors" style="font-size: var(--gns-text-sm); color: var(--gns-color-text-link); padding: var(--gns-space-3) var(--gns-space-4); display: block;">Explore Colors &rarr;</a>
@@ -36,11 +38,13 @@
 
             <gns-card [isHoverable]="true">
                 <div header style="padding: var(--gns-space-3) var(--gns-space-4); font-weight: var(--gns-font-weight-semibold); font-size: var(--gns-text-sm);">Typography</div>
-                <div style="padding: var(--gns-space-2) var(--gns-space-4);">
-                    <div style="font-size: var(--gns-text-2xl); font-weight: var(--gns-font-weight-bold); color: var(--gns-color-text-primary);">Aa</div>
-                    <div style="font-size: var(--gns-text-sm); color: var(--gns-color-text-secondary);">Inter - System UI</div>
+                <div class="gns-lab-home__demo">
+                    <div>
+                        <div style="font-size: var(--gns-text-2xl); font-weight: var(--gns-font-weight-bold); color: var(--gns-color-text-primary); line-height: 1.1;">Aa</div>
+                        <div style="font-size: var(--gns-text-sm); color: var(--gns-color-text-secondary); margin-top: var(--gns-space-1);">Inter - System UI</div>
+                    </div>
                 </div>
-                <p style="font-size: var(--gns-text-sm); color: var(--gns-color-text-secondary); padding: var(--gns-space-2) var(--gns-space-4);">
+                <p style="font-size: var(--gns-text-sm); color: var(--gns-color-text-secondary); padding: var(--gns-space-2) var(--gns-space-4); margin: 0;">
                     Type scale, weights, line heights, and tracking.
                 </p>
                 <a footer href="lab/typography" style="font-size: var(--gns-text-sm); color: var(--gns-color-text-link); padding: var(--gns-space-3) var(--gns-space-4); display: block;">Explore Typography &rarr;</a>
@@ -48,7 +52,7 @@
 
             <gns-card [isHoverable]="true">
                 <div header style="padding: var(--gns-space-3) var(--gns-space-4); font-weight: var(--gns-font-weight-semibold); font-size: var(--gns-text-sm);">Spacing</div>
-                <div style="padding: var(--gns-space-2) var(--gns-space-4);">
+                <div class="gns-lab-home__demo">
                     <div style="display: flex; gap: var(--gns-space-1); align-items: flex-end;">
                         <span style="width: 4px; height: 8px; background: var(--gns-primary-400); border-radius: 1px;"></span>
                         <span style="width: 4px; height: 16px; background: var(--gns-primary-400); border-radius: 1px;"></span>
@@ -57,7 +61,7 @@
                         <span style="width: 4px; height: 40px; background: var(--gns-primary-600); border-radius: 1px;"></span>
                     </div>
                 </div>
-                <p style="font-size: var(--gns-text-sm); color: var(--gns-color-text-secondary); padding: var(--gns-space-2) var(--gns-space-4);">
+                <p style="font-size: var(--gns-text-sm); color: var(--gns-color-text-secondary); padding: var(--gns-space-2) var(--gns-space-4); margin: 0;">
                     Consistent spacing scale from 0 to 96.
                 </p>
                 <a footer href="lab/spacing" style="font-size: var(--gns-text-sm); color: var(--gns-color-text-link); padding: var(--gns-space-3) var(--gns-space-4); display: block;">Explore Spacing &rarr;</a>
@@ -65,10 +69,10 @@
 
             <gns-card [isHoverable]="true">
                 <div header style="padding: var(--gns-space-3) var(--gns-space-4); font-weight: var(--gns-font-weight-semibold); font-size: var(--gns-text-sm);">Shadows</div>
-                <div style="padding: var(--gns-space-4); display: flex; justify-content: center;">
+                <div class="gns-lab-home__demo">
                     <div style="width: 3rem; height: 3rem; background: var(--gns-color-surface-default); border-radius: var(--gns-radius-lg); box-shadow: var(--gns-shadow-lg);"></div>
                 </div>
-                <p style="font-size: var(--gns-text-sm); color: var(--gns-color-text-secondary); padding: var(--gns-space-2) var(--gns-space-4);">
+                <p style="font-size: var(--gns-text-sm); color: var(--gns-color-text-secondary); padding: var(--gns-space-2) var(--gns-space-4); margin: 0;">
                     Elevation scale from subtle to dramatic.
                 </p>
                 <a footer href="lab/shadows" style="font-size: var(--gns-text-sm); color: var(--gns-color-text-link); padding: var(--gns-space-3) var(--gns-space-4); display: block;">Explore Shadows &rarr;</a>

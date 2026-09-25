@@ -100,3 +100,14 @@
     padding: var(--gns-space-5);
     color: var(--gns-color-text-default);
 }
+
+/* Host flex column: estica na celula do grid e alinha header/body/footer. */
+:host {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.gns-panel {
+    flex: 1 1 auto;
+}
