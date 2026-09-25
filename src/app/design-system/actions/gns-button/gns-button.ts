@@ -17,7 +17,13 @@ export type ButtonVariant =
   | 'danger'
   | 'outline';
 
-export type ButtonSize = 'small' | 'medium' | 'large';
+/**
+ * Aceita as duas convenções usadas no DS: nomes longos (small/medium/large,
+ * espelho do enum Blazor) e curtos (sm/md/lg, como avatar/badge/modal).
+ */
+export type ButtonSize =
+  | 'small' | 'medium' | 'large'
+  | 'sm' | 'md' | 'lg';
 
 function cssClasses(
   ...parts: Array<string | false | null | undefined>
@@ -55,13 +61,15 @@ export class GnsButton {
   );
 
   private readonly sizeClass = computed(() => {
-    // API amigável (small|medium|large) → classes CSS do DS (sm|md|lg).
     const map: Record<ButtonSize, string> = {
       small: 'sm',
       medium: 'md',
       large: 'lg',
+      sm: 'sm',
+      md: 'md',
+      lg: 'lg',
     };
-    return `gns-button--${map[this.size()]}`;
+    return `gns-button--${map[this.size()] ?? 'md'}`;
   });
 
   protected readonly svgMaskStyle = computed(() => {
